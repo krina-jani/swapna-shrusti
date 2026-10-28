@@ -6,8 +6,8 @@ import { EVENTS } from "@/data/resortData";
 import { ArrowRight, Calendar } from "lucide-react";
 
 export const metadata = {
-  title: "Events & Celebrations — Swapna Srushti Resort",
-  description: "Host royal destination weddings, corporate conferences, birthday parties, festivals, and family get-togethers in Gandhinagar.",
+  title: "Resort Event Venues & Gatherings | Swapna Srushti Resort",
+  description: "Host family celebrations, group gatherings, special occasions, and corporate events at Swapna Srushti Resort venue grounds and lawns in Gandhinagar.",
 };
 
 export default function EventsPage() {
@@ -25,13 +25,13 @@ export default function EventsPage() {
           />
           <div className="relative z-10 max-w-3xl">
             <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase">
-              GRAND CELEBRATIONS
+              CELEBRATIONS & GATHERINGS
             </span>
             <h1 className="font-serif font-bold text-4xl sm:text-5xl md:text-6xl mt-2">
-              Events & Gatherings
+              Events & Occasions
             </h1>
             <p className="text-sm sm:text-base text-zinc-300 mt-3 font-sans max-w-xl mx-auto">
-              From picturesque fairy-tale weddings to leadership summits and one-day picnics, celebrate life&apos;s special chapters in pristine nature.
+              Plan memorable events at Swapna Srushti Resort. From family celebrations and group gatherings to special occasions and daytime picnics, explore our open lawns and gathering spaces.
             </p>
           </div>
         </section>
@@ -47,7 +47,7 @@ export default function EventsPage() {
                   <div className="relative h-64 overflow-hidden">
                     <img
                       src={event.image}
-                      alt={event.name}
+                      alt={`${event.name} venue and celebration setting at Swapna Srushti Resort`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>

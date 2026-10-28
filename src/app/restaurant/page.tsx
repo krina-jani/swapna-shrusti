@@ -5,8 +5,8 @@ import { Utensils, Coffee, Check, Phone } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Restaurant & Dining — Swapna Srushti Resort",
-  description: "Experience authentic Gujarati thalis, Kathiyawadi cuisine, and multi-cuisine vegetarian delights at Swapna Srushti Resort Gandhinagar.",
+  title: "Restaurant & Dining | Swapna Srushti Resort",
+  description: "Experience vegetarian dining at Swapna Srushti Resort restaurant near Gandhinagar, offering traditional Gujarati specialties and comfortable indoor and outdoor dining spaces.",
 };
 
 export default function RestaurantPage() {
@@ -24,13 +24,13 @@ export default function RestaurantPage() {
           />
           <div className="relative z-10 max-w-3xl">
             <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase">
-              PURE VEGETARIAN GASTRONOMY
+              DINING AT SWAPNA SRUSHTI
             </span>
             <h1 className="font-serif font-bold text-4xl sm:text-5xl md:text-6xl mt-2">
-              Restaurant & Dining
+              Resort Restaurant & Dining
             </h1>
             <p className="text-sm sm:text-base text-zinc-300 mt-3 font-sans max-w-xl mx-auto">
-              Savor traditional Gujarati flavors, sizzling clay-oven tandoor delights, and wholesome farm delicacies prepared with purity.
+              Enjoy wholesome dining at Swapna Srushti Resort. Explore traditional flavors, regional specialties, and vegetarian offerings prepared for stay guests, day visitors, and groups.
             </p>
           </div>
         </section>
@@ -40,7 +40,7 @@ export default function RestaurantPage() {
             <div className="rounded-2xl overflow-hidden shadow-2xl border-4 border-white h-[380px]">
               <img
                 src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80"
-                alt="Dining Experience"
+                alt="Dining at Swapna Srushti Resort restaurant"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -49,10 +49,10 @@ export default function RestaurantPage() {
                 AUTHENTIC HOSPITALITY
               </span>
               <h2 className="font-serif font-bold text-3xl sm:text-4xl text-[#173A2B]">
-                Farm-to-Table Freshness
+                Regional Dining Experience
               </h2>
               <p className="text-sm sm:text-base text-zinc-700 leading-relaxed font-sans">
-                Our kitchen takes deep pride in preserving Gujarat&apos;s culinary heritage. Enjoy piping-hot bajra rotlas with fresh white butter (makkhan), rich ringna no olo (roasted eggplant mash), sweet gulab jamuns, and chilled chaas.
+                Dining at Swapna Srushti Resort brings authentic flavors and welcoming service to every meal. Savor regional dishes, freshly prepared vegetarian meals, and refreshments tailored for relaxed meals with family and friends.
               </p>
               <div className="space-y-3 pt-2">
                 {["100% Pure Vegetarian Kitchen", "Fresh Seasonal Ingredients Sourced from Regional Farms", "Air-conditioned Indoor Hall & Shaded Outdoor Garden Seating", "Custom Menus for Weddings, Conferences & Picnic Groups"].map((item, i) => (

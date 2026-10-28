@@ -4,8 +4,8 @@ import ResortFooter from "@/components/layout/ResortFooter";
 import GalleryPreview from "@/components/home/GalleryPreview";
 
 export const metadata = {
-  title: "Resort Gallery — Swapna Srushti Resort",
-  description: "Browse curated photographs and video tours of accommodations, pools, event lawns, adventure parks, and dining at Swapna Srushti Resort.",
+  title: "Photo Gallery | Swapna Srushti Resort",
+  description: "Browse photographs and visual highlights of Swapna Srushti Resort, including resort accommodation, water park attractions, event grounds, and facilities.",
 };
 
 export default function GalleryPage() {
@@ -23,13 +23,13 @@ export default function GalleryPage() {
           />
           <div className="relative z-10 max-w-3xl">
             <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase">
-              PHOTO & VIDEO COLLECTION
+              VISUAL COLLECTION
             </span>
             <h1 className="font-serif font-bold text-4xl sm:text-5xl md:text-6xl mt-2">
-              Resort Gallery
+              Swapna Srushti Resort Gallery
             </h1>
             <p className="text-sm sm:text-base text-zinc-300 mt-3 font-sans max-w-xl mx-auto">
-              Take a visual stroll through our 100-acre sanctuary, royal suites, joyous weddings, and adventure attractions.
+              Explore photo highlights of Swapna Srushti Resort, showcasing our accommodation options, lush gardens, recreational facilities, and event venues.
             </p>
           </div>
         </section>

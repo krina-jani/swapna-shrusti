@@ -2,12 +2,12 @@ import React from "react";
 import Navbar from "@/components/navigation/Navbar";
 import ResortFooter from "@/components/layout/ResortFooter";
 import LuxuryContactSection from "@/components/contact/LuxuryContactSection";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 import { RESORT_INFO } from "@/data/resortData";
 
 export const metadata = {
-  title: "Contact Concierge — Swapna Srushti Resort",
-  description: "Get in touch with Swapna Srushti Resort for bookings, wedding inquiries, picnic packages, and location permits.",
+  title: "Contact & Location | Swapna Srushti Resort",
+  description: "Contact Swapna Srushti Resort for accommodation reservations, event enquiries, day picnics, and visitor information on Gandhinagar-Mahudi Highway, Gujarat.",
 };
 
 export default function ContactPage() {
@@ -20,13 +20,13 @@ export default function ContactPage() {
         <section className="relative h-72 sm:h-80 bg-[#173A2B] text-white flex items-center justify-center text-center px-4">
           <div className="relative z-10 max-w-3xl">
             <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase">
-              REACH OUT TO US
+              GET IN TOUCH
             </span>
             <h1 className="font-serif font-bold text-4xl sm:text-5xl md:text-6xl mt-2">
-              Contact & Concierge
+              Contact Swapna Srushti Resort
             </h1>
-            <p className="text-xs sm:text-sm text-zinc-300 mt-3 font-sans max-w-xl mx-auto">
-              We are delighted to assist with your room reservations, weddings, picnics, or photoshoot permit queries.
+            <p className="text-sm sm:text-base text-zinc-300 mt-3 font-sans max-w-xl mx-auto">
+              Reach out to Swapna Srushti Resort for accommodation bookings, event venue enquiries, picnic packages, or general visitor information.
             </p>
           </div>
         </section>

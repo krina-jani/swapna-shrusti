@@ -6,8 +6,8 @@ import { EXPERIENCES } from "@/data/resortData";
 import { ArrowRight } from "lucide-react";
 
 export const metadata = {
-  title: "Discover Resort Experiences — Swapna Srushti Resort",
-  description: "Explore our thrilling adventure park, swimming pool, gym, lush gardens, corporate meeting halls, and campfires.",
+  title: "Resort Attractions & Experiences | Swapna Srushti Resort",
+  description: "Discover attractions, recreation, and family outing experiences at Swapna Srushti Resort, including our water park, adventure activities, swimming pool, and gardens.",
 };
 
 export default function DiscoverPage() {
@@ -25,13 +25,13 @@ export default function DiscoverPage() {
           />
           <div className="relative z-10 max-w-3xl">
             <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase">
-              ACTIVITIES & RECREATION
+              ATTRACTIONS & RECREATION
             </span>
             <h1 className="font-serif font-bold text-4xl sm:text-5xl md:text-6xl mt-2">
-              Discover Experiences
+              Discover Swapna Srushti
             </h1>
             <p className="text-sm sm:text-base text-zinc-300 mt-3 font-sans max-w-xl mx-auto">
-              From serene nature relaxation to adrenaline-packed adventures, discover everything waiting for you at Swapna Srushti.
+              Explore the attractions and recreational facilities at Swapna Srushti Resort. From water park and adventure activities to peaceful gardens and leisure spaces, discover activities for every family outing.
             </p>
           </div>
         </section>
@@ -47,7 +47,7 @@ export default function DiscoverPage() {
                   <div className="relative h-60 overflow-hidden">
                     <img
                       src={exp.image}
-                      alt={exp.name}
+                      alt={`${exp.name} attraction at Swapna Srushti Resort`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>

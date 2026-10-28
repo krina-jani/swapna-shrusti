@@ -6,8 +6,8 @@ import { SHOOT_CATEGORIES } from "@/data/resortData";
 import { Camera, ArrowRight } from "lucide-react";
 
 export const metadata = {
-  title: "Photoshoot & Film Locations — Swapna Srushti Resort",
-  description: "Scenic sets for Pre-wedding, Music Albums, Feature Films, Ad-Films, and Fashion Shoots.",
+  title: "Photoshoot & Video Shoot Location | Swapna Srushti Resort",
+  description: "Discover scenic photoshoot and video production locations at Swapna Srushti Resort, offering green natural landscapes and architectural backdrops in Gandhinagar.",
 };
 
 export default function ForShootPage() {
@@ -25,13 +25,13 @@ export default function ForShootPage() {
           />
           <div className="relative z-10 max-w-3xl">
             <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase">
-              CINEMATIC RESORT BACKDROPS
+              PHOTOGRAPHY & PRODUCTION LOCATIONS
             </span>
             <h1 className="font-serif font-bold text-4xl sm:text-5xl md:text-6xl mt-2">
-              For Shoot & Production
+              Photoshoot & Film Locations
             </h1>
             <p className="text-sm sm:text-base text-zinc-300 mt-3 font-sans max-w-xl mx-auto">
-              100+ acres of breathtaking photography environments: botanical palm avenues, village heritage sets, rustic cottages, and water bodies.
+              Explore photography and video shoot opportunities at Swapna Srushti Resort. Our expansive grounds feature natural gardens, cottages, and distinctive scenic backdrops for your creative projects.
             </p>
           </div>
         </section>
@@ -47,7 +47,7 @@ export default function ForShootPage() {
                   <div className="relative h-64 overflow-hidden">
                     <img
                       src={s.image}
-                      alt={s.name}
+                      alt={`${s.name} photoshoot location set at Swapna Srushti Resort`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>
