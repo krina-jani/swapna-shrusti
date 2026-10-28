@@ -7,7 +7,6 @@ import EventsPreview from "@/components/home/EventsPreview";
 import RestaurantPreview from "@/components/home/RestaurantPreview";
 import ForShootPreview from "@/components/home/ForShootPreview";
 import GalleryPreview from "@/components/home/GalleryPreview";
-import EnquirySection from "@/components/home/EnquirySection";
 import ResortFooter from "@/components/layout/ResortFooter";
 
 export default function Home() {
@@ -40,12 +39,9 @@ export default function Home() {
 
         {/* 9. Categorized Photo Gallery */}
         <GalleryPreview />
-
-        {/* 10. Overlapping Enquire Now Form Section (matching reference screenshot directly above footer) */}
-        <EnquirySection />
       </main>
 
-      {/* 11. Resort Footer */}
+      {/* 10. Master Reference Footer (Section A: Panoramic Banner + Section B: Warm Ivory Footer & Floating Form) */}
       <ResortFooter />
     </div>
   );
