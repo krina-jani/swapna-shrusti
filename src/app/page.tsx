@@ -1,56 +1,52 @@
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import LandIntro from "@/components/LandIntro";
-import FeaturedStory from "@/components/FeaturedStory";
-import DreamTrip from "@/components/DreamTrip";
-import VisaEntry from "@/components/VisaEntry";
-import ExploreDestinations from "@/components/ExploreDestinations";
-import HistoricalGems from "@/components/HistoricalGems";
-import OutdoorWonders from "@/components/OutdoorWonders";
-import SportsSurfing from "@/components/SportsSurfing";
-import Newsletter from "@/components/Newsletter";
-import Footer from "@/components/Footer";
+import HeroSection from "@/components/home/HeroSection";
+import BookingBar from "@/components/home/BookingBar";
+import ResortIntroduction from "@/components/home/ResortIntroduction";
+import AccommodationPreview from "@/components/home/AccommodationPreview";
+import DiscoverSection from "@/components/home/DiscoverSection";
+import EventsPreview from "@/components/home/EventsPreview";
+import RestaurantPreview from "@/components/home/RestaurantPreview";
+import ForShootPreview from "@/components/home/ForShootPreview";
+import GalleryPreview from "@/components/home/GalleryPreview";
+import FinalCTA from "@/components/home/FinalCTA";
+import ResortFooter from "@/components/layout/ResortFooter";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-white text-zinc-900 selection:bg-blue-600 selection:text-white">
-      {/* 1. Brand USA Mega Navigation Header */}
-      <Header />
-
+    <div className="min-h-screen flex flex-col bg-[#F7F3E9] text-[#202522]">
       <main className="flex-1 w-full">
-        {/* 2. Full-width Hero Section with Video/Image, Heading & Pill Navigation */}
-        <Hero />
+        {/* 1. Hero Section with the floating glass pill-navbar embedded inside */}
+        <HeroSection />
 
-        {/* 3. Welcome to the USA: A Land of Endless Possibilities */}
-        <LandIntro />
+        {/* 2. Full-Length Booking Search Bar */}
+        <BookingBar />
 
-        {/* 4. Featured Travel Story: The Spirit of the West */}
-        <FeaturedStory />
+        {/* 3. Resort Introduction */}
+        <ResortIntroduction />
 
-        {/* 5. Plan Your Journey: Your Dream Trip Begins Here (US Map & Pins) */}
-        <DreamTrip />
+        {/* 4. Accommodation Showcase */}
+        <AccommodationPreview />
 
-        {/* 6. Travel Information: Visa & Entry Accordion & Statue of Liberty */}
-        <VisaEntry />
+        {/* 5. Discover & Resort Services */}
+        <DiscoverSection />
 
-        {/* 7 & 8. Travel Inspiration: Explore Amazing Destinations & Popular Grids */}
-        <ExploreDestinations />
+        {/* 6. Events & Celebrations */}
+        <EventsPreview />
 
-        {/* 9. Historical Gems Through the Ages & US Capitol Backdrop */}
-        <HistoricalGems />
+        {/* 7. Restaurant & Dining Showcase */}
+        <RestaurantPreview />
 
-        {/* 10. Outdoor Wonders: Nature Like Nowhere Else & 3 Travel Cards */}
-        <OutdoorWonders />
+        {/* 8. For Shoot Locations */}
+        <ForShootPreview />
 
-        {/* 11. Sports, Surfing and Events: Big Wave Surfer Split Banner & Experiences */}
-        <SportsSurfing />
+        {/* 9. Categorized Photo Gallery */}
+        <GalleryPreview />
 
-        {/* 12. Stay Inspired: Scenic Highway Newsletter Signup */}
-        <Newsletter />
+        {/* 10. Final CTA */}
+        <FinalCTA />
       </main>
 
-      {/* 13. Brand USA Comprehensive Footer */}
-      <Footer />
+      {/* 11. Resort Footer */}
+      <ResortFooter />
     </div>
   );
 }

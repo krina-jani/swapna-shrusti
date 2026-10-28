@@ -1,0 +1,44 @@
+import React from "react";
+import Navbar from "@/components/navigation/Navbar";
+import ResortFooter from "@/components/layout/ResortFooter";
+import GalleryPreview from "@/components/home/GalleryPreview";
+
+export const metadata = {
+  title: "Resort Gallery — Swapna Srushti Resort",
+  description: "Browse curated photographs and video tours of accommodations, pools, event lawns, adventure parks, and dining at Swapna Srushti Resort.",
+};
+
+export default function GalleryPage() {
+  return (
+    <div className="min-h-screen flex flex-col bg-[#F7F3E9] text-[#202522]">
+      <Navbar />
+
+      <main className="flex-1">
+        <section className="relative h-80 sm:h-96 bg-[#173A2B] text-white flex items-center justify-center text-center px-4">
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-30"
+            style={{
+              backgroundImage: `url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80')`,
+            }}
+          />
+          <div className="relative z-10 max-w-3xl">
+            <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase">
+              PHOTO & VIDEO COLLECTION
+            </span>
+            <h1 className="font-serif font-bold text-4xl sm:text-5xl md:text-6xl mt-2">
+              Resort Gallery
+            </h1>
+            <p className="text-sm sm:text-base text-zinc-300 mt-3 font-sans max-w-xl mx-auto">
+              Take a visual stroll through our 100-acre sanctuary, royal suites, joyous weddings, and adventure attractions.
+            </p>
+          </div>
+        </section>
+
+        <GalleryPreview />
+      </main>
+
+      <ResortFooter />
+    </div>
+  );
+}
+

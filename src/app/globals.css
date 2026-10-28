@@ -2,25 +2,36 @@
 
 @layer base {
   :root {
-    --font-heading: var(--font-montserrat), sans-serif;
-    --font-body: var(--font-inter), sans-serif;
+    --forest-green: #173A2B;
+    --warm-ivory: #F7F3E9;
+    --champagne-gold: #C5A46D;
+    --charcoal: #202522;
+    --navbar-bg: #000000;
   }
 }
 
-.font-heading {
-  font-family: var(--font-heading);
+.font-serif {
+  font-family: var(--font-serif), Georgia, serif;
 }
 
-.font-body {
-  font-family: var(--font-body);
+.font-sans {
+  font-family: var(--font-sans), system-ui, sans-serif;
 }
 
-/* Custom scrollbars and styling */
-html {
-  font-family: var(--font-body);
+/* Custom dashed divider for mega menu items */
+.border-dashed-subtle {
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.18);
 }
 
-h1, h2, h3, h4, .font-display {
-  font-family: var(--font-heading);
-  letter-spacing: -0.01em;
+/* Gold button hover effects */
+.btn-gold {
+  background-color: #C5A46D;
+  color: #173A2B;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.btn-gold:hover {
+  background-color: #b39158;
+  color: #0b1c14;
+  box-shadow: 0 4px 15px rgba(197, 164, 109, 0.35);
 }
