@@ -2,19 +2,60 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { ChevronDown, ChevronRight, Menu, X, Phone, Calendar } from "lucide-react";
 import gsap from "gsap";
 import { ACCOMMODATIONS, EXPERIENCES, EVENTS, SHOOT_CATEGORIES } from "@/data/resortData";
 
 export default function Navbar() {
+  const pathname = usePathname();
+
+  const isActive = (path: string) => {
+    if (path === "/") return pathname === "/";
+    return pathname.startsWith(path);
+  };
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [activeForShootSubmenu, setActiveForShootSubmenu] = useState(false);
+  const [hoveredPreview, setHoveredPreview] = useState<{ image: string; title: string; desc?: string } | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileExpandedSection, setMobileExpandedSection] = useState<string | null>(null);
+  const [isVisible, setIsVisible] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const megaMenuRef = useRef<HTMLDivElement>(null);
   const menuTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const lastScrollY = useRef(0);
+
+  // Scroll listener for hero detection and smooth hide on scroll down / show on scroll up
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Glass effect styling toggle
+      setIsScrolled(currentScrollY > 20);
+
+      // In hero section (<= 150px), always show navbar
+      if (currentScrollY <= 150) {
+        setIsVisible(true);
+      } else {
+        // When scrolling down past hero, hide smoothly; when scrolling up, show navbar
+        if (currentScrollY > lastScrollY.current && currentScrollY - lastScrollY.current > 5) {
+          // Scrolling DOWN
+          setIsVisible(false);
+          setActiveMenu(null); // close dropdown when hiding
+        } else if (currentScrollY < lastScrollY.current && lastScrollY.current - currentScrollY > 5) {
+          // Scrolling UP
+          setIsVisible(true);
+        }
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Animate Mega Menu opening with GSAP
   useEffect(() => {
@@ -57,6 +98,7 @@ export default function Navbar() {
   };
 
   const handleMouseLeave = () => {
+    setHoveredPreview(null);
     menuTimeoutRef.current = setTimeout(() => {
       setActiveMenu(null);
       setActiveForShootSubmenu(false);
@@ -68,18 +110,24 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-[#000000] text-white border-b border-zinc-800 shadow-xl select-none">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 sm:h-22">
+    <header className={`fixed top-0 left-0 right-0 z-50 select-none transition-all duration-500 ease-in-out px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4 pointer-events-none ${
+        isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+      }`}>
+      <div className={`max-w-[1380px] w-full mx-auto rounded-full transition-all duration-300 pointer-events-auto border border-white/15 shadow-2xl px-6 sm:px-8 ${
+        isScrolled || activeMenu
+          ? "bg-black/75 backdrop-blur-md ring-1 ring-white/10"
+          : "bg-black/45 backdrop-blur-md ring-1 ring-white/5"
+      } text-white`}>
+        <div className="flex items-center justify-between h-16 sm:h-18">
           
           {/* Resort Original Logo with identity intact */}
-          <Link href="/" className="flex items-center space-x-3 py-2 shrink-0 group">
-            <div className="relative w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center">
+          <Link href="/" className="flex items-center space-x-3 py-2 shrink-0 mr-4 group">
+            <div className="relative w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center">
               <Image
                 src="/images/logo.png"
                 alt="Swapna Srushti Resort Logo"
-                width={64}
-                height={64}
+                width={48}
+                height={48}
                 priority
                 className="object-contain filter drop-shadow hover:scale-105 transition-transform"
               />
@@ -96,13 +144,17 @@ export default function Navbar() {
 
           {/* Desktop Navigation Links */}
           <nav 
-            className="hidden xl:flex items-center space-x-1 text-[13px] font-semibold tracking-wider uppercase text-white"
+            className="hidden lg:flex items-center gap-1.5 text-[12px] font-semibold tracking-wide text-white"
             onMouseLeave={handleMouseLeave}
           >
             {/* 1. Home */}
             <Link 
               href="/" 
-              className="px-3.5 py-7 hover:text-[#C5A46D] transition-colors"
+              className={`px-3.5 py-1.5 rounded-full whitespace-nowrap transition-all ${
+                isActive("/")
+                  ? "bg-[#C5A46D] text-[#173A2B] font-bold shadow-md shadow-[#C5A46D]/20 whitespace-nowrap"
+                  : "hover:bg-white/10 hover:text-[#C5A46D] text-white whitespace-nowrap"
+              }`}
             >
               Home
             </Link>
@@ -112,18 +164,23 @@ export default function Navbar() {
               className="relative"
               onMouseEnter={() => handleMouseEnter("accommodation")}
             >
-              <button
-                onClick={() => setActiveMenu(activeMenu === "accommodation" ? null : "accommodation")}
-                className={`flex items-center space-x-1 px-4 py-7 transition-colors ${
-                  activeMenu === "accommodation" 
-                    ? "bg-[#202522] text-[#C5A46D]" 
-                    : "hover:bg-zinc-900 text-white"
+              <Link
+                href="/accommodation"
+                onClick={() => setActiveMenu(null)}
+                className={`flex items-center space-x-1 px-3.5 py-1.5 rounded-full text-[12px] font-semibold tracking-wide whitespace-nowrap transition-all ${
+                  isActive("/accommodation")
+                    ? "bg-[#C5A46D] text-[#173A2B] font-bold shadow-md shadow-[#C5A46D]/20"
+                    : activeMenu === "accommodation"
+                    ? "bg-white/20 text-[#C5A46D]"
+                    : "hover:bg-white/10 text-white hover:text-[#C5A46D]"
                 }`}
                 aria-expanded={activeMenu === "accommodation"}
               >
                 <span>Accommodation</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeMenu === "accommodation" ? "rotate-180 text-[#C5A46D]" : ""}`} />
-              </button>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                  activeMenu === "accommodation" ? "rotate-180 text-[#C5A46D]" : ""
+                }`} />
+              </Link>
             </div>
 
             {/* 3. Discover */}
@@ -131,18 +188,23 @@ export default function Navbar() {
               className="relative"
               onMouseEnter={() => handleMouseEnter("discover")}
             >
-              <button
-                onClick={() => setActiveMenu(activeMenu === "discover" ? null : "discover")}
-                className={`flex items-center space-x-1 px-4 py-7 transition-colors ${
-                  activeMenu === "discover" 
-                    ? "bg-[#202522] text-[#C5A46D]" 
-                    : "hover:bg-zinc-900 text-white"
+              <Link
+                href="/discover"
+                onClick={() => setActiveMenu(null)}
+                className={`flex items-center space-x-1 px-3.5 py-1.5 rounded-full text-[12px] font-semibold tracking-wide whitespace-nowrap transition-all ${
+                  isActive("/discover")
+                    ? "bg-[#C5A46D] text-[#173A2B] font-bold shadow-md shadow-[#C5A46D]/20"
+                    : activeMenu === "discover"
+                    ? "bg-white/20 text-[#C5A46D]"
+                    : "hover:bg-white/10 text-white hover:text-[#C5A46D]"
                 }`}
                 aria-expanded={activeMenu === "discover"}
               >
                 <span>Discover</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeMenu === "discover" ? "rotate-180 text-[#C5A46D]" : ""}`} />
-              </button>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                  activeMenu === "discover" ? "rotate-180 text-[#C5A46D]" : ""
+                }`} />
+              </Link>
             </div>
 
             {/* 4. Events */}
@@ -150,24 +212,33 @@ export default function Navbar() {
               className="relative"
               onMouseEnter={() => handleMouseEnter("events")}
             >
-              <button
-                onClick={() => setActiveMenu(activeMenu === "events" ? null : "events")}
-                className={`flex items-center space-x-1 px-4 py-7 transition-colors ${
-                  activeMenu === "events" 
-                    ? "bg-[#202522] text-[#C5A46D]" 
-                    : "hover:bg-zinc-900 text-white"
+              <Link
+                href="/events"
+                onClick={() => setActiveMenu(null)}
+                className={`flex items-center space-x-1 px-3.5 py-1.5 rounded-full text-[12px] font-semibold tracking-wide whitespace-nowrap transition-all ${
+                  isActive("/events")
+                    ? "bg-[#C5A46D] text-[#173A2B] font-bold shadow-md shadow-[#C5A46D]/20"
+                    : activeMenu === "events"
+                    ? "bg-white/20 text-[#C5A46D]"
+                    : "hover:bg-white/10 text-white hover:text-[#C5A46D]"
                 }`}
                 aria-expanded={activeMenu === "events"}
               >
                 <span>Events</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeMenu === "events" ? "rotate-180 text-[#C5A46D]" : ""}`} />
-              </button>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                  activeMenu === "events" ? "rotate-180 text-[#C5A46D]" : ""
+                }`} />
+              </Link>
             </div>
 
             {/* 5. Restaurant */}
             <Link 
               href="/restaurant" 
-              className="px-3.5 py-7 hover:text-[#C5A46D] transition-colors"
+              className={`px-3.5 py-1.5 rounded-full whitespace-nowrap transition-all ${
+                isActive("/restaurant")
+                  ? "bg-[#C5A46D] text-[#173A2B] font-bold shadow-md shadow-[#C5A46D]/20"
+                  : "hover:bg-white/10 hover:text-[#C5A46D] text-white"
+              }`}
             >
               Restaurant
             </Link>
@@ -175,7 +246,11 @@ export default function Navbar() {
             {/* 6. Gallery */}
             <Link 
               href="/gallery" 
-              className="px-3.5 py-7 hover:text-[#C5A46D] transition-colors"
+              className={`px-3.5 py-1.5 rounded-full whitespace-nowrap transition-all ${
+                isActive("/gallery")
+                  ? "bg-[#C5A46D] text-[#173A2B] font-bold shadow-md shadow-[#C5A46D]/20"
+                  : "hover:bg-white/10 hover:text-[#C5A46D] text-white"
+              }`}
             >
               Gallery
             </Link>
@@ -185,44 +260,53 @@ export default function Navbar() {
               className="relative"
               onMouseEnter={() => handleMouseEnter("for-shoot")}
             >
-              <button
-                onClick={() => setActiveMenu(activeMenu === "for-shoot" ? null : "for-shoot")}
-                className={`flex items-center space-x-1 px-4 py-7 transition-colors ${
-                  activeMenu === "for-shoot" 
-                    ? "bg-[#202522] text-[#C5A46D]" 
-                    : "hover:bg-zinc-900 text-white"
+              <Link
+                href="/for-shoot"
+                onClick={() => setActiveMenu(null)}
+                className={`flex items-center space-x-1 px-3.5 py-1.5 rounded-full text-[12px] font-semibold tracking-wide whitespace-nowrap transition-all ${
+                  isActive("/for-shoot")
+                    ? "bg-[#C5A46D] text-[#173A2B] font-bold shadow-md shadow-[#C5A46D]/20"
+                    : activeMenu === "for-shoot"
+                    ? "bg-white/20 text-[#C5A46D]"
+                    : "hover:bg-white/10 text-white hover:text-[#C5A46D]"
                 }`}
                 aria-expanded={activeMenu === "for-shoot"}
               >
                 <span>For Shoot</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeMenu === "for-shoot" ? "rotate-180 text-[#C5A46D]" : ""}`} />
-              </button>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                  activeMenu === "for-shoot" ? "rotate-180 text-[#C5A46D]" : ""
+                }`} />
+              </Link>
             </div>
 
             {/* 8. Contact */}
             <Link 
               href="/contact" 
-              className="px-3.5 py-7 hover:text-[#C5A46D] transition-colors"
+              className={`px-3 py-2 rounded-full transition-all ${
+                isActive("/contact")
+                  ? "bg-[#C5A46D] text-[#173A2B] font-bold shadow-md shadow-[#C5A46D]/20"
+                  : "hover:bg-white/10 hover:text-[#C5A46D] text-white"
+              }`}
             >
               Contact
             </Link>
           </nav>
 
           {/* Right Section: Gold Book Your Stay CTA */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4 shrink-0 ml-4">
             <Link
               href="/booking"
-              className="px-5 sm:px-6 py-2.5 sm:py-3 rounded-full btn-gold text-xs sm:text-sm tracking-wider uppercase flex items-center space-x-2 shadow-lg"
+              className="px-4.5 sm:px-5 py-2 rounded-full bg-gradient-to-r from-[#D4AF37] via-[#C5A46D] to-[#B89758] text-[#173A2B] hover:text-black font-bold text-xs uppercase tracking-wider flex items-center space-x-1.5 shadow-md hover:shadow-[#C5A46D]/30 hover:scale-[1.02] active:scale-[0.98] transition-all shrink-0"
             >
-              <Calendar className="w-4 h-4" />
-              <span>Book Your Stay</span>
+              <Calendar className="w-3.5 h-3.5 text-[#173A2B]" />
+              <span className="whitespace-nowrap">Book Your Stay</span>
             </Link>
 
             {/* Mobile Hamburger Button */}
             <button
               onClick={() => setMobileMenuOpen(true)}
               aria-label="Open mobile menu"
-              className="xl:hidden p-2 text-zinc-200 hover:text-white"
+              className="lg:hidden p-2 text-zinc-200 hover:text-white"
             >
               <Menu className="w-7 h-7" />
             </button>
@@ -240,12 +324,12 @@ export default function Navbar() {
             if (menuTimeoutRef.current) clearTimeout(menuTimeoutRef.current);
           }}
           onMouseLeave={handleMouseLeave}
-          className="w-full bg-[#000000] border-t border-zinc-900 border-b border-zinc-800 shadow-2xl py-8 px-4 sm:px-8 lg:px-16"
+          className="pointer-events-auto mt-2.5 max-w-7xl mx-auto bg-black/85 backdrop-blur-2xl border border-white/15 rounded-3xl shadow-2xl py-8 px-6 sm:px-10 overflow-hidden ring-1 ring-white/10"
         >
-          <div className="max-w-7xl mx-auto grid grid-cols-12 gap-8 items-center">
+          <div className="max-w-5xl mx-auto flex items-center justify-center gap-5 my-2">
             
             {/* Left Column: Vertically stacked uppercase links with subtle dashed dividers */}
-            <div className="col-span-5 border-r border-zinc-800/80 pr-8">
+            <div className="w-[340px] shrink-0 border-r border-zinc-800/80 pr-6">
               <span className="text-[11px] font-bold tracking-[0.2em] text-[#C5A46D] uppercase block mb-4">
                 {activeMenu.replace("-", " ")}
               </span>
@@ -254,7 +338,11 @@ export default function Navbar() {
               {activeMenu === "accommodation" && (
                 <ul className="space-y-3 font-sans">
                   {ACCOMMODATIONS.map((room) => (
-                    <li key={room.id} className="border-dashed-subtle pb-2.5">
+                    <li 
+                      key={room.id} 
+                      className="border-dashed-subtle pb-2.5"
+                      onMouseEnter={() => setHoveredPreview({ image: room.image, title: room.name, desc: room.description })}
+                    >
                       <Link
                         href={`/accommodation/${room.slug}`}
                         onClick={() => setActiveMenu(null)}
@@ -273,7 +361,7 @@ export default function Navbar() {
                 <ul className="space-y-3 font-sans">
                   <li className="border-dashed-subtle pb-2.5">
                     <Link
-                      href="/discover/swimming-pool"
+                      href="/discover/swimming-pool" onMouseEnter={() => setHoveredPreview({ image: EXPERIENCES[0].image, title: EXPERIENCES[0].name, desc: EXPERIENCES[0].description })}
                       onClick={() => setActiveMenu(null)}
                       className="group flex items-center justify-between text-sm sm:text-base font-semibold tracking-wider uppercase text-zinc-200 hover:text-[#C5A46D] transition-colors"
                     >
@@ -283,7 +371,7 @@ export default function Navbar() {
                   </li>
                   <li className="border-dashed-subtle pb-2.5">
                     <Link
-                      href="/discover/adventure-park"
+                      href="/discover/adventure-park" onMouseEnter={() => setHoveredPreview({ image: EXPERIENCES[1].image, title: EXPERIENCES[1].name, desc: EXPERIENCES[1].description })}
                       onClick={() => setActiveMenu(null)}
                       className="group flex items-center justify-between text-sm sm:text-base font-semibold tracking-wider uppercase text-zinc-200 hover:text-[#C5A46D] transition-colors"
                     >
@@ -293,7 +381,7 @@ export default function Navbar() {
                   </li>
                   <li className="border-dashed-subtle pb-2.5">
                     <Link
-                      href="/discover/corporate-meeting"
+                      href="/discover/corporate-meeting" onMouseEnter={() => setHoveredPreview({ image: EXPERIENCES[2].image, title: EXPERIENCES[2].name, desc: EXPERIENCES[2].description })}
                       onClick={() => setActiveMenu(null)}
                       className="group flex items-center justify-between text-sm sm:text-base font-semibold tracking-wider uppercase text-zinc-200 hover:text-[#C5A46D] transition-colors"
                     >
@@ -315,11 +403,11 @@ export default function Navbar() {
                   </li>
                   <li className="border-dashed-subtle pb-2.5">
                     <Link
-                      href="/accommodation/theme-village"
+                      href="/accommodation/theme-villas" onMouseEnter={() => setHoveredPreview({ image: ACCOMMODATIONS[5].image, title: ACCOMMODATIONS[5].name, desc: ACCOMMODATIONS[5].description })}
                       onClick={() => setActiveMenu(null)}
                       className="group flex items-center justify-between text-sm sm:text-base font-semibold tracking-wider uppercase text-zinc-200 hover:text-[#C5A46D] transition-colors"
                     >
-                      <span>Theme Village</span>
+                      <span>Theme Villas</span>
                       <ChevronRight className="w-4 h-4 text-zinc-500 group-hover:text-[#C5A46D] transition-all" />
                     </Link>
                   </li>
@@ -330,7 +418,7 @@ export default function Navbar() {
               {activeMenu === "events" && (
                 <ul className="space-y-3 font-sans">
                   {EVENTS.map((event) => (
-                    <li key={event.id} className="border-dashed-subtle pb-2.5">
+                    <li key={event.id} className="border-dashed-subtle pb-2.5" onMouseEnter={() => setHoveredPreview({ image: event.image, title: event.name, desc: event.description })}>
                       <Link
                         href={`/events/${event.slug}`}
                         onClick={() => setActiveMenu(null)}
@@ -348,7 +436,7 @@ export default function Navbar() {
               {activeMenu === "for-shoot" && (
                 <ul className="space-y-3 font-sans">
                   {SHOOT_CATEGORIES.map((shoot) => (
-                    <li key={shoot.id} className="border-dashed-subtle pb-2.5">
+                    <li key={shoot.id} className="border-dashed-subtle pb-2.5" onMouseEnter={() => setHoveredPreview({ image: shoot.image, title: shoot.name, desc: shoot.description })}>
                       <Link
                         href={`/for-shoot/${shoot.slug}`}
                         onClick={() => setActiveMenu(null)}
@@ -371,7 +459,7 @@ export default function Navbar() {
                 </span>
                 <ul className="space-y-2.5 text-xs uppercase font-semibold text-zinc-300">
                   {SHOOT_CATEGORIES.map((s) => (
-                    <li key={s.id} className="border-b border-zinc-800/60 pb-1.5">
+                    <li key={s.id} className="border-b border-zinc-800/60 pb-1.5" onMouseEnter={() => setHoveredPreview({ image: s.image, title: s.name, desc: s.description })}>
                       <Link
                         href={`/for-shoot/${s.slug}`}
                         onClick={() => setActiveMenu(null)}
@@ -387,33 +475,35 @@ export default function Navbar() {
             )}
 
             {/* Right Column: Large relevant resort photograph with white border (Reference 3 Match) */}
-            <div className={`${activeMenu === "discover" && activeForShootSubmenu ? "col-span-4" : "col-span-7"} pl-4`}>
-              <div className="relative rounded-lg overflow-hidden border-2 border-white/90 shadow-2xl h-[260px] group">
+            <div className="w-[420px] max-w-full shrink-0">
+              <div className="relative rounded-lg overflow-hidden border-2 border-white/90 shadow-2xl w-full aspect-[16/10] group">
                 <img
                   src={
-                    activeMenu === "accommodation"
+                    hoveredPreview?.image ||
+                    (activeMenu === "accommodation"
                       ? ACCOMMODATIONS[3].image // Cottages photo
                       : activeMenu === "discover"
                       ? EXPERIENCES[1].image // Adventure dirt bike photo matching reference
                       : activeMenu === "events"
                       ? EVENTS[0].image // Wedding photo
-                      : SHOOT_CATEGORIES[0].image // Pre-wedding photo
+                      : SHOOT_CATEGORIES[0].image) // Pre-wedding photo
                   }
-                  alt="Resort Experience Preview"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  alt={hoveredPreview?.title || "Resort Experience Preview"}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-5">
                   <span className="text-xs uppercase font-bold text-[#C5A46D] tracking-widest">
-                    {activeMenu === "accommodation"
-                      ? "Luxury Cottages & Suites"
-                      : activeMenu === "discover"
-                      ? "Adventure Park & Dirt Tracks"
-                      : activeMenu === "events"
-                      ? "Grand Destination Weddings"
-                      : "Cinematic Pre-Wedding Shoots"}
+                    {hoveredPreview?.title ||
+                      (activeMenu === "accommodation"
+                        ? "Luxury Cottages & Suites"
+                        : activeMenu === "discover"
+                        ? "Adventure Park & Dirt Tracks"
+                        : activeMenu === "events"
+                        ? "Grand Destination Weddings"
+                        : "Cinematic Pre-Wedding Shoots")}
                   </span>
                   <p className="text-xs text-zinc-200 mt-1 max-w-md line-clamp-2">
-                    Experience authentic luxury and breathtaking natural landscapes designed for lifelong memories.
+                    {hoveredPreview?.desc || "Experience authentic luxury and breathtaking natural landscapes designed for lifelong memories."}
                   </p>
                 </div>
               </div>
@@ -460,7 +550,7 @@ export default function Navbar() {
                 <Link
                   href="/"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block hover:text-[#C5A46D]"
+                  className={`block hover:text-[#C5A46D] ${isActive("/") ? "text-[#C5A46D] font-bold" : ""}`}
                 >
                   Home
                 </Link>
@@ -505,7 +595,7 @@ export default function Navbar() {
                     <Link href="/discover/swimming-pool" onClick={() => setMobileMenuOpen(false)} className="block py-1 hover:text-[#C5A46D]">Swimming Pool</Link>
                     <Link href="/discover/adventure-park" onClick={() => setMobileMenuOpen(false)} className="block py-1 hover:text-[#C5A46D]">Adventure Park</Link>
                     <Link href="/discover/corporate-meeting" onClick={() => setMobileMenuOpen(false)} className="block py-1 hover:text-[#C5A46D]">Corporate Meeting</Link>
-                    <Link href="/accommodation/theme-village" onClick={() => setMobileMenuOpen(false)} className="block py-1 hover:text-[#C5A46D]">Theme Village</Link>
+                    <Link href="/accommodation/theme-villas" onClick={() => setMobileMenuOpen(false)} className="block py-1 hover:text-[#C5A46D]">Theme Villas</Link>
                   </div>
                 )}
               </div>

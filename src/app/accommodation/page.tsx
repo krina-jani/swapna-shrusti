@@ -3,11 +3,11 @@ import Link from "next/link";
 import Navbar from "@/components/navigation/Navbar";
 import ResortFooter from "@/components/layout/ResortFooter";
 import { ACCOMMODATIONS } from "@/data/resortData";
-import { Users, Check, ArrowRight } from "lucide-react";
+import { Users, Check } from "lucide-react";
 
 export const metadata = {
-  title: "Accommodations — Swapna Srushti Resort",
-  description: "Explore our luxurious room categories: Superior Rooms, Premium Rooms, Executive Suites, Cottages, Unique Residency, and Theme Village.",
+  title: "Resort Accommodation | Swapna Srushti Resort",
+  description: "Explore accommodation at Swapna Srushti Resort, including Superior Rooms, Premium Rooms, Executive Suites, Cottages, Unique Residencies and Theme Villas.",
 };
 
 export default function AccommodationPage() {
@@ -17,22 +17,22 @@ export default function AccommodationPage() {
 
       <main className="flex-1">
         {/* Banner */}
-        <section className="relative h-80 sm:h-96 bg-[#173A2B] text-white flex items-center justify-center text-center px-4">
+        <section className="relative h-96 sm:h-[420px] pt-16 bg-[#173A2B] text-white flex items-center justify-center text-center px-4">
           <div 
-            className="absolute inset-0 bg-cover bg-center opacity-30"
+            className="absolute inset-0 bg-cover bg-center opacity-45"
             style={{
-              backgroundImage: `url('${ACCOMMODATIONS[3].image}')`,
+              backgroundImage: "url('/images/Tropical%20Resort%20Cottages%20at%20Sunset.png')",
             }}
           />
           <div className="relative z-10 max-w-3xl">
             <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase">
-              LUXURY SANCTUARIES
+              STAY AT SWAPNA SRUSHTI
             </span>
             <h1 className="font-serif font-bold text-4xl sm:text-5xl md:text-6xl mt-2">
               Resort Accommodations
             </h1>
             <p className="text-sm sm:text-base text-zinc-300 mt-3 font-sans max-w-xl mx-auto">
-              Every room and cottage is thoughtfully designed to immerse you in tranquil nature while offering modern luxury conveniences.
+              Explore the accommodation options at Swapna Srushti Resort, from comfortable rooms and suites to cottages and distinctive stays. Discover the available categories and find an option that suits your getaway.
             </p>
           </div>
         </section>
@@ -48,7 +48,7 @@ export default function AccommodationPage() {
                 <div className="relative h-64 overflow-hidden">
                   <img
                     src={room.image}
-                    alt={room.name}
+                    alt={`${room.name} accommodation at Swapna Srushti Resort`}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute top-4 left-4 bg-black/75 px-3 py-1 rounded-full text-[11px] text-white flex items-center gap-1.5">
@@ -103,4 +103,3 @@ export default function AccommodationPage() {
     </div>
   );
 }
-
