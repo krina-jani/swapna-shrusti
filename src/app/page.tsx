@@ -1,3 +1,4 @@
+import Navbar from "@/components/navigation/Navbar";
 import HeroSection from "@/components/home/HeroSection";
 import BookingBar from "@/components/home/BookingBar";
 import ResortIntroduction from "@/components/home/ResortIntroduction";
@@ -13,8 +14,11 @@ import ResortFooter from "@/components/layout/ResortFooter";
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-[#F7F3E9] text-[#202522]">
+      {/* Universal Floating Glass Navbar */}
+      <Navbar />
+
       <main className="flex-1 w-full">
-        {/* 1. Hero Section with floating pill-navbar */}
+        {/* 1. Hero Section */}
         <HeroSection />
 
         {/* 2. Full-Length Booking Search Bar */}
