@@ -98,7 +98,10 @@ export default function ResortFooter() {
   ];
 
   return (
-    <footer className="relative w-full overflow-hidden bg-[#F7F3E9] text-[#202522]">
+    <footer 
+      className="relative w-full overflow-hidden bg-[#F7F3E9] text-[#202522] font-sans"
+      style={{ fontFamily: 'var(--font-sans), "Plus Jakarta Sans", sans-serif' }}
+    >
       {/* 
         ========================================================================
         SECTION A: Full-width Panoramic Alpine Lake Landscape Banner
