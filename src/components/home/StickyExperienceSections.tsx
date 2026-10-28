@@ -83,44 +83,61 @@ export default function StickyExperienceSections() {
               top: 0,
               zIndex,
             }}
-            className="sticky w-full min-h-screen flex items-center shadow-2xl overflow-hidden border-t border-black/10"
+            className="sticky w-full h-[540px] sm:h-[580px] md:h-[600px] lg:h-[640px] flex items-center shadow-2xl overflow-hidden border-t border-black/10"
           >
-            <div className="w-full h-full min-h-screen flex flex-col lg:flex-row">
+            <div className="w-full h-full flex flex-col lg:flex-row">
               
               {/* Left Panel (47% width on desktop) */}
               <div
-                className={`relative w-full lg:w-[47%] min-h-[460px] lg:min-h-screen flex flex-col justify-center px-8 sm:px-14 lg:px-20 py-16 sm:py-20 z-10 ${
+                className={`relative w-full lg:w-[47%] h-full flex flex-col justify-center px-8 sm:px-12 lg:px-16 xl:px-20 py-8 lg:py-12 z-10 overflow-hidden ${
                   isGreen ? "bg-[#173A2B] text-white" : "bg-[#F7F3E9] text-[#202522]"
                 }`}
               >
-                {/* Subtle Decorative Botanical Leaf / Curved Lines Overlay */}
-                <div
-                  className="absolute inset-0 pointer-events-none opacity-[0.08]"
-                  style={{
-                    backgroundImage: isGreen
-                      ? "radial-gradient(ellipse at 80% 50%, rgba(197, 164, 109, 0.45) 0%, transparent 70%)"
-                      : "radial-gradient(ellipse at 80% 50%, rgba(23, 58, 43, 0.35) 0%, transparent 70%)",
-                  }}
-                />
-                
-                {/* SVG Decorative Curved Botanical Lines matching the reference watermark */}
-                <svg
-                  className="absolute -right-20 top-1/4 w-[360px] h-[360px] pointer-events-none opacity-[0.06] select-none"
-                  viewBox="0 0 200 200"
-                  fill="none"
-                  stroke={isGreen ? "#C5A46D" : "#173A2B"}
-                  strokeWidth="2.5"
-                >
-                  <path d="M 10 100 Q 60 20 120 70 T 190 120" />
-                  <path d="M 30 140 Q 80 40 140 90 T 200 150" />
-                  <path d="M 0 60 Q 50 -10 100 40 T 170 90" />
-                </svg>
+                {/* ========================================================================= */}
+                {/* EXACT TROPICAL PALM LEAF SILHOUETTE WATERMARK PATTERN                      */}
+                {/* ========================================================================= */}
+                <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden">
+                  
+                  {/* Top-Right Palm Frond / Leaves cascading inward */}
+                  <svg
+                    className="absolute -top-10 -right-12 w-[340px] h-[340px] sm:w-[400px] sm:h-[400px] transition-transform duration-700"
+                    viewBox="0 0 400 400"
+                    fill={isGreen ? "#FFFFFF" : "#173A2B"}
+                    fillOpacity={isGreen ? "0.065" : "0.05"}
+                  >
+                    {/* Palm leaf stem and radiating leaflets matching reference */}
+                    <path d="M 400 0 Q 300 120 180 200 Q 80 260 0 300 C 60 250 140 180 220 120 C 300 60 360 20 400 0 Z" />
+                    <path d="M 400 40 C 320 80 240 150 160 230 C 220 170 300 100 400 40 Z" />
+                    <path d="M 400 90 C 330 130 250 200 190 280 C 250 210 330 140 400 90 Z" />
+                    <path d="M 400 150 C 340 190 270 260 220 340 C 270 270 350 200 400 150 Z" />
+                    <path d="M 370 0 C 280 70 200 150 130 230 C 190 160 280 80 370 0 Z" />
+                    <path d="M 320 0 C 240 60 170 130 100 210 C 160 140 240 70 320 0 Z" />
+                    <path d="M 270 0 C 200 50 130 120 70 190 C 130 130 200 60 270 0 Z" />
+                    <path d="M 220 0 C 160 40 100 100 40 170 C 100 110 160 50 220 0 Z" />
+                  </svg>
+
+                  {/* Bottom-Right Palm Frond / Leaves branching upward */}
+                  <svg
+                    className="absolute -bottom-16 -right-16 w-[360px] h-[360px] sm:w-[440px] sm:h-[440px] transition-transform duration-700"
+                    viewBox="0 0 400 400"
+                    fill={isGreen ? "#FFFFFF" : "#173A2B"}
+                    fillOpacity={isGreen ? "0.06" : "0.045"}
+                  >
+                    <path d="M 400 400 Q 280 300 200 180 Q 140 80 100 0 C 150 60 220 140 280 220 C 340 300 380 360 400 400 Z" />
+                    <path d="M 400 340 C 320 260 250 180 170 100 C 230 160 300 240 400 340 Z" />
+                    <path d="M 400 280 C 330 210 260 140 190 60 C 250 130 330 200 400 280 Z" />
+                    <path d="M 400 220 C 340 160 280 90 220 20 C 270 90 350 150 400 220 Z" />
+                    <path d="M 340 400 C 260 320 190 240 120 160 C 180 230 260 310 340 400 Z" />
+                    <path d="M 280 400 C 210 330 150 260 80 180 C 140 250 210 320 280 400 Z" />
+                  </svg>
+
+                </div>
 
                 {/* Content Container */}
                 <div className="relative z-10 max-w-lg">
                   
                   {/* Number & Horizontal Line Header: e.g. 01/04 ────── */}
-                  <div className="flex items-center space-x-3 mb-6">
+                  <div className="flex items-center space-x-3 mb-3.5">
                     <span
                       className={`text-xs sm:text-sm font-sans font-bold tracking-widest ${
                         isGreen ? "text-white/80" : "text-[#202522]/80"
@@ -129,20 +146,20 @@ export default function StickyExperienceSections() {
                       {section.number}
                     </span>
                     <span
-                      className={`w-12 h-[1px] ${
+                      className={`w-10 h-[1px] ${
                         isGreen ? "bg-white/40" : "bg-black/30"
                       }`}
                     />
                   </div>
 
                   {/* Category Tag */}
-                  <span className="text-[11px] sm:text-xs font-sans font-extrabold tracking-[0.25em] text-[#C5A46D] uppercase block mb-3">
+                  <span className="text-[10px] sm:text-[11px] font-sans font-extrabold tracking-[0.25em] text-[#C5A46D] uppercase block mb-2.5">
                     {section.category}
                   </span>
 
                   {/* Heading: Bold Editorial Display Serif */}
                   <h2
-                    className={`font-serif font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.08] mb-6 ${
+                    className={`font-serif font-bold text-3xl sm:text-4xl lg:text-[46px] tracking-tight leading-[1.05] mb-4 ${
                       isGreen ? "text-white" : "text-[#173A2B]"
                     }`}
                   >
@@ -155,7 +172,7 @@ export default function StickyExperienceSections() {
 
                   {/* Description text */}
                   <p
-                    className={`font-sans text-sm sm:text-base leading-relaxed mb-8 max-w-md ${
+                    className={`font-sans text-xs sm:text-sm leading-relaxed mb-6 max-w-md ${
                       isGreen ? "text-white/80" : "text-zinc-700"
                     }`}
                   >
@@ -166,7 +183,7 @@ export default function StickyExperienceSections() {
                   <div>
                     <Link
                       href={section.buttonLink}
-                      className="inline-flex items-center space-x-2 px-7 py-3 rounded-full bg-[#C5A46D] hover:bg-[#b5935b] text-[#173A2B] font-sans font-bold text-xs sm:text-sm tracking-wide shadow-md transition-all hover:scale-105 active:scale-95"
+                      className="inline-flex items-center space-x-2 px-6 sm:px-7 py-2.5 sm:py-3 rounded-full bg-[#C5A46D] hover:bg-[#b5935b] text-[#173A2B] font-sans font-bold text-xs sm:text-sm tracking-wide shadow-md transition-all hover:scale-105 active:scale-95"
                     >
                       <span>{section.buttonText}</span>
                       <ArrowRight className="w-4 h-4 ml-0.5" />
@@ -177,7 +194,7 @@ export default function StickyExperienceSections() {
               </div>
 
               {/* Right Panel: Large Edge-to-Edge Photograph (53% width on desktop) */}
-              <div className="relative w-full lg:w-[53%] min-h-[380px] lg:min-h-screen overflow-hidden">
+              <div className="relative w-full lg:w-[53%] h-full overflow-hidden">
                 <img
                   src={section.image}
                   alt={section.category}
@@ -192,4 +209,3 @@ export default function StickyExperienceSections() {
     </div>
   );
 }
-

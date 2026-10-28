@@ -7,7 +7,7 @@ import EventsPreview from "@/components/home/EventsPreview";
 import RestaurantPreview from "@/components/home/RestaurantPreview";
 import ForShootPreview from "@/components/home/ForShootPreview";
 import GalleryPreview from "@/components/home/GalleryPreview";
-import FinalCTA from "@/components/home/FinalCTA";
+import EnquirySection from "@/components/home/EnquirySection";
 import ResortFooter from "@/components/layout/ResortFooter";
 
 export default function Home() {
@@ -41,8 +41,8 @@ export default function Home() {
         {/* 9. Categorized Photo Gallery */}
         <GalleryPreview />
 
-        {/* 10. Final CTA */}
-        <FinalCTA />
+        {/* 10. Overlapping Enquire Now Form Section (matching reference screenshot directly above footer) */}
+        <EnquirySection />
       </main>
 
       {/* 11. Resort Footer */}
