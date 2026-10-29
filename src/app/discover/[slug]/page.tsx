@@ -347,8 +347,8 @@ export default async function ActivityDetailPage({ params }: Props) {
           title={`${activity.name.toUpperCase()} FAQS`}
           description={`Verified questions and visitor answers regarding ${activity.name} access, timings, policies, and booking guidance at Swapna Srushti Resort.`}
           items={activity.faqs}
-          ctaText="Enquire Now"
-          ctaLink={activity.enquiryLink}
+          ctaText=""
+          ctaLink=""
         />
 
         {/* SECTION 8 (Closing Banner): PLAN YOUR EXPERIENCE */}
