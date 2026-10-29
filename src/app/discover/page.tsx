@@ -216,13 +216,13 @@ export default function DiscoverPage() {
               
               <div className="lg:col-span-6 relative rounded-2xl overflow-hidden shadow-2xl border-4 border-[#F7F3E9] h-[380px] sm:h-[460px]">
                 <img
-                  src="/images/exact-pool.jpg"
-                  alt="Swapna Srushti Resort Swimming Pool"
+                  src="/images/waterpark/waterpark-aerial.jpg"
+                  alt="Swapna Srushti Water Park & Swimming Pool"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute top-4 left-4 bg-black/70 backdrop-blur-sm text-white px-3.5 py-1 rounded-full text-xs font-semibold flex items-center space-x-1.5">
                   <Waves className="w-3.5 h-3.5 text-[#C5A46D]" />
-                  <span>Resort Swimming Pool</span>
+                  <span>Water Park & Swimming Pool</span>
                 </div>
               </div>
 

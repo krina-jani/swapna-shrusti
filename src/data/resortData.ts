@@ -131,11 +131,11 @@ export const ACCOMMODATIONS: RoomItem[] = [
 export const EXPERIENCES: ExperienceItem[] = [
   {
     id: "swimming-pool",
-    name: "Swimming Pool",
+    name: "Water Park & Pool",
     slug: "swimming-pool",
-    tagline: "Crystal Waters Amid Lush Palms",
-    description: "Dive into our expansive azure swimming pool, complemented by separate children's splash zones, sun loungers, and poolside refreshments.",
-    image: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=80",
+    tagline: "Water Slides & Crystal Pools",
+    description: "Thrill to high-speed water slides, wave pools, interactive rain dance zones, and crystal azure pools surrounded by lush greenery.",
+    image: "/images/waterpark/waterpark-aerial.jpg",
   },
   {
     id: "adventure-park",

@@ -20,14 +20,14 @@ const SECTIONS: SectionData[] = [
   {
     id: "pool",
     number: "01/04",
-    category: "SWIMMING POOL",
-    heading: ["Refresh", "Rejuvenate", "Relax"],
+    category: "WATER PARK & SWIMMING POOL",
+    heading: ["Water Park", "& Resort Pool"],
     description:
-      "Dive into crystal clear waters surrounded by lush greenery. Our swimming pool is the perfect place to unwind, relax and create refreshing moments with family and friends.",
-    buttonText: "Explore Swimming Pool",
+      "Experience thrilling water slides, splash zones, wave pools, and crystal-clear swimming waters surrounded by lush greenery. The ultimate place to cool off and celebrate with friends and family.",
+    buttonText: "Explore Water Park & Pool",
     buttonLink: "/discover/swimming-pool",
     bgType: "green",
-    image: "/images/sticky-pool.jpg",
+    image: "/images/waterpark/waterpark-aerial.jpg",
   },
   {
     id: "adventure",

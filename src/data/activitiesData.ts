@@ -26,15 +26,16 @@ export interface ActivityDetail {
 export const ACTIVITIES_DATA: ActivityDetail[] = [
   {
     slug: "swimming-pool",
-    name: "Swimming Pool",
-    tagline: "Crystal Waters Amid Lush Palms",
-    shortDescription: "Dive into our refreshing resort swimming pool, complemented by separate children's splash zones, relaxing poolside seating, and garden views.",
-    fullDescription: "The resort swimming pool at Swapna Srushti offers residential guests and day visitors a calm aquatic retreat in a picturesque open-air garden setting. Surrounded by landscaped greenery and swaying palms, the pool area features clean, circulating filtered water, comfortable sun loungers, and shallow wading zones designed specifically for toddlers and young children.",
-    overviewNotes: "Residential room guests enjoy complimentary access during designated pool operating hours. Day visitors can access the pool facilities via day picnic passes or select recreational packages. Pool access policies and operating schedules should be confirmed upon check-in.",
-    image: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=80",
+    name: "Water Park & Swimming Pool",
+    tagline: "High-Thrill Water Slides & Wave Pools Amid Lush Palms",
+    shortDescription: "Experience Gujarat's famous water park with spiraling thrill slides, wave pools, kids water play stations, and crystal resort swimming pools.",
+    fullDescription: "Swapna Srushti's renowned Water Park and Swimming Pool complex is one of Gujarat's most celebrated aquatic attractions. Featuring exhilarating high-speed tornado funnel slides, multi-lane body racers, massive wave pools, interactive water playgrounds for children, and calm resort swimming pools surrounded by tropical greenery, it offers boundless excitement for families, school picnics, and weekend getaways.",
+    overviewNotes: "Water Park and Swimming Pool access is bundled with selected resort room packages, One-Day Picnic tickets, and dedicated water park day passes. Operating schedules and safety rules are confirmed upon entry.",
+    image: "/images/waterpark/waterpark-aerial.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80",
+      "/images/waterpark/waterpark-aerial.jpg",
+      "/images/waterpark/waterpark-slides.jpg",
+      "/images/waterpark/waterpark-funnel.jpg",
     ],
     verifiedFeatures: [
       "Main swimming pool with treated, filtered water",
