@@ -458,7 +458,7 @@ export default function Navbar() {
                     </li>
 
                     {/* Theme Village link */}
-                    <li onMouseEnter={() => { setHoveredPreview({ image: ACCOMMODATIONS[5]?.image || EXPERIENCES[0].image, title: "Theme Village", desc: "Experience our rich heritage themed village architectures and rustic tranquility." }); setActiveForShootSubmenu(false); }}>
+                    <li onMouseEnter={() => { setHoveredPreview({ image: "/images/villagetheme/theme-village-1.png", title: "Theme Village", desc: "Experience our rich heritage themed village architectures and rustic tranquility." }); setActiveForShootSubmenu(false); }}>
                       <Link
                         href="/accommodation/theme-village"
                         onClick={() => setActiveMenu(null)}

@@ -478,7 +478,7 @@ export default function DiscoverPage() {
           <div
             className="absolute inset-0 bg-cover bg-center opacity-30 scale-105 transition-transform duration-1000"
             style={{
-              backgroundImage: "url('/images/Tropical%20Resort%20Cottages%20at%20Sunset.png')",
+              backgroundImage: "url('/images/villagetheme/theme-village-1.png')",
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#202522] via-[#202522]/90 to-transparent" />
@@ -847,8 +847,8 @@ export default function DiscoverPage() {
               {/* Item 3: Theme Village Cottages (4 cols) */}
               <div className="lg:col-span-4 h-64 sm:h-72 rounded-2xl overflow-hidden shadow-md group relative">
                 <img
-                  src="/images/Tropical%20Resort%20Cottages%20at%20Sunset.png"
-                  alt="Nature Cottages & Theme Village"
+                  src="/images/villagetheme/theme-village-2.png"
+                  alt="Swapnagram Theme Village Heritage Architecture"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex items-end">

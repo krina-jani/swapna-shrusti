@@ -147,7 +147,7 @@ const LOCATION_ENVIRONMENTS = [
   {
     id: "theme-village",
     title: "Theme Village (Swapnagram)",
-    image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/villagetheme/theme-village-3.png",
     description: "Authentic Gujarati and rustic village architecture featuring earthen textures, wooden carvings, and heritage courtyards.",
     useCases: ["Traditional attire", "Cultural concepts", "Creative editorial photography"],
   },
