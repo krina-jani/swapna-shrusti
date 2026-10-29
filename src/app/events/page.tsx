@@ -2,12 +2,14 @@ import React from "react";
 import Link from "next/link";
 import Navbar from "@/components/navigation/Navbar";
 import ResortFooter from "@/components/layout/ResortFooter";
+import FAQSection from "@/components/common/FAQSection";
 import { EVENTS } from "@/data/resortData";
-import { ArrowRight, Calendar } from "lucide-react";
+import { EVENTS_FAQS } from "@/data/faqsData";
+import { ArrowRight } from "lucide-react";
 
 export const metadata = {
-  title: "Resort Event Venues & Gatherings | Swapna Srushti Resort",
-  description: "Host family celebrations, group gatherings, special occasions, and corporate events at Swapna Srushti Resort venue grounds and lawns in Gandhinagar.",
+  title: "Events, Weddings & Venues | Swapna Srushti Resort",
+  description: "Explore event venues and wedding lawns at Swapna Srushti Resort Gandhinagar. Discover spaces suited for weddings, corporate retreats, and family occasions.",
 };
 
 export default function EventsPage() {
@@ -28,26 +30,27 @@ export default function EventsPage() {
               CELEBRATIONS & GATHERINGS
             </span>
             <h1 className="font-serif font-bold text-4xl sm:text-5xl md:text-6xl mt-2">
-              Events & Occasions
+              Events &amp; Celebrations
             </h1>
             <p className="text-sm sm:text-base text-zinc-300 mt-3 font-sans max-w-xl mx-auto">
-              Plan memorable events at Swapna Srushti Resort. From family celebrations and group gatherings to special occasions and daytime picnics, explore our open lawns and gathering spaces.
+              Find event spaces and banquet options at Swapna Srushti Resort suited for destination weddings, family celebrations, and corporate get-togethers.
             </p>
           </div>
         </section>
 
+        {/* Events Grid */}
         <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {EVENTS.map((event) => (
-              <div
+              <div 
                 key={event.id}
-                className="bg-white rounded-xl overflow-hidden border border-zinc-200/80 shadow-lg group hover:border-[#C5A46D] transition-all flex flex-col justify-between"
+                className="bg-white rounded-xl overflow-hidden border border-zinc-200 shadow-md group hover:border-[#C5A46D] transition-all flex flex-col justify-between"
               >
                 <div>
-                  <div className="relative h-64 overflow-hidden">
-                    <img
-                      src={event.image}
-                      alt={`${event.name} venue and celebration setting at Swapna Srushti Resort`}
+                  <div className="relative h-60 overflow-hidden">
+                    <img 
+                      src={event.image} 
+                      alt={`${event.name} venue at Swapna Srushti Resort`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>
@@ -84,10 +87,18 @@ export default function EventsPage() {
             ))}
           </div>
         </section>
+
+        {/* SEO-friendly Scoped FAQ Section */}
+        <FAQSection
+          title="EVENTS & WEDDINGS"
+          description="Everything you need to know about lawn capacities, catering arrangements, decoration permissions, and booking advance timelines."
+          items={EVENTS_FAQS}
+          ctaText="Enquire For Events"
+          ctaLink="/contact"
+        />
       </main>
 
       <ResortFooter />
     </div>
   );
 }
-

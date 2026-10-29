@@ -1,12 +1,14 @@
 import React from "react";
+import Link from "next/link";
 import Navbar from "@/components/navigation/Navbar";
 import ResortFooter from "@/components/layout/ResortFooter";
-import { Utensils, Coffee, Check, Phone } from "lucide-react";
-import Link from "next/link";
+import FAQSection from "@/components/common/FAQSection";
+import { RESTAURANT_FAQS } from "@/data/faqsData";
+import { Check } from "lucide-react";
 
 export const metadata = {
   title: "Restaurant & Dining | Swapna Srushti Resort",
-  description: "Experience vegetarian dining at Swapna Srushti Resort restaurant near Gandhinagar, offering traditional Gujarati specialties and comfortable indoor and outdoor dining spaces.",
+  description: "Experience pure vegetarian dining at Swapna Srushti Resort Gandhinagar, featuring fresh Gujarati thalis, North Indian cuisine, and garden restaurant seating.",
 };
 
 export default function RestaurantPage() {
@@ -24,29 +26,30 @@ export default function RestaurantPage() {
           />
           <div className="relative z-10 max-w-3xl">
             <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase">
-              DINING AT SWAPNA SRUSHTI
+              PURE VEGETARIAN DINING
             </span>
             <h1 className="font-serif font-bold text-4xl sm:text-5xl md:text-6xl mt-2">
-              Resort Restaurant & Dining
+              Restaurant &amp; Cuisine
             </h1>
             <p className="text-sm sm:text-base text-zinc-300 mt-3 font-sans max-w-xl mx-auto">
-              Enjoy wholesome dining at Swapna Srushti Resort. Explore traditional flavors, regional specialties, and vegetarian offerings prepared for stay guests, day visitors, and groups.
+              Enjoy freshly prepared vegetarian dishes, regional Gujarati specialties, and multi-cuisine flavors crafted for family dining.
             </p>
           </div>
         </section>
 
-        <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+        {/* Restaurant Showcase Content */}
+        <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="rounded-2xl overflow-hidden shadow-2xl border-4 border-white h-[380px]">
+            <div className="rounded-2xl overflow-hidden shadow-xl border-4 border-white h-96">
               <img
-                src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80"
-                alt="Dining at Swapna Srushti Resort restaurant"
+                src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80"
+                alt="Swapna Srushti Resort dining room"
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="space-y-6">
               <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase">
-                AUTHENTIC HOSPITALITY
+                FRESH &amp; FLAVOURFUL
               </span>
               <h2 className="font-serif font-bold text-3xl sm:text-4xl text-[#173A2B]">
                 Regional Dining Experience
@@ -73,10 +76,18 @@ export default function RestaurantPage() {
             </div>
           </div>
         </section>
+
+        {/* SEO-friendly Scoped FAQ Section */}
+        <FAQSection
+          title="DINING & MENUS"
+          description="Common questions regarding pure vegetarian options, Jain food availability, private banquet reservations, and day dining hours."
+          items={RESTAURANT_FAQS}
+          ctaText="Reserve A Table"
+          ctaLink="/contact"
+        />
       </main>
 
       <ResortFooter />
     </div>
   );
 }
-

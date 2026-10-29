@@ -2,7 +2,9 @@ import React from "react";
 import Link from "next/link";
 import Navbar from "@/components/navigation/Navbar";
 import ResortFooter from "@/components/layout/ResortFooter";
+import FAQSection from "@/components/common/FAQSection";
 import { EXPERIENCES } from "@/data/resortData";
+import { DISCOVER_FAQS } from "@/data/faqsData";
 import { ArrowRight } from "lucide-react";
 
 export const metadata = {
@@ -25,28 +27,29 @@ export default function DiscoverPage() {
           />
           <div className="relative z-10 max-w-3xl">
             <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase">
-              ATTRACTIONS & RECREATION
+              RECREATION & ACTIVITIES
             </span>
             <h1 className="font-serif font-bold text-4xl sm:text-5xl md:text-6xl mt-2">
               Discover Swapna Srushti
             </h1>
             <p className="text-sm sm:text-base text-zinc-300 mt-3 font-sans max-w-xl mx-auto">
-              Explore the attractions and recreational facilities at Swapna Srushti Resort. From water park and adventure activities to peaceful gardens and leisure spaces, discover activities for every family outing.
+              From high-spirited water park rides to peaceful nature walks and adventure activities, find the experiences that make your visit enjoyable.
             </p>
           </div>
         </section>
 
+        {/* Attractions Grid */}
         <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {EXPERIENCES.map((exp) => (
-              <div
+              <div 
                 key={exp.id}
-                className="bg-white rounded-xl overflow-hidden border border-zinc-200/80 shadow-lg group hover:border-[#C5A46D] transition-all flex flex-col justify-between"
+                className="bg-white rounded-xl overflow-hidden border border-zinc-200 shadow-md group hover:border-[#C5A46D] transition-all flex flex-col justify-between"
               >
                 <div>
-                  <div className="relative h-60 overflow-hidden">
-                    <img
-                      src={exp.image}
+                  <div className="relative h-48 overflow-hidden">
+                    <img 
+                      src={exp.image} 
                       alt={`${exp.name} attraction at Swapna Srushti Resort`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
@@ -77,10 +80,18 @@ export default function DiscoverPage() {
             ))}
           </div>
         </section>
+
+        {/* SEO-friendly Scoped FAQ Section */}
+        <FAQSection
+          title="ATTRACTIONS & ENTRY"
+          description="Essential information regarding day outing packages, water park access, swimming pool guidelines, and visitor safety."
+          items={DISCOVER_FAQS}
+          ctaText="Plan Your Visit"
+          ctaLink="/contact"
+        />
       </main>
 
       <ResortFooter />
     </div>
   );
 }
-

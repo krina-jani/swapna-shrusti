@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { 
   User,
   MapPin, 
@@ -43,7 +44,9 @@ function YoutubeIcon({ className }: { className?: string }) {
   );
 }
 
-export default function ResortFooter() {
+export default function ResortFooter({ showBannerAndForm }: { showBannerAndForm?: boolean }) {
+  const pathname = usePathname();
+  const isHomePage = showBannerAndForm !== undefined ? showBannerAndForm : (pathname === "/");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -107,6 +110,7 @@ export default function ResortFooter() {
         SECTION A: Full-width Panoramic Alpine Lake Landscape Banner
         ========================================================================
       */}
+      {isHomePage && (
       <div className="relative w-full h-[320px] sm:h-[380px] lg:h-[420px] overflow-hidden select-none">
         <Image
           src="/images/footer-banner-exact.jpg"
@@ -117,6 +121,7 @@ export default function ResortFooter() {
           className="object-cover object-center"
         />
       </div>
+      )}
 
       {/* 
         ========================================================================
@@ -136,6 +141,7 @@ export default function ResortFooter() {
               "SEND US A MESSAGE", "Enquire Now", Full Name, Email, Phone, Enquiry Type, Message.
             --------------------------------------------------------------------
           */}
+          {isHomePage && (
           <div className="lg:absolute lg:right-6 xl:right-10 lg:-top-[260px] xl:-top-[280px] lg:w-[410px] xl:w-[430px] z-30 mb-12 lg:mb-0">
             <div className="relative bg-[#FBF8F1] rounded-3xl p-6 sm:p-7 shadow-2xl border border-[#E9DFCE] overflow-hidden text-[#173A2B]">
               
@@ -291,6 +297,7 @@ export default function ResortFooter() {
               </div>
             </div>
           </div>
+          )}
 
           {/* 
             --------------------------------------------------------------------
@@ -303,7 +310,7 @@ export default function ResortFooter() {
             - Remaining space (~380px) on the right reserved for the floating form
             --------------------------------------------------------------------
           */}
-          <div className="pt-10 sm:pt-12 pb-12 sm:pb-14 flex flex-col lg:flex-row items-start lg:pr-[440px]">
+          <div className={`pt-10 sm:pt-12 pb-12 sm:pb-14 flex flex-col lg:flex-row items-start ${isHomePage ? "lg:pr-[440px]" : "justify-between"}`}>
             
             {/* COLUMN 1: Identity & Contact */}
             <div className="w-full lg:w-[300px] xl:w-[320px] shrink-0 space-y-3.5 pr-0 lg:pr-5">

@@ -2,6 +2,8 @@ import React from "react";
 import Navbar from "@/components/navigation/Navbar";
 import ResortFooter from "@/components/layout/ResortFooter";
 import GalleryPreview from "@/components/home/GalleryPreview";
+import FAQSection from "@/components/common/FAQSection";
+import { GALLERY_FAQS } from "@/data/faqsData";
 
 export const metadata = {
   title: "Photo Gallery | Swapna Srushti Resort",
@@ -35,10 +37,18 @@ export default function GalleryPage() {
         </section>
 
         <GalleryPreview />
+
+        {/* SEO-friendly Scoped FAQ Section */}
+        <FAQSection
+          title="GALLERY & TOURS"
+          description="Find out about authentic resort photography, arranging in-person guided premises visits, and browsing our social media reels."
+          items={GALLERY_FAQS}
+          ctaText="Schedule Site Visit"
+          ctaLink="/contact"
+        />
       </main>
 
       <ResortFooter />
     </div>
   );
 }
-

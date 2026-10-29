@@ -2,12 +2,14 @@ import React from "react";
 import Link from "next/link";
 import Navbar from "@/components/navigation/Navbar";
 import ResortFooter from "@/components/layout/ResortFooter";
+import FAQSection from "@/components/common/FAQSection";
 import { SHOOT_CATEGORIES } from "@/data/resortData";
-import { Camera, ArrowRight } from "lucide-react";
+import { FOR_SHOOT_FAQS } from "@/data/faqsData";
+import { ArrowRight } from "lucide-react";
 
 export const metadata = {
-  title: "Photoshoot & Video Shoot Location | Swapna Srushti Resort",
-  description: "Discover scenic photoshoot and video production locations at Swapna Srushti Resort, offering green natural landscapes and architectural backdrops in Gandhinagar.",
+  title: "Photography & Film Shoot Locations | Swapna Srushti Resort",
+  description: "Discover photoshoot locations, pre-wedding backdrops, and video production venues at Swapna Srushti Resort along the Gandhinagar-Mahudi Highway.",
 };
 
 export default function ForShootPage() {
@@ -16,38 +18,39 @@ export default function ForShootPage() {
       <Navbar />
 
       <main className="flex-1">
-        <section className="relative h-80 sm:h-96 bg-[#202522] text-white flex items-center justify-center text-center px-4">
+        <section className="relative h-80 sm:h-96 bg-[#173A2B] text-white flex items-center justify-center text-center px-4">
           <div 
-            className="absolute inset-0 bg-cover bg-center opacity-35"
+            className="absolute inset-0 bg-cover bg-center opacity-30"
             style={{
               backgroundImage: `url('${SHOOT_CATEGORIES[0].image}')`,
             }}
           />
           <div className="relative z-10 max-w-3xl">
             <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase">
-              PHOTOGRAPHY & PRODUCTION LOCATIONS
+              CINEMATIC BACKDROPS
             </span>
             <h1 className="font-serif font-bold text-4xl sm:text-5xl md:text-6xl mt-2">
-              Photoshoot & Film Locations
+              Photoshoot &amp; Media Locations
             </h1>
             <p className="text-sm sm:text-base text-zinc-300 mt-3 font-sans max-w-xl mx-auto">
-              Explore photography and video shoot opportunities at Swapna Srushti Resort. Our expansive grounds feature natural gardens, cottages, and distinctive scenic backdrops for your creative projects.
+              Explore picturesque sets and outdoor settings at Swapna Srushti Resort, offering distinct backgrounds for pre-wedding photography, family shoots, and media projects.
             </p>
           </div>
         </section>
 
+        {/* Shoot Locations Grid */}
         <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {SHOOT_CATEGORIES.map((s) => (
-              <div
+              <div 
                 key={s.id}
-                className="bg-white rounded-xl overflow-hidden border border-zinc-200/80 shadow-lg group hover:border-[#C5A46D] transition-all flex flex-col justify-between"
+                className="bg-white rounded-xl overflow-hidden border border-zinc-200 shadow-md group hover:border-[#C5A46D] transition-all flex flex-col justify-between"
               >
                 <div>
-                  <div className="relative h-64 overflow-hidden">
-                    <img
-                      src={s.image}
-                      alt={`${s.name} photoshoot location set at Swapna Srushti Resort`}
+                  <div className="relative h-60 overflow-hidden">
+                    <img 
+                      src={s.image} 
+                      alt={`${s.name} photoshoot set at Swapna Srushti Resort`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>
@@ -56,7 +59,7 @@ export default function ForShootPage() {
                       {s.tagline}
                     </span>
                     <h3 className="font-serif font-bold text-2xl text-[#173A2B] mt-1">
-                      {s.name} Shoot
+                      {s.name}
                     </h3>
                     <p className="text-xs text-zinc-600 mt-2 leading-relaxed">
                       {s.description}
@@ -84,10 +87,18 @@ export default function ForShootPage() {
             ))}
           </div>
         </section>
+
+        {/* SEO-friendly Scoped FAQ Section */}
+        <FAQSection
+          title="SHOOT & PERMITS"
+          description="Guidelines regarding photography passes, changing room facilities, commercial equipment rules, and timing slots."
+          items={FOR_SHOOT_FAQS}
+          ctaText="Enquire For Shoots"
+          ctaLink="/contact"
+        />
       </main>
 
       <ResortFooter />
     </div>
   );
 }
-
