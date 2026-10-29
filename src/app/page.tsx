@@ -6,8 +6,6 @@ import StickyExperienceSections from "@/components/home/StickyExperienceSections
 import DiscoverSection from "@/components/home/DiscoverSection";
 import EventsPreview from "@/components/home/EventsPreview";
 import RestaurantPreview from "@/components/home/RestaurantPreview";
-import ForShootPreview from "@/components/home/ForShootPreview";
-import GalleryPreview from "@/components/home/GalleryPreview";
 import ResortFooter from "@/components/layout/ResortFooter";
 
 export default function Home() {
@@ -37,15 +35,9 @@ export default function Home() {
 
         {/* 7. Restaurant & Dining Showcase */}
         <RestaurantPreview />
-
-        {/* 8. For Shoot Locations */}
-        <ForShootPreview />
-
-        {/* 9. Categorized Photo Gallery */}
-        <GalleryPreview />
       </main>
 
-      {/* 10. Master Reference Footer (Section A: Panoramic Banner + Section B: Warm Ivory Footer & Floating Form) */}
+      {/* 9. Master Reference Footer (Section A: Panoramic Banner + Section B: Warm Ivory Footer & Floating Form) */}
       <ResortFooter />
     </div>
   );

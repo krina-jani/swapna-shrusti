@@ -15,34 +15,14 @@ import {
   ArrowRight, 
   CheckCircle2 
 } from "lucide-react";
+import { 
+  FaFacebookF, 
+  FaInstagram, 
+  FaLinkedinIn, 
+  FaPinterestP, 
+  FaTwitter 
+} from "react-icons/fa";
 import { RESORT_INFO } from "@/data/resortData";
-
-// Clean inline SVGs matching exact icons in reference
-function InstagramIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
-      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
-    </svg>
-  );
-}
-
-function FacebookIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.5 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/>
-    </svg>
-  );
-}
-
-function YoutubeIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-    </svg>
-  );
-}
 
 export default function ResortFooter({ showBannerAndForm }: { showBannerAndForm?: boolean }) {
   const pathname = usePathname();
@@ -72,7 +52,6 @@ export default function ResortFooter({ showBannerAndForm }: { showBannerAndForm?
     { label: "Accommodation", href: "/accommodation" },
     { label: "Experiences", href: "/discover" },
     { label: "Events & Celebrations", href: "/events" },
-    { label: "Gallery", href: "/gallery" },
     { label: "Contact Us", href: "/contact" },
   ];
 
@@ -87,6 +66,9 @@ export default function ResortFooter({ showBannerAndForm }: { showBannerAndForm?
     { label: "Theme Village", href: "/accommodation/theme-village" },
     { label: "All Resort Services", href: "/discover" },
   ];
+
+  // Pinterest URL is configurable and left unlinked until the correct Pinterest profile is provided
+  const pinterestUrl = "";
 
   const dropdownOptions = [
     "Accommodation",
@@ -296,6 +278,76 @@ export default function ResortFooter({ showBannerAndForm }: { showBannerAndForm?
                 )}
               </div>
             </div>
+
+            {/* Red Area: "Follow Us" in Bold Black Text below right side form + 5 Social Media Icons */}
+            <div className="mt-5 pt-4 border-t border-[#E3DAC6]/60 space-y-2.5">
+              <h6 className="font-serif text-lg font-bold tracking-wider text-[#173A2B]">
+                FOLLOW US
+              </h6>
+
+              {/* 5 Social Media Icons: Facebook, Instagram, LinkedIn, Pinterest, X */}
+              <div className="flex items-center space-x-3.5">
+                <a
+                  href="https://www.facebook.com/swapnasrushti"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit Swapna Srushti Resort on Facebook"
+                  className="w-8 h-8 rounded-full bg-[#173A2B] hover:bg-[#C5A46D] text-white flex items-center justify-center transition-all duration-300 shadow-sm hover:scale-105"
+                >
+                  <FaFacebookF className="w-4 h-4" />
+                </a>
+
+                <a
+                  href="https://www.instagram.com/swapnasrushti/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit Swapna Srushti Resort on Instagram"
+                  className="w-8 h-8 rounded-full bg-[#173A2B] hover:bg-[#C5A46D] text-white flex items-center justify-center transition-all duration-300 shadow-sm hover:scale-105"
+                >
+                  <FaInstagram className="w-4 h-4" />
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/in/swapna-srushti-group%C2%A0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit Swapna Srushti Resort on LinkedIn"
+                  className="w-8 h-8 rounded-full bg-[#173A2B] hover:bg-[#C5A46D] text-white flex items-center justify-center transition-all duration-300 shadow-sm hover:scale-105"
+                >
+                  <FaLinkedinIn className="w-4 h-4" />
+                </a>
+
+                {pinterestUrl ? (
+                  <a
+                    href={pinterestUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visit Swapna Srushti Resort on Pinterest"
+                    className="w-8 h-8 rounded-full bg-[#173A2B] hover:bg-[#C5A46D] text-white flex items-center justify-center transition-all duration-300 shadow-sm hover:scale-105"
+                  >
+                    <FaPinterestP className="w-4 h-4" />
+                  </a>
+                ) : (
+                  <button
+                    type="button"
+                    aria-label="Visit Swapna Srushti Resort on Pinterest"
+                    className="w-8 h-8 rounded-full bg-[#173A2B] hover:bg-[#C5A46D] text-white flex items-center justify-center transition-all duration-300 shadow-sm hover:scale-105 cursor-pointer"
+                  >
+                    <FaPinterestP className="w-4 h-4" />
+                  </button>
+                )}
+
+                <a
+                  href="https://x.com/swapnsrushti"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit Swapna Srushti Resort on X"
+                  className="w-8 h-8 rounded-full bg-[#173A2B] hover:bg-[#C5A46D] text-white flex items-center justify-center transition-all duration-300 shadow-sm hover:scale-105"
+                >
+                  <FaTwitter className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
           </div>
           )}
 
@@ -337,37 +389,6 @@ export default function ResortFooter({ showBannerAndForm }: { showBannerAndForm?
               <p className="text-zinc-600 text-xs leading-relaxed max-w-xs pt-0.5">
                 Gujarat&apos;s premier luxury nature resort featuring scenic cottages, themed village heritage, adventure sports, grand event lawns, and multi-cuisine vegetarian dining.
               </p>
-
-              {/* Social Icons (Instagram, Facebook, YouTube) */}
-              <div className="flex items-center space-x-3.5 pt-0.5 text-[#173A2B]">
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="hover:text-[#C5A46D] transition-colors"
-                >
-                  <InstagramIcon className="w-4 h-4" />
-                </a>
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Facebook"
-                  className="hover:text-[#C5A46D] transition-colors"
-                >
-                  <FacebookIcon className="w-4 h-4" />
-                </a>
-                <a
-                  href="https://youtube.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="YouTube"
-                  className="hover:text-[#C5A46D] transition-colors"
-                >
-                  <YoutubeIcon className="w-4 h-4" />
-                </a>
-              </div>
 
               {/* Contact Details */}
               <div className="space-y-2 pt-2 text-xs text-zinc-700 font-sans">
@@ -433,6 +454,82 @@ export default function ResortFooter({ showBannerAndForm }: { showBannerAndForm?
                 ))}
               </ul>
             </div>
+{!isHomePage && (
+              <>
+                {/* Vertical Divider 3 */}
+                <div className="hidden lg:block w-[1px] bg-[#E3DAC6] self-stretch mx-5 xl:mx-7 shrink-0" />
+
+                {/* COLUMN 4: FOLLOW US (Always on right side of footer across all pages and responsive) */}
+                <div className="w-full lg:w-[180px] xl:w-[200px] shrink-0 mt-8 lg:mt-0">
+                  <h5 className="font-serif font-bold text-xs uppercase tracking-[0.15em] text-[#173A2B] mb-4">
+                    FOLLOW US
+                  </h5>
+                  
+                  {/* 5 Social Media Icons */}
+                  <div className="flex items-center space-x-3 pt-1">
+                    <a
+                      href="https://www.facebook.com/swapnasrushti"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Visit Swapna Srushti Resort on Facebook"
+                      className="w-8 h-8 rounded-full bg-[#173A2B] hover:bg-[#C5A46D] text-white flex items-center justify-center transition-all duration-300 shadow-sm hover:scale-105"
+                    >
+                      <FaFacebookF className="w-3.5 h-3.5" />
+                    </a>
+
+                    <a
+                      href="https://www.instagram.com/swapnasrushti/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Visit Swapna Srushti Resort on Instagram"
+                      className="w-8 h-8 rounded-full bg-[#173A2B] hover:bg-[#C5A46D] text-white flex items-center justify-center transition-all duration-300 shadow-sm hover:scale-105"
+                    >
+                      <FaInstagram className="w-3.5 h-3.5" />
+                    </a>
+
+                    <a
+                      href="https://www.linkedin.com/in/swapna-srushti-group%C2%A0"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Visit Swapna Srushti Resort on LinkedIn"
+                      className="w-8 h-8 rounded-full bg-[#173A2B] hover:bg-[#C5A46D] text-white flex items-center justify-center transition-all duration-300 shadow-sm hover:scale-105"
+                    >
+                      <FaLinkedinIn className="w-3.5 h-3.5" />
+                    </a>
+
+                    {pinterestUrl ? (
+                      <a
+                        href={pinterestUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Visit Swapna Srushti Resort on Pinterest"
+                        className="w-8 h-8 rounded-full bg-[#173A2B] hover:bg-[#C5A46D] text-white flex items-center justify-center transition-all duration-300 shadow-sm hover:scale-105"
+                      >
+                        <FaPinterestP className="w-3.5 h-3.5" />
+                      </a>
+                    ) : (
+                      <button
+                        type="button"
+                        aria-label="Visit Swapna Srushti Resort on Pinterest"
+                        className="w-8 h-8 rounded-full bg-[#173A2B] hover:bg-[#C5A46D] text-white flex items-center justify-center transition-all duration-300 shadow-sm hover:scale-105 cursor-pointer"
+                      >
+                        <FaPinterestP className="w-3.5 h-3.5" />
+                      </button>
+                    )}
+
+                    <a
+                      href="https://x.com/swapnsrushti"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Visit Swapna Srushti Resort on X"
+                      className="w-8 h-8 rounded-full bg-[#173A2B] hover:bg-[#C5A46D] text-white flex items-center justify-center transition-all duration-300 shadow-sm hover:scale-105"
+                    >
+                      <FaTwitter className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                </div>
+              </>
+            )}
 
           </div>
 
