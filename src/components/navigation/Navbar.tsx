@@ -183,21 +183,8 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Topmost Full-Width Slimline Tagline Strip */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-[#173A2B] text-[#C5A46D] border-b border-[#C5A46D]/20 shadow-sm transition-all duration-300">
-        <div className="max-w-[1380px] mx-auto px-4 sm:px-8 py-1.5 flex items-center justify-center sm:justify-end text-[10px] sm:text-xs">
-          <span className="font-bold font-sans uppercase tracking-[0.2em] text-[#E5B564]">
-            AWARD WINNING RESORT
-          </span>
-          <span className="mx-2 text-[#C5A46D]/60 font-light">·</span>
-          <span className="font-serif italic text-zinc-100 tracking-normal text-xs sm:text-[13px]">
-            Graced by nature
-          </span>
-        </div>
-      </div>
-
       <header
-        className={`fixed top-0 left-0 right-0 z-50 select-none transition-all duration-500 ease-in-out px-3 sm:px-6 lg:px-8 pt-9 sm:pt-11 pointer-events-none ${
+        className={`fixed top-0 left-0 right-0 z-50 select-none transition-all duration-500 ease-in-out px-3 sm:px-6 lg:px-8 pt-3 sm:pt-4 pointer-events-none ${
           isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
         }`}
       >
