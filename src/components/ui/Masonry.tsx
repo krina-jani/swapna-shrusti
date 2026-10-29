@@ -426,6 +426,33 @@ export default function Masonry({
   const revealRef = useRef(requestReveal);
   revealRef.current = requestReveal;
 
+  const requestHide = (id: string) => {
+    const spring = springs.current.get(id);
+    if (!spring || !spring.shown) return;
+    spring.shown = false;
+    spring.reveal = 0;
+    spring.vx = spring.vy = spring.vs = 0;
+    const s = settingsRef.current;
+    const distance = 60 + Math.min(spring.h, 280) * 0.35;
+    const direction =
+      s.animateFrom === 'random' ? DIRECTIONS[Math.floor(Math.random() * DIRECTIONS.length)] : s.animateFrom;
+    if (direction === 'bottom') spring.y = spring.ty + distance;
+    else if (direction === 'top') spring.y = spring.ty - distance;
+    else if (direction === 'left') spring.x = spring.tx - distance;
+    else if (direction === 'right') spring.x = spring.tx + distance;
+    else spring.y = spring.ty + distance;
+    spring.s = 0.96;
+    const node = nodes.current.get(id);
+    if (node) {
+      node.style.opacity = '0';
+      node.style.transform = `translate3d(${spring.x}px, ${spring.y}px, 0) scale(${spring.s})`;
+      if (s.blurToFocus) node.style.filter = 'blur(12px)';
+    }
+  };
+
+  const hideRef = useRef(requestHide);
+  hideRef.current = requestHide;
+
   const markLoaded = (id: string) => {
     loaded.current.add(id);
     const node = nodes.current.get(id);
@@ -506,6 +533,7 @@ export default function Masonry({
     if (!layout) return undefined;
     const ids = layout.tiles.map(tile => tile.id);
     const reveal = revealRef.current;
+    const hide = hideRef.current;
     if (!settingsRef.current.revealOnScroll || typeof IntersectionObserver === 'undefined') {
       ids.forEach(reveal);
       return undefined;
@@ -513,17 +541,20 @@ export default function Masonry({
     const observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
           const id = entry.target.getAttribute('data-id');
-          if (id) reveal(id);
-          observer.unobserve(entry.target);
+          if (!id) return;
+          if (entry.isIntersecting) {
+            reveal(id);
+          } else {
+            hide(id);
+          }
         });
       },
-      { rootMargin: '0px 0px -6% 0px' }
+      { rootMargin: '0px 0px -4% 0px' }
     );
     ids.forEach(id => {
       const node = nodes.current.get(id);
-      if (node && !springs.current.get(id)?.shown) observer.observe(node);
+      if (node) observer.observe(node);
     });
     return () => observer.disconnect();
   }, [layout, revealOnScroll]);
