@@ -191,9 +191,9 @@ export const ACTIVITIES_DATA: ActivityDetail[] = [
     shortDescription: "A well-maintained fitness studio featuring cardiovascular machines, free weights, and stretching space for residential resort guests.",
     fullDescription: "Maintaining your wellness routine while on holiday is simple at Swapna Srushti Resort. Our fitness room provides in-house guests with essential cardio equipment, weight-training apparatus, and open floor space for stretching and yoga, all positioned in a clean, quiet air-conditioned environment looking out toward the garden grounds.",
     overviewNotes: "Gym facilities are reserved primarily for residential room guests staying at the resort. Equipment access and operating hours should be confirmed with the front desk upon arrival.",
-    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/campfire/gym.png",
     gallery: [
-      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80",
+      "/images/campfire/gym.png",
     ],
     verifiedFeatures: [
       "Treadmills and cardiovascular stationary exercise machines",
@@ -238,9 +238,9 @@ export const ACTIVITIES_DATA: ActivityDetail[] = [
     shortDescription: "Enjoy leisurely indoor games including table tennis, carrom, and chess, along with open recreation areas for friendly family fun.",
     fullDescription: "Swapna Srushti Resort offers dedicated recreational spaces designed to bring families, friends, and school groups together through classic indoor and outdoor games. Whether enjoying an afternoon table tennis match, testing strategic skill over chess and carrom, or playing casual badminton on open lawns, guests of all ages have ample options for lighthearted entertainment.",
     overviewNotes: "Indoor games equipment is stationed in the activity lounge and is accessible to in-house guests and day picnic ticket holders. Equipment is loaned on a first-come, first-served basis.",
-    image: "https://images.unsplash.com/photo-1511193311914-0346f16efe90?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/campfire/games.png",
     gallery: [
-      "https://images.unsplash.com/photo-1511193311914-0346f16efe90?auto=format&fit=crop&w=1200&q=80",
+      "/images/campfire/games.png",
     ],
     verifiedFeatures: [
       "Table tennis tables with balls and paddles available at the desk",
@@ -285,9 +285,9 @@ export const ACTIVITIES_DATA: ActivityDetail[] = [
     shortDescription: "Expansive green landscapes adorned with native flora, shaded gazebos, walking pathways, and quiet nature corners.",
     fullDescription: "The verdant landscape of Swapna Srushti Resort spans multiple acres of mature trees, flowering shrubs, and meticulously manicured lawns. A favorite for morning joggers, birdwatchers, and families looking for a peaceful sanctuary away from city traffic, the gardens offer paved trails, shaded benches, and gentle open spaces that showcase Gujarat's natural countryside beauty.",
     overviewNotes: "The garden area is open throughout the day for all resort visitors. Guests are encouraged to respect the natural flora and keep the grounds clean.",
-    image: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/campfire/garden.png",
     gallery: [
-      "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1200&q=80",
+      "/images/campfire/garden.png",
     ],
     verifiedFeatures: [
       "Extensive manicured natural lawns surrounded by mature trees",
@@ -332,9 +332,9 @@ export const ACTIVITIES_DATA: ActivityDetail[] = [
     shortDescription: "Special evening campfire gatherings under the stars, arranged for residential groups, family reunions, and winter retreats.",
     fullDescription: "As the sun sets over the Gandhinagar countryside, Swapna Srushti Resort offers seasonal evening campfire experiences on selected open lawns. Designed to provide memorable outdoor warmth during cooler autumn and winter evenings, guests can gather around a crackling wood fire to enjoy conversations, music, and peaceful starlit skies.",
     overviewNotes: "Campfire sessions are seasonal, weather-dependent, and subject to prior arrangement with the management. Additional fuel setup charges and minimum group size guidelines may apply.",
-    image: "https://images.unsplash.com/photo-1475483768296-6163e08872a1?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/campfire/image.png",
     gallery: [
-      "https://images.unsplash.com/photo-1475483768296-6163e08872a1?auto=format&fit=crop&w=1200&q=80",
+      "/images/campfire/image.png",
     ],
     verifiedFeatures: [
       "Designated outdoor fire pit zones located safely away from guest accommodations",
@@ -379,10 +379,9 @@ export const ACTIVITIES_DATA: ActivityDetail[] = [
     shortDescription: "Vast manicured open-air party plots designed to host grand wedding receptions, cultural festivals, concerts, and gala celebrations.",
     fullDescription: "Swapna Srushti Resort boasts some of the most expansive and scenic party plots in North Gujarat, capable of accommodating gatherings from 200 to over 2,000 guests. With grand entrance gates, manicured green carpeting, high-capacity electrical setups, and ample space for grand stages and dining pavilions, these lawns provide the quintessential canvas for landmark celebrations.",
     overviewNotes: "Party plots are booked on advance contract for weddings, corporate galas, and social milestone events. Inspection visits can be arranged with the event sales team.",
-    image: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/campfire/partyplot.png",
     gallery: [
-      "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80",
+      "/images/campfire/partyplot.png",
     ],
     verifiedFeatures: [
       "Expansive lush green event lawn accommodating up to 2,000+ attendees",

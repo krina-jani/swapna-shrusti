@@ -159,7 +159,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     slug: "gym",
     tagline: "Modern Wellness & Fitness",
     description: "Fully equipped fitness studio featuring advanced cardiovascular machines, free weights, and stretching areas overlooking garden landscapes.",
-    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/campfire/gym.png",
   },
   {
     id: "games",
@@ -167,7 +167,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     slug: "games",
     tagline: "Indoor & Outdoor Recreation",
     description: "Engage in friendly competition with billiards, table tennis, badminton, carrom, chess, and cricket lawns for all ages.",
-    image: "https://images.unsplash.com/photo-1511193311914-0346f16efe90?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/campfire/games.png",
   },
   {
     id: "garden-area",
@@ -175,7 +175,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     slug: "garden-area",
     tagline: "Botanical Trails & Manicured Lawns",
     description: "Expansive green spaces adorned with exotic flora, shaded gazebos, peaceful meditation corners, and walking paths.",
-    image: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/campfire/garden.png",
   },
   {
     id: "campfire",
@@ -183,7 +183,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     slug: "campfire",
     tagline: "Starlit Nights & Warmth",
     description: "Gather around the crackling evening fire under a canopy of stars with acoustic melodies, barbecue delights, and cherished family conversations.",
-    image: "https://images.unsplash.com/photo-1475483768296-6163e08872a1?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/campfire/image.png",
   },
   {
     id: "party-plot",
@@ -191,7 +191,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     slug: "party-plot",
     tagline: "Grand Open-Air Event Grounds",
     description: "Magnificent manicured event lawns designed to host grand celebrations, musical concerts, and gala dinners accommodating over 2,000 guests.",
-    image: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/campfire/partyplot.png",
   },
 ];
 
