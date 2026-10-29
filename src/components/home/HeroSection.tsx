@@ -25,7 +25,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative w-full h-[760px] sm:h-[840px] lg:h-[900px] overflow-hidden bg-black select-none">
+    <section className="relative w-full h-[620px] xs:h-[660px] sm:h-[700px] md:h-[840px] lg:h-[900px] overflow-hidden bg-black select-none">
       
       {/* ========================================================================= */}
       {/* 2-SECOND AUTOMATIC UNSPLASH RESORT IMAGES CAROUSEL                         */}
@@ -42,14 +42,29 @@ export default function HeroSection() {
         >
           {/* Subtle gradient vignette on left for sharp headline readability */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/35 to-transparent sm:w-3/5 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 pointer-events-none" />
         </div>
       ))}
 
       {/* ========================================================================= */}
-      {/* HERO CONTENT POSITIONED ON LEFT                                           */}
+      {/* HERO CONTENT: MOBILE (<768px) Directly Connected with overlapping form    */}
       {/* ========================================================================= */}
-      <div className="relative z-20 h-full max-w-[1280px] mx-auto px-6 sm:px-12 lg:px-16 flex flex-col justify-center items-start text-left">
+      <div className="block md:hidden relative z-20 h-full w-full px-6 flex flex-col justify-center pb-24 text-left">
+        <span className="text-[11px] font-bold tracking-[0.25em] text-[#D8B478] uppercase mb-2 font-sans drop-shadow-sm">
+          BOOK YOUR STAY
+        </span>
+        <h1 className="font-serif font-bold text-3xl xs:text-4xl text-white leading-[1.18] tracking-tight drop-shadow-md">
+          Relax. Recharge.<br />Reconnect.
+        </h1>
+        <p className="text-xs xs:text-sm text-zinc-200/95 mt-2 font-sans leading-relaxed max-w-xs drop-shadow-sm">
+          Experience a peaceful stay surrounded by nature and warm hospitality.
+        </p>
+      </div>
+
+      {/* ========================================================================= */}
+      {/* HERO CONTENT: DESKTOP (>=768px) Untouched Original Design                  */}
+      {/* ========================================================================= */}
+      <div className="hidden md:flex relative z-20 h-full max-w-[1280px] mx-auto px-6 sm:px-12 lg:px-16 flex-col justify-center items-start text-left">
         <div className="max-w-xl sm:max-w-2xl mt-16 sm:mt-24">
           
           {/* Top Tagline with horizontal accent line */}

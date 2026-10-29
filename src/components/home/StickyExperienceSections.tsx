@@ -83,13 +83,13 @@ export default function StickyExperienceSections() {
               top: 0,
               zIndex,
             }}
-            className="sticky w-full h-[540px] sm:h-[580px] md:h-[600px] lg:h-[640px] flex items-center shadow-2xl overflow-hidden border-t border-black/10"
+            className="sticky top-0 w-full h-[100dvh] lg:h-[640px] flex items-center shadow-2xl overflow-hidden border-t border-black/10"
           >
             <div className="w-full h-full flex flex-col lg:flex-row">
               
-              {/* Left Panel (47% width on desktop) */}
+              {/* Content Panel (Compact ~40% on mobile, 47% width on desktop) */}
               <div
-                className={`relative w-full lg:w-[47%] h-full flex flex-col justify-center px-8 sm:px-12 lg:px-16 xl:px-20 py-8 lg:py-12 z-10 overflow-hidden ${
+                className={`relative w-full lg:w-[47%] h-[42%] xs:h-[40%] lg:h-full flex flex-col justify-center px-6 sm:px-12 lg:px-16 xl:px-20 py-3 xs:py-4 lg:py-12 z-10 overflow-hidden shrink-0 ${
                   isGreen ? "bg-[#173A2B] text-white" : "bg-[#F7F3E9] text-[#202522]"
                 }`}
               >
@@ -159,7 +159,7 @@ export default function StickyExperienceSections() {
 
                   {/* Heading: Bold Editorial Display Serif */}
                   <h2
-                    className={`font-serif font-bold text-3xl sm:text-4xl lg:text-[46px] tracking-tight leading-[1.05] mb-4 ${
+                    className={`font-serif font-bold text-2xl xs:text-3xl sm:text-4xl lg:text-[46px] tracking-tight leading-[1.05] mb-2 sm:mb-4 ${
                       isGreen ? "text-white" : "text-[#173A2B]"
                     }`}
                   >
@@ -172,7 +172,7 @@ export default function StickyExperienceSections() {
 
                   {/* Description text */}
                   <p
-                    className={`font-sans text-xs sm:text-sm leading-relaxed mb-6 max-w-md ${
+                    className={`font-sans text-[11px] xs:text-xs sm:text-sm leading-relaxed mb-3 sm:mb-6 max-w-md line-clamp-3 sm:line-clamp-none ${
                       isGreen ? "text-white/80" : "text-zinc-700"
                     }`}
                   >
@@ -183,22 +183,22 @@ export default function StickyExperienceSections() {
                   <div>
                     <Link
                       href={section.buttonLink}
-                      className="inline-flex items-center space-x-2 px-6 sm:px-7 py-2.5 sm:py-3 rounded-full bg-[#C5A46D] hover:bg-[#b5935b] text-[#173A2B] font-sans font-bold text-xs sm:text-sm tracking-wide shadow-md transition-all hover:scale-105 active:scale-95"
+                      className="inline-flex items-center space-x-2 px-5 sm:px-7 py-2 sm:py-3 rounded-full bg-[#C5A46D] hover:bg-[#b5935b] text-[#173A2B] font-sans font-bold text-[11px] sm:text-sm tracking-wide shadow-md transition-all hover:scale-105 active:scale-95"
                     >
                       <span>{section.buttonText}</span>
-                      <ArrowRight className="w-4 h-4 ml-0.5" />
+                      <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-0.5" />
                     </Link>
                   </div>
 
                 </div>
               </div>
 
-              {/* Right Panel: Large Edge-to-Edge Photograph (53% width on desktop) */}
-              <div className="relative w-full lg:w-[53%] h-full overflow-hidden">
+              {/* Image Panel: Big prominent photographic panel on mobile (~58-60%), 53% width full height on desktop */}
+              <div className="relative w-full lg:w-[53%] h-[58%] xs:h-[60%] lg:h-full overflow-hidden shrink-0">
                 <img
                   src={section.image}
                   alt={section.category}
-                  className="w-full h-full object-cover object-center absolute inset-0 transition-transform duration-700 hover:scale-105"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
                 />
               </div>
 

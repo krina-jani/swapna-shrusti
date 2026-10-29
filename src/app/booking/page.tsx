@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Navbar from "@/components/navigation/Navbar";
 import ResortFooter from "@/components/layout/ResortFooter";
 import { ACCOMMODATIONS } from "@/data/resortData";
-import { Calendar, Users, ShieldCheck, CheckCircle2, CreditCard, Lock } from "lucide-react";
+import { Calendar, Users, ShieldCheck, CheckCircle2, CreditCard, Lock, BedDouble, ChevronDown, Search, ArrowRight, User, Home } from "lucide-react";
 
 function BookingContent() {
   const searchParams = useSearchParams();
@@ -14,11 +14,15 @@ function BookingContent() {
   const [selectedRoomSlug, setSelectedRoomSlug] = useState(initialRoom);
   const [checkIn, setCheckIn] = useState(searchParams.get("checkIn") || "");
   const [checkOut, setCheckOut] = useState(searchParams.get("checkOut") || "");
+  const [adults, setAdults] = useState(searchParams.get("adults") || "2");
+  const [children, setChildren] = useState(searchParams.get("children") || "0");
+  const [rooms, setRooms] = useState(searchParams.get("rooms") || "1");
   const [guests, setGuests] = useState(searchParams.get("adults") || "2");
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
+  const [hasSearchedMobile, setHasSearchedMobile] = useState(false);
 
   const selectedRoom = ACCOMMODATIONS.find((r) => r.slug === selectedRoomSlug) || ACCOMMODATIONS[0];
 
@@ -27,20 +31,320 @@ function BookingContent() {
     setIsSuccess(true);
   };
 
+  const handleMobileSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    setHasSearchedMobile(true);
+    // Smooth scroll to the available rooms / details if needed
+    const target = document.getElementById("mobile-room-selection");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <main className="flex-1 py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Header */}
-      <div className="max-w-2xl mb-10">
-        <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase">
-          ONLINE ROOM RESERVATION
-        </span>
-        <h1 className="font-serif font-bold text-3xl sm:text-5xl text-[#173A2B] mt-1">
-          Complete Your Reservation
-        </h1>
-        <p className="text-sm text-zinc-600 mt-2 font-sans">
-          Select your dates, preferred room tier, and guest details below. (Connects directly with backend availability engine & payment gateway).
-        </p>
+    <>
+      {/* =========================================================================
+          MOBILE VIEW ONLY (Reference Re-creation for < 768px Viewports)
+          ========================================================================= */}
+      <div className="block md:hidden w-full bg-[#FAF7F0] pb-16">
+        {/* Sunset Pool Hero Section */}
+        <section className="relative w-full h-[400px] xs:h-[440px] sm:h-[480px] overflow-hidden">
+          <img
+            src="/images/sticky-pool-hd.jpg"
+            alt="Swapna Srushti Resort Sunset Pool"
+            className="w-full h-full object-cover object-center scale-105"
+          />
+          {/* Dark luxury gradient overlays for text readability & sunset atmosphere */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/30 pointer-events-none" />
+          <div className="absolute inset-0 bg-amber-950/20 mix-blend-color pointer-events-none" />
+
+          {/* Hero Typography & Eyebrow */}
+          <div className="absolute inset-0 flex flex-col justify-end px-6 pb-16 z-10">
+            <span className="text-[11px] font-bold tracking-[0.25em] text-[#D8B478] uppercase mb-2 font-sans drop-shadow-sm">
+              BOOK YOUR STAY
+            </span>
+            <h1 className="font-serif font-bold text-3xl xs:text-4xl text-white leading-[1.18] tracking-tight drop-shadow-md">
+              Relax. Recharge.<br />Reconnect.
+            </h1>
+            <p className="text-xs xs:text-sm text-zinc-200/90 mt-2.5 font-sans leading-relaxed max-w-xs drop-shadow-sm">
+              Experience a peaceful stay surrounded by nature and warm hospitality.
+            </p>
+          </div>
+        </section>
+
+        {/* Overlapping Booking Card */}
+        <div className="relative -mt-8 px-4 z-20">
+          <div className="relative bg-[#FAF7F0] rounded-[32px] p-5 xs:p-6 sm:p-7 shadow-[0_20px_50px_rgba(0,0,0,0.12)] border border-[#E9E2D2]">
+            
+            {/* Overlapping Circular Muted-Gold Badge with Bed Icon */}
+            <div className="absolute -top-7 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#C5A46D] text-white flex items-center justify-center shadow-md border-4 border-[#FAF7F0]">
+              <BedDouble className="w-6 h-6 stroke-[1.8]" />
+            </div>
+
+            {/* Card Title with decorative lines */}
+            <div className="pt-5 pb-5 text-center flex items-center justify-center space-x-3">
+              <span className="h-[1px] w-10 sm:w-14 bg-[#D3C3A7]" />
+              <h2 className="font-serif font-bold text-xl xs:text-[22px] text-[#173A2B] tracking-wide">
+                Check Availability
+              </h2>
+              <span className="h-[1px] w-10 sm:w-14 bg-[#D3C3A7]" />
+            </div>
+
+            {/* Mobile Booking Form Fields */}
+            <form onSubmit={handleMobileSearch} className="space-y-3.5">
+              
+              {/* 1. Check-In */}
+              <div className="relative bg-white/80 border border-[#E4DCB] rounded-2xl p-3 px-4 shadow-sm hover:border-[#C5A46D] transition-colors focus-within:border-[#C5A46D] focus-within:ring-1 focus-within:ring-[#C5A46D]">
+                <div className="flex items-center space-x-3">
+                  <div className="w-9 h-9 rounded-xl bg-[#F7F3E9] flex items-center justify-center text-[#173A2B] shrink-0 border border-[#E9E2D2]">
+                    <Calendar className="w-4 h-4 stroke-[1.8] text-[#C5A46D]" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 block">
+                      Check-In
+                    </span>
+                    <span className="text-sm font-semibold text-[#173A2B] truncate block">
+                      {checkIn ? new Date(checkIn).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : "Select date"}
+                    </span>
+                  </div>
+                  <Calendar className="w-4 h-4 text-zinc-400 shrink-0" />
+                </div>
+                <input
+                  type="date"
+                  required
+                  value={checkIn}
+                  onChange={(e) => setCheckIn(e.target.value)}
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                />
+              </div>
+
+              {/* 2. Check-Out */}
+              <div className="relative bg-white/80 border border-[#E4DCCB] rounded-2xl p-3 px-4 shadow-sm hover:border-[#C5A46D] transition-colors focus-within:border-[#C5A46D] focus-within:ring-1 focus-within:ring-[#C5A46D]">
+                <div className="flex items-center space-x-3">
+                  <div className="w-9 h-9 rounded-xl bg-[#F7F3E9] flex items-center justify-center text-[#173A2B] shrink-0 border border-[#E9E2D2]">
+                    <Calendar className="w-4 h-4 stroke-[1.8] text-[#C5A46D]" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 block">
+                      Check-Out
+                    </span>
+                    <span className="text-sm font-semibold text-[#173A2B] truncate block">
+                      {checkOut ? new Date(checkOut).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : "Select date"}
+                    </span>
+                  </div>
+                  <Calendar className="w-4 h-4 text-zinc-400 shrink-0" />
+                </div>
+                <input
+                  type="date"
+                  required
+                  value={checkOut}
+                  onChange={(e) => setCheckOut(e.target.value)}
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                />
+              </div>
+
+              {/* 3. Adults & Children side by side */}
+              <div className="grid grid-cols-2 gap-3">
+                {/* Adults */}
+                <div className="relative bg-white/80 border border-[#E4DCCB] rounded-2xl p-3 px-3.5 shadow-sm hover:border-[#C5A46D] transition-colors focus-within:border-[#C5A46D] focus-within:ring-1 focus-within:ring-[#C5A46D]">
+                  <div className="flex items-center space-x-2.5">
+                    <div className="w-8 h-8 rounded-lg bg-[#F7F3E9] flex items-center justify-center text-[#173A2B] shrink-0 border border-[#E9E2D2]">
+                      <User className="w-4 h-4 stroke-[1.8] text-[#C5A46D]" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 block">
+                        Adults
+                      </span>
+                      <span className="text-xs xs:text-sm font-semibold text-[#173A2B] truncate block">
+                        {adults} Adult{parseInt(adults) > 1 ? "s" : ""}
+                      </span>
+                    </div>
+                    <ChevronDown className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
+                  </div>
+                  <select
+                    value={adults}
+                    onChange={(e) => {
+                      setAdults(e.target.value);
+                      setGuests(e.target.value);
+                    }}
+                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  >
+                    {[1, 2, 3, 4, 5, 6, 8, 10].map((num) => (
+                      <option key={num} value={num}>
+                        {num} Adult{num > 1 ? "s" : ""}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Children */}
+                <div className="relative bg-white/80 border border-[#E4DCCB] rounded-2xl p-3 px-3.5 shadow-sm hover:border-[#C5A46D] transition-colors focus-within:border-[#C5A46D] focus-within:ring-1 focus-within:ring-[#C5A46D]">
+                  <div className="flex items-center space-x-2.5">
+                    <div className="w-8 h-8 rounded-lg bg-[#F7F3E9] flex items-center justify-center text-[#173A2B] shrink-0 border border-[#E9E2D2]">
+                      <Users className="w-4 h-4 stroke-[1.8] text-[#C5A46D]" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 block">
+                        Children
+                      </span>
+                      <span className="text-xs xs:text-sm font-semibold text-[#173A2B] truncate block">
+                        {children} Child{parseInt(children) > 1 ? "ren" : ""}
+                      </span>
+                    </div>
+                    <ChevronDown className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
+                  </div>
+                  <select
+                    value={children}
+                    onChange={(e) => setChildren(e.target.value)}
+                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  >
+                    {[0, 1, 2, 3, 4].map((num) => (
+                      <option key={num} value={num}>
+                        {num} Child{num > 1 ? "ren" : ""}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {/* 4. Rooms */}
+              <div className="relative bg-white/80 border border-[#E4DCCB] rounded-2xl p-3 px-4 shadow-sm hover:border-[#C5A46D] transition-colors focus-within:border-[#C5A46D] focus-within:ring-1 focus-within:ring-[#C5A46D]">
+                <div className="flex items-center space-x-3">
+                  <div className="w-9 h-9 rounded-xl bg-[#F7F3E9] flex items-center justify-center text-[#173A2B] shrink-0 border border-[#E9E2D2]">
+                    <Home className="w-4 h-4 stroke-[1.8] text-[#C5A46D]" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 block">
+                      Rooms
+                    </span>
+                    <span className="text-sm font-semibold text-[#173A2B] truncate block">
+                      {rooms} Room{parseInt(rooms) > 1 ? "s" : ""}
+                    </span>
+                  </div>
+                  <ChevronDown className="w-4 h-4 text-zinc-400 shrink-0" />
+                </div>
+                <select
+                  value={rooms}
+                  onChange={(e) => setRooms(e.target.value)}
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                >
+                  {[1, 2, 3, 4, 5].map((num) => (
+                    <option key={num} value={num}>
+                      {num} Room{num > 1 ? "s" : ""}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* 5. Primary CTA Button: SEARCH AVAILABILITY -> */}
+              <div className="pt-2">
+                <button
+                  type="submit"
+                  className="w-full py-4 px-6 rounded-2xl bg-[#C5A46D] hover:bg-[#b5935c] active:scale-[0.99] transition-all text-[#173A2B] font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 shadow-lg shadow-[#C5A46D]/20 cursor-pointer"
+                >
+                  <Search className="w-4 h-4 stroke-[2.2]" />
+                  <span>SEARCH AVAILABILITY &rarr;</span>
+                </button>
+              </div>
+            </form>
+
+            {/* Seamless Mobile Accommodation Selection & Booking Step after Search */}
+            <div id="mobile-room-selection" className="mt-8 pt-6 border-t border-[#E9E2D2] space-y-4">
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C5A46D] block">
+                Featured Accommodations
+              </span>
+              <div className="space-y-3">
+                {ACCOMMODATIONS.map((r) => (
+                  <div
+                    key={r.id}
+                    onClick={() => {
+                      setSelectedRoomSlug(r.slug);
+                    }}
+                    className={`p-3 rounded-2xl border transition-all flex items-center space-x-3 cursor-pointer ${
+                      selectedRoomSlug === r.slug
+                        ? "border-[#173A2B] bg-[#173A2B]/5 ring-1 ring-[#173A2B] shadow-sm"
+                        : "border-[#E4DCCB] bg-white hover:border-[#C5A46D]"
+                    }`}
+                  >
+                    <img src={r.image} alt={r.name} className="w-14 h-14 rounded-xl object-cover shrink-0" />
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-bold text-xs text-[#173A2B] truncate">{r.name}</h4>
+                      <p className="text-[11px] text-zinc-500">{r.capacity}</p>
+                      <p className="text-[10px] text-emerald-700 font-medium">Free Breakfast Included</p>
+                    </div>
+                    {selectedRoomSlug === r.slug && (
+                      <CheckCircle2 className="w-5 h-5 text-[#173A2B] shrink-0" />
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              {/* Guest Details Form on Mobile */}
+              <div className="pt-4 space-y-3">
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C5A46D] block">
+                  Reserve Your Selected Room
+                </span>
+                <input
+                  type="text"
+                  required
+                  placeholder="Primary Guest Name"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  className="w-full px-3.5 py-3 rounded-xl border border-[#E4DCCB] text-xs bg-white text-zinc-900 focus:outline-none focus:border-[#C5A46D]"
+                />
+                <input
+                  type="tel"
+                  required
+                  placeholder="WhatsApp Phone (+91 ...)"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="w-full px-3.5 py-3 rounded-xl border border-[#E4DCCB] text-xs bg-white text-zinc-900 focus:outline-none focus:border-[#C5A46D]"
+                />
+                <input
+                  type="email"
+                  required
+                  placeholder="Email Address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full px-3.5 py-3 rounded-xl border border-[#E4DCCB] text-xs bg-white text-zinc-900 focus:outline-none focus:border-[#C5A46D]"
+                />
+                <button
+                  onClick={handleBookingSubmit}
+                  className="w-full py-3.5 rounded-xl bg-[#173A2B] text-[#FAF7F0] font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 shadow-md hover:bg-[#122e22] transition-colors"
+                >
+                  <span>Confirm Reservation ({selectedRoom.name})</span>
+                </button>
+              </div>
+
+              {/* Zero booking fees guarantee note */}
+              <div className="pt-2 text-center">
+                <p className="text-[11px] text-zinc-500 flex items-center justify-center space-x-1.5">
+                  <Lock className="w-3.5 h-3.5 text-[#C5A46D]" />
+                  <span>Zero Booking Fees • Best Rate Guaranteed Direct</span>
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
+
+      {/* =========================================================================
+          DESKTOP VIEW (Completely Untouched & Preserved for >= 768px Viewports)
+          ========================================================================= */}
+      <main className="hidden md:block flex-1 py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="max-w-2xl mb-10">
+          <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase">
+            ONLINE ROOM RESERVATION
+          </span>
+          <h1 className="font-serif font-bold text-3xl sm:text-5xl text-[#173A2B] mt-1">
+            Complete Your Reservation
+          </h1>
+          <p className="text-sm text-zinc-600 mt-2 font-sans">
+            Select your dates, preferred room tier, and guest details below. (Connects directly with backend availability engine & payment gateway).
+          </p>
+        </div>
 
       {isSuccess ? (
         <div className="bg-white rounded-2xl p-8 sm:p-12 shadow-xl border border-zinc-200 text-center max-w-xl mx-auto space-y-4">
@@ -233,6 +537,7 @@ function BookingContent() {
         </div>
       )}
     </main>
+    </>
   );
 }
 
