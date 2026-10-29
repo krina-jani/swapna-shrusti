@@ -110,20 +110,52 @@ export const RESTAURANT_FAQS: FAQItem[] = [
 
 export const FOR_SHOOT_FAQS: FAQItem[] = [
   {
-    q: "What photoshoot sets and backdrops are available on resort grounds?",
-    a: "Swapna Srushti Resort provides over 50 unique natural and architectural photo backdrops, including rustic village sets at Swapnagram, tranquil waterfall features, manicured lawns, resort cottages, and romantic twilight lighting.",
+    q: "Can I book Swapna Srushti for a pre-wedding photoshoot?",
+    a: "Yes, Swapna Srushti Resort is a popular destination for pre-wedding photography and cinematic couple portraits. You can enquire in advance with our concierge to discuss available dates, preferred garden or poolside backdrops, and changing room arrangements.",
   },
   {
-    q: "Is advance permission or a shooting permit required?",
-    a: "Yes, commercial photography, pre-wedding couple shoots, and film productions must register and secure a shooting pass in advance to ensure dedicated changing rooms and private access.",
+    q: "Are commercial photography and advertising shoots permitted?",
+    a: "Commercial brand shoots, fashion campaigns, and product photography can be requested. Approval, applicable location fees, and access conditions depend on the scale of the production and must be confirmed directly with resort management.",
   },
   {
-    q: "Are private air-conditioned changing and makeup rooms provided?",
-    a: "Yes, all dedicated pre-wedding and fashion shoot packages include access to air-conditioned green rooms with mirrors, lighting, and power outlets for makeup and wardrobe transitions.",
+    q: "Can I enquire about filming a music video or short film?",
+    a: "Yes, production teams and independent artists are welcome to submit inquiries for music videos, cinematic scenes, and creative productions. Detailed requirements including crew size, equipment, and sound needs must be reviewed beforehand.",
   },
   {
-    q: "What are the allowed operating hours for photography shoots?",
-    a: "Photoshoots can be scheduled from sunrise (6:30 AM) to sunset (7:00 PM), allowing photographers to capture both early morning golden hour and vibrant dusk hues.",
+    q: "Which resort locations are available for shoots?",
+    a: "Potential shoot settings include landscaped botanical gardens, palm-lined avenues, resort poolside areas, themed village architecture, open event plots, and select accommodation exteriors. Specific area access is confirmed during the enquiry process.",
+  },
+  {
+    q: "How can I find out the photoshoot charges?",
+    a: "Location fees vary depending on the production type, crew size, hours required, and specific areas used. Please submit a shoot enquiry or call our team directly at +91 99099 22000 for customized location rates.",
+  },
+  {
+    q: "Can I bring my own photographer and equipment?",
+    a: "Yes, clients typically bring their chosen professional photographers, cinematographers, makeup artists, and stylists. Standard gear such as cameras, tripods, portable reflectors, and battery-operated lighting can be brought upon registration.",
+  },
+  {
+    q: "Are drones permitted for photography or filming?",
+    a: "Drone operation requires prior explicit permission from resort management to safeguard the privacy, comfort, and safety of resident guests and comply with local aviation regulations.",
+  },
+  {
+    q: "How many people can join a shoot?",
+    a: "Crew and client headcounts must be stated in your initial enquiry. Group sizes determine access arrangements, staging spaces, and applicable location tariffs.",
+  },
+  {
+    q: "Can photography take place in accommodation areas?",
+    a: "Shooting inside cottages, villas, or guest rooms requires an active room reservation or specific advance management authorization to ensure guest privacy is maintained.",
+  },
+  {
+    q: "How far in advance should I enquire?",
+    a: "We recommend enquiring at least 1 to 3 weeks prior to your preferred shoot date, especially for weekend slots or peak wedding season dates between October and March.",
+  },
+  {
+    q: "Can I request a rescheduled date?",
+    a: "Rescheduling requests due to weather or unforeseen circumstances are subject to resort management approval and slot availability. Terms should be clarified during the booking confirmation.",
+  },
+  {
+    q: "Do commercial productions require additional permissions?",
+    a: "Yes, large-scale media productions involving heavy generator vans, extensive staging, or commercial broadcast may require additional paperwork and coordination, which our event team will review upon enquiry.",
   },
 ];
 
@@ -156,4 +188,3 @@ export const CONTACT_FAQS: FAQItem[] = [
     a: "Yes, the resort provides secure, on-site, complimentary parking for hundreds of four-wheelers and large passenger buses with 24/7 security surveillance.",
   },
 ];
-
