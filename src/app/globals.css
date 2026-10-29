@@ -7,15 +7,20 @@
     --champagne-gold: #C5A46D;
     --charcoal: #202522;
     --navbar-bg: #000000;
+    --body-font-family: 'gotham', 'Montserrat', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   }
 }
 
 .font-serif {
-  font-family: var(--font-serif), Georgia, serif;
+  font-family: var(--body-font-family), var(--font-serif), Georgia, serif;
 }
 
 .font-sans {
   font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+.font-title {
+  font-family: var(--body-font-family);
 }
 
 /* Custom dashed divider for mega menu items */
