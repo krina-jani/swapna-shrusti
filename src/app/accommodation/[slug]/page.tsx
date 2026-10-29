@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Navbar from "@/components/navigation/Navbar";
 import ResortFooter from "@/components/layout/ResortFooter";
+import FAQSection from "@/components/common/FAQSection";
+import { ACCOMMODATION_FAQS } from "@/data/faqsData";
 import { ACCOMMODATIONS, RoomItem } from "@/data/resortData";
 import { RESORT_PACKAGES } from "@/data/packagesData";
 import {
