@@ -391,12 +391,12 @@ export default function Navbar() {
               if (menuTimeoutRef.current) clearTimeout(menuTimeoutRef.current);
             }}
             onMouseLeave={handleMouseLeave}
-            className="fixed left-0 right-0 top-24 mx-auto max-w-[1380px] px-8 z-40 pointer-events-auto"
+            className="fixed left-0 right-0 top-24 mx-auto max-w-[1020px] px-4 sm:px-6 z-40 pointer-events-auto"
           >
-            <div className="bg-[#121413]/95 backdrop-blur-xl border border-white/15 rounded-2xl p-8 shadow-2xl flex justify-between items-start gap-8">
+            <div className="bg-[#121413]/95 backdrop-blur-xl border border-white/15 rounded-2xl p-7 shadow-2xl flex justify-between items-center gap-10">
               
               {/* Left Column: Contextual Navigation List */}
-              <div className="flex-1 max-w-sm">
+              <div className="w-[320px] shrink-0">
                 <span className="text-[10px] font-bold tracking-[0.2em] text-zinc-400 uppercase block mb-4">
                   {activeMenu === "accommodation"
                     ? "Rooms & Suites"
@@ -532,7 +532,7 @@ export default function Navbar() {
               )}
 
               {/* Right Column: Large relevant resort photograph with white border */}
-              <div className="w-[420px] max-w-full shrink-0">
+              <div className="w-[460px] max-w-full shrink-0">
                 <div className="relative rounded-lg overflow-hidden border-2 border-white/90 shadow-2xl w-full aspect-[16/10] group">
                   <img
                     src={

@@ -31,7 +31,7 @@ export default function FAQSection({
   };
 
   return (
-    <section className="bg-[#2D3339] text-white py-20 sm:py-24 border-t border-zinc-700/50">
+    <section className="bg-[#173A2B] text-white py-20 sm:py-24 border-t border-[#204938]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
@@ -56,7 +56,7 @@ export default function FAQSection({
           </div>
 
           {/* Right Column: Accordion list with clean border dividers */}
-          <div className="lg:col-span-7 divide-y divide-zinc-600/70 border-t border-b border-zinc-600/70">
+          <div className="lg:col-span-7 divide-y divide-[#2B5443] border-t border-b border-[#2B5443]">
             {items.map((item, idx) => {
               const isOpen = openIdx === idx;
               const contentId = `faq-answer-${idx}`;
