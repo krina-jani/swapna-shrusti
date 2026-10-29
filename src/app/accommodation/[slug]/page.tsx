@@ -67,6 +67,7 @@ export default async function RoomDetailPage({ params }: Props) {
     "superior-rooms": { standard: "₹5,500", diwali: "₹6,500" },
     "premium-rooms": { standard: "₹6,000", diwali: "₹7,000" },
     "cottages": { standard: "₹6,500", diwali: "₹7,500" },
+    "theme-village": { standard: "₹6,500", diwali: "₹7,500" },
     "executive-suites": { standard: "₹7,500", diwali: "₹8,500" },
   };
 

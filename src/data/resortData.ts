@@ -7,6 +7,7 @@ export interface RoomItem {
   capacity: string;
   amenities: string[];
   image: string;
+  images?: string[];
 }
 
 export interface ExperienceItem {
@@ -97,6 +98,29 @@ export const ACCOMMODATIONS: RoomItem[] = [
     capacity: "Families & Groups",
     amenities: ["Themed Ambience", "Spacious Layout", "Outdoor Seating", "Private Bathroom", "Resort Amenities"],
     image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: "theme-village",
+    name: "Theme Village",
+    slug: "theme-village",
+    tagline: "Rustic Gujarati Heritage & Cultural Living",
+    description: "Immerse yourself in authentic rural heritage with traditional handcrafted cottage dwellings, earthen architectural textures, wooden carvings, and scenic garden courtyards.",
+    capacity: "Families & Couples",
+    amenities: [
+      "Authentic Village Architecture",
+      "Garden Courtyard",
+      "Air Conditioning",
+      "En-suite Bathroom",
+      "Traditional Decor",
+      "Wi-Fi Access",
+      "Cultural Walk Access"
+    ],
+    image: "/images/villagetheme/theme-village-1.png",
+    images: [
+      "/images/villagetheme/theme-village-1.png",
+      "/images/villagetheme/theme-village-2.png",
+      "/images/villagetheme/theme-village-3.png"
+    ],
   },
 ];
 
