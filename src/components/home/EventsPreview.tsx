@@ -9,57 +9,60 @@ export default function EventsPreview() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
 
-  // Triple items for seamless continuous looping carousel
-  const eventList = [...EVENTS, ...EVENTS, ...EVENTS, ...EVENTS];
+  // Repeat events to create an endless smooth loop
+  const eventList = [...EVENTS, ...EVENTS, ...EVENTS, ...EVENTS, ...EVENTS];
 
-  // Auto-scroll every 2 seconds smoothly
+  // 1-second interval smooth scroll
   useEffect(() => {
     if (isHovered) return;
 
     const timer = setInterval(() => {
       handleNext();
-    }, 2000);
+    }, 1000);
 
     return () => clearInterval(timer);
   }, [isHovered]);
 
   const handleNext = () => {
-    if (!scrollContainerRef.current) return;
     const container = scrollContainerRef.current;
+    if (!container) return;
+
     const card = container.querySelector<HTMLElement>("[data-event-card]");
     const cardWidth = card ? card.offsetWidth : 300;
     const gap = 16;
-    const step = cardWidth + gap;
+    const scrollStep = cardWidth + gap;
 
-    const maxScroll = container.scrollWidth - container.clientWidth;
-    if (container.scrollLeft >= maxScroll - 50) {
-      // Loop smoothly back to start without abrupt jumps
-      container.scrollTo({ left: 0, behavior: "smooth" });
-    } else {
-      container.scrollBy({ left: step, behavior: "smooth" });
+    // Reset loop point invisibly when reaching halfway
+    const halfScroll = container.scrollWidth / 2;
+    if (container.scrollLeft >= halfScroll) {
+      container.scrollLeft = container.scrollLeft - halfScroll;
     }
+
+    container.scrollBy({ left: scrollStep, behavior: "smooth" });
   };
 
   const handlePrev = () => {
-    if (!scrollContainerRef.current) return;
     const container = scrollContainerRef.current;
+    if (!container) return;
+
     const card = container.querySelector<HTMLElement>("[data-event-card]");
     const cardWidth = card ? card.offsetWidth : 300;
     const gap = 16;
-    const step = cardWidth + gap;
+    const scrollStep = cardWidth + gap;
 
-    if (container.scrollLeft <= 20) {
-      container.scrollTo({ left: container.scrollWidth / 2, behavior: "smooth" });
-    } else {
-      container.scrollBy({ left: -step, behavior: "smooth" });
+    if (container.scrollLeft <= 10) {
+      const halfScroll = container.scrollWidth / 2;
+      container.scrollLeft = halfScroll;
     }
+
+    container.scrollBy({ left: -scrollStep, behavior: "smooth" });
   };
 
   return (
     <section id="events" className="bg-[#F7F3E9] text-[#202522] py-12 sm:py-16 overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header with balanced compact spacing */}
+        {/* Section Header */}
         <div className="flex items-end justify-between mb-8 sm:mb-10">
           <div className="max-w-2xl">
             <span className="text-[11px] font-sans font-bold tracking-[0.25em] text-[#C5A46D] uppercase block mb-1">
@@ -101,14 +104,12 @@ export default function EventsPreview() {
             style={{ 
               scrollbarWidth: "none", 
               msOverflowStyle: "none",
-              scrollSnapType: "x mandatory",
             }}
           >
             {eventList.map((event, idx) => (
               <div
                 key={`${event.id}-${idx}`}
                 data-event-card=""
-                style={{ scrollSnapAlign: "start" }}
                 className="relative shrink-0 w-[240px] sm:w-[280px] md:w-[310px] lg:w-[330px] h-[340px] sm:h-[380px] md:h-[410px] rounded-2xl overflow-hidden shadow-md hover:shadow-xl border border-[#E7DECD] group cursor-pointer transition-shadow duration-300"
               >
                 {/* Clean Image */}
@@ -123,7 +124,7 @@ export default function EventsPreview() {
                 {/* Subtle vignette gradient behind text */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30 pointer-events-none" />
 
-                {/* Top Text: ONLY @swapnasrushti (small icon box removed as requested) */}
+                {/* Top Text: ONLY @swapnasrushti */}
                 <div className="absolute top-3.5 left-4 text-white/90 drop-shadow">
                   <span className="text-[11px] font-sans font-medium tracking-wide">
                     @swapnasrushti
