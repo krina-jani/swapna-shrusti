@@ -43,16 +43,7 @@ export default function FAQSection({
             <p className="text-sm sm:text-base text-zinc-300 font-sans leading-relaxed max-w-md">
               {description}
             </p>
-            {ctaText && ctaLink && (
-              <div className="pt-2">
-                <Link
-                  href={ctaLink}
-                  className="inline-block px-7 py-3 rounded-full bg-[#C5A46D] hover:bg-[#b8955c] active:scale-[0.98] text-[#0C1E17] font-bold text-xs uppercase tracking-wider shadow-lg transition-all"
-                >
-                  {ctaText}
-                </Link>
-              </div>
-            )}
+            {/* CTA button removed across all pages as requested */}
           </div>
 
           {/* Right Column: Accordion list with clean border dividers */}
