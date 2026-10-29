@@ -68,13 +68,15 @@ export default function AccommodationPage() {
         {/* ========================================================================= */}
         {/* SECTION 1: EXISTING HERO (Preserved unchanged)                            */}
         {/* ========================================================================= */}
-        <section className="relative h-96 sm:h-[420px] pt-16 bg-[#173A2B] text-white flex items-center justify-center text-center px-4">
+        <section className="relative h-96 sm:h-[420px] pt-16 bg-zinc-950 text-white flex items-center justify-center text-center px-4 overflow-hidden">
           <div
-            className="absolute inset-0 bg-cover bg-center opacity-45"
+            className="absolute inset-0 bg-cover bg-center opacity-85"
             style={{
               backgroundImage: "url('/images/Tropical%20Resort%20Cottages%20at%20Sunset.png')",
             }}
           />
+          <div className="accommodation-hero-overlay absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/30 pointer-events-none" />
+          <div className="absolute inset-0 bg-[#173A2B]/20 pointer-events-none" />
           <div className="relative z-10 max-w-3xl">
             <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase">
               STAY AT SWAPNA SRUSHTI

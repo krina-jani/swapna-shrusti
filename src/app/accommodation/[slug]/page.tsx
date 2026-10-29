@@ -83,12 +83,13 @@ export default async function RoomDetailPage({ params }: Props) {
         {/* ========================================================================= */}
         {/* SECTION 1: ACCOMMODATION HERO                                            */}
         {/* ========================================================================= */}
-        <section className="relative bg-[#173A2B] text-white pt-32 pb-20 sm:pt-40 sm:pb-24 overflow-hidden border-b border-zinc-800">
+        <section className="relative bg-zinc-950 text-white pt-32 pb-20 sm:pt-40 sm:pb-24 overflow-hidden border-b border-zinc-800">
           <div
-            className="absolute inset-0 bg-cover bg-center opacity-30 scale-105 transition-transform duration-1000"
+            className="absolute inset-0 bg-cover bg-center opacity-85 scale-105 transition-transform duration-1000"
             style={{ backgroundImage: `url('${room.image}')` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#173A2B] via-[#173A2B]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/30 pointer-events-none" />
+          <div className="absolute inset-0 bg-[#173A2B]/20 pointer-events-none" />
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Breadcrumb Navigation */}

@@ -43,14 +43,15 @@ export default function RestaurantPage() {
         {/* ========================================================================= */}
         {/* SECTION 2: RESTAURANT HERO SECTION                                        */}
         {/* ========================================================================= */}
-        <section className="relative min-h-[480px] sm:min-h-[520px] pt-32 pb-16 sm:pt-40 sm:pb-20 bg-[#173A2B] text-white flex flex-col items-center justify-center text-center px-4 overflow-hidden">
+        <section className="relative min-h-[480px] sm:min-h-[520px] pt-32 pb-16 sm:pt-40 sm:pb-20 bg-zinc-950 text-white flex flex-col items-center justify-center text-center px-4 overflow-hidden">
           <div
-            className="absolute inset-0 bg-cover bg-center opacity-30 scale-105 transition-transform duration-1000"
+            className="absolute inset-0 bg-cover bg-center opacity-85 scale-105 transition-transform duration-1000"
             style={{
               backgroundImage: `url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80')`,
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#173A2B] via-[#173A2B]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/30 pointer-events-none" />
+          <div className="absolute inset-0 bg-[#173A2B]/20 pointer-events-none" />
 
           <div className="relative z-10 max-w-3xl space-y-4">
             <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase font-sans">

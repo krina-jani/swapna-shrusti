@@ -67,13 +67,15 @@ export default function PackagesPage() {
         {/* ========================================================================= */}
         {/* HERO SECTION                                                              */}
         {/* ========================================================================= */}
-        <section className="relative h-80 sm:h-96 bg-[#173A2B] text-white flex items-center justify-center text-center px-4">
+        <section className="relative h-80 sm:h-96 bg-zinc-950 text-white flex items-center justify-center text-center px-4 overflow-hidden">
           <div
-            className="absolute inset-0 bg-cover bg-center opacity-30"
+            className="absolute inset-0 bg-cover bg-center opacity-85"
             style={{
               backgroundImage: "url('/images/Tropical%20Resort%20Cottages%20at%20Sunset.png')",
             }}
           />
+          <div className="packages-hero-overlay absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/30 pointer-events-none" />
+          <div className="absolute inset-0 bg-[#173A2B]/20 pointer-events-none" />
           <div className="relative z-10 max-w-3xl">
             <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase">
               TRANSPARENT TARIFFS &amp; INCLUSIONS

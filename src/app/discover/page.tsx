@@ -44,13 +44,15 @@ export default function DiscoverPage() {
         {/* ========================================================================= */}
         {/* SECTION 1: EXISTING HERO (Preserved unchanged)                            */}
         {/* ========================================================================= */}
-        <section className="relative h-80 sm:h-96 bg-[#202522] text-white flex items-center justify-center text-center px-4">
+        <section className="relative h-80 sm:h-96 bg-zinc-950 text-white flex items-center justify-center text-center px-4 overflow-hidden">
           <div
-            className="absolute inset-0 bg-cover bg-center opacity-30"
+            className="absolute inset-0 bg-cover bg-center opacity-85"
             style={{
               backgroundImage: `url('${ACTIVITIES_DATA[1].image}')`,
             }}
           />
+          <div className="discover-hero-overlay absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/30 pointer-events-none" />
+          <div className="absolute inset-0 bg-[#173A2B]/20 pointer-events-none" />
           <div className="relative z-10 max-w-3xl">
             <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase">
               RECREATION &amp; FACILITIES
