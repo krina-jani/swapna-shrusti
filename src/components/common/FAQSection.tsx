@@ -31,7 +31,7 @@ export default function FAQSection({
   };
 
   return (
-    <section className="bg-[#173A2B] text-white py-20 sm:py-24 border-t border-[#204938]">
+    <section className="bg-[#0C1E17] text-white py-20 sm:py-24 border-t border-[#1B362A] shadow-inner">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
@@ -47,7 +47,7 @@ export default function FAQSection({
               <div className="pt-2">
                 <Link
                   href={ctaLink}
-                  className="inline-block px-7 py-3 rounded-full bg-[#C5A46D] hover:bg-[#b8955c] active:scale-[0.98] text-[#173A2B] font-bold text-xs uppercase tracking-wider shadow-lg transition-all"
+                  className="inline-block px-7 py-3 rounded-full bg-[#C5A46D] hover:bg-[#b8955c] active:scale-[0.98] text-[#0C1E17] font-bold text-xs uppercase tracking-wider shadow-lg transition-all"
                 >
                   {ctaText}
                 </Link>
@@ -56,7 +56,7 @@ export default function FAQSection({
           </div>
 
           {/* Right Column: Accordion list with clean border dividers */}
-          <div className="lg:col-span-7 divide-y divide-[#2B5443] border-t border-b border-[#2B5443]">
+          <div className="lg:col-span-7 divide-y divide-[#1D3E30] border-t border-b border-[#1D3E30]">
             {items.map((item, idx) => {
               const isOpen = openIdx === idx;
               const contentId = `faq-answer-${idx}`;
@@ -104,4 +104,3 @@ export default function FAQSection({
     </section>
   );
 }
-
