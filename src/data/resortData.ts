@@ -255,7 +255,7 @@ export const SHOOT_CATEGORIES: ShootCategory[] = [
     slug: "pre-wedding",
     tagline: "Romantic Scenic Backdrops",
     description: "Dreamy floral avenues, rustic wooden bridges, serene poolside reflections, and golden hour meadows for unforgettable pre-wedding portfolios.",
-    image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/shoots/resort-poolside-shoot.jpg",
   },
   {
     id: "album",
@@ -271,7 +271,7 @@ export const SHOOT_CATEGORIES: ShootCategory[] = [
     slug: "film",
     tagline: "Feature Film Production Sets",
     description: "Expansive private property with versatile topography, green cover, cottage clusters, and uninterrupted production infrastructure with crew accommodation.",
-    image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/shoots/village-night-shoot.jpg",
   },
   {
     id: "ad-film",

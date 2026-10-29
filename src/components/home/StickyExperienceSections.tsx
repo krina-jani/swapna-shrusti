@@ -63,7 +63,7 @@ const SECTIONS: SectionData[] = [
     buttonText: "Explore Photoshoot",
     buttonLink: "/for-shoot/pre-wedding",
     bgType: "ivory",
-    image: "/images/sticky-wedding.jpg",
+    image: "/images/shoots/resort-poolside-shoot.jpg",
   },
 ];
 

@@ -46,7 +46,7 @@ const SHOOT_CATEGORIES_EXPANDED = [
     slug: "pre-wedding",
     tagline: "ROMANTIC SCENIC BACKDROPS",
     description: "Couple portraits, engagement photography, romantic concepts, and cinematic pre-wedding videos amidst tranquil nature.",
-    image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/shoots/resort-poolside-shoot.jpg",
     cta: "Enquire For Pre-Wedding",
   },
   {
@@ -73,7 +73,7 @@ const SHOOT_CATEGORIES_EXPANDED = [
     slug: "film",
     tagline: "CINEMATIC NARRATIVES",
     description: "Short films, cinematic scenes, independent productions, and regional video projects utilizing natural resort grounds.",
-    image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/shoots/village-night-shoot.jpg",
     cta: "Enquire For Film Shoots",
   },
   {
