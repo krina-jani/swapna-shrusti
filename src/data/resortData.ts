@@ -115,10 +115,10 @@ export const ACCOMMODATIONS: RoomItem[] = [
       "Wi-Fi Access",
       "Cultural Walk Access"
     ],
-    image: "/images/villagetheme/village-room-1.jpg",
+    image: "/images/villagetheme/theme-village-main.jpg",
     images: [
+      "/images/villagetheme/theme-village-main.jpg",
       "/images/villagetheme/village-room-1.jpg",
-      "/images/villagetheme/village-room-2.jpg",
       "/images/villagetheme/village-room-3.jpg",
       "/images/villagetheme/theme-village-1.png",
       "/images/villagetheme/theme-village-2.png",
