@@ -7,13 +7,12 @@ import { EVENTS } from "@/data/resortData";
 
 export default function EventsPreview() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
   // Triple items for seamless continuous looping carousel
-  const eventList = [...EVENTS, ...EVENTS, ...EVENTS];
+  const eventList = [...EVENTS, ...EVENTS, ...EVENTS, ...EVENTS];
 
-  // Auto-scroll every 2 seconds
+  // Auto-scroll every 2 seconds smoothly
   useEffect(() => {
     if (isHovered) return;
 
@@ -22,57 +21,75 @@ export default function EventsPreview() {
     }, 2000);
 
     return () => clearInterval(timer);
-  }, [activeIndex, isHovered]);
+  }, [isHovered]);
 
   const handleNext = () => {
     if (!scrollContainerRef.current) return;
     const container = scrollContainerRef.current;
-    const cardWidth = container.querySelector<HTMLElement>("[data-event-card]")?.offsetWidth || 340;
-    const gap = 20;
+    const card = container.querySelector<HTMLElement>("[data-event-card]");
+    const cardWidth = card ? card.offsetWidth : 300;
+    const gap = 16;
     const step = cardWidth + gap;
 
     const maxScroll = container.scrollWidth - container.clientWidth;
     if (container.scrollLeft >= maxScroll - 50) {
-      // Smoothly loop back
+      // Loop smoothly back to start without abrupt jumps
       container.scrollTo({ left: 0, behavior: "smooth" });
-      setActiveIndex(0);
     } else {
       container.scrollBy({ left: step, behavior: "smooth" });
-      setActiveIndex((prev) => (prev + 1) % EVENTS.length);
     }
   };
 
   const handlePrev = () => {
     if (!scrollContainerRef.current) return;
     const container = scrollContainerRef.current;
-    const cardWidth = container.querySelector<HTMLElement>("[data-event-card]")?.offsetWidth || 340;
-    const gap = 20;
+    const card = container.querySelector<HTMLElement>("[data-event-card]");
+    const cardWidth = card ? card.offsetWidth : 300;
+    const gap = 16;
     const step = cardWidth + gap;
 
-    if (container.scrollLeft <= 50) {
-      container.scrollTo({ left: container.scrollWidth, behavior: "smooth" });
-      setActiveIndex(EVENTS.length - 1);
+    if (container.scrollLeft <= 20) {
+      container.scrollTo({ left: container.scrollWidth / 2, behavior: "smooth" });
     } else {
       container.scrollBy({ left: -step, behavior: "smooth" });
-      setActiveIndex((prev) => (prev - 1 + EVENTS.length) % EVENTS.length);
     }
   };
 
   return (
-    <section id="events" className="bg-[#F7F3E9] text-[#202522] py-20 sm:py-24 overflow-hidden">
+    <section id="events" className="bg-[#F7F3E9] text-[#202522] py-12 sm:py-16 overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="max-w-3xl mb-12 sm:mb-14">
-          <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase">
-            CELEBRATIONS & GATHERINGS
-          </span>
-          <h2 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl text-[#173A2B] tracking-tight mt-2">
-            Extraordinary Events in Nature
-          </h2>
+        {/* Section Header with balanced compact spacing */}
+        <div className="flex items-end justify-between mb-8 sm:mb-10">
+          <div className="max-w-2xl">
+            <span className="text-[11px] font-sans font-bold tracking-[0.25em] text-[#C5A46D] uppercase block mb-1">
+              CELEBRATIONS & GATHERINGS
+            </span>
+            <h2 className="font-serif font-bold text-3xl sm:text-4xl text-[#173A2B] tracking-tight leading-tight">
+              Extraordinary Events in Nature
+            </h2>
+          </div>
+
+          {/* Navigation Arrows positioned on the right beside header */}
+          <div className="hidden sm:flex items-center space-x-2.5">
+            <button
+              onClick={handlePrev}
+              aria-label="Previous Slide"
+              className="w-9 h-9 rounded-full border border-[#DCD3C3] bg-[#FAF7F0] hover:bg-white active:scale-95 flex items-center justify-center text-[#173A2B] shadow-sm transition-all cursor-pointer"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={handleNext}
+              aria-label="Next Slide"
+              className="w-9 h-9 rounded-full border border-[#DCD3C3] bg-[#FAF7F0] hover:bg-white active:scale-95 flex items-center justify-center text-[#173A2B] shadow-sm transition-all cursor-pointer"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
-        {/* Horizontal Scrolling Gallery matching Brand USA reference */}
+        {/* Smooth Horizontal Scrolling Gallery */}
         <div 
           className="relative w-full"
           onMouseEnter={() => setIsHovered(true)}
@@ -80,46 +97,50 @@ export default function EventsPreview() {
         >
           <div
             ref={scrollContainerRef}
-            className="flex items-center space-x-5 overflow-x-auto scrollbar-none scroll-smooth pb-6 pt-2 select-none"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            className="flex items-center space-x-4 sm:space-x-5 overflow-x-auto scrollbar-none scroll-smooth pb-3 select-none"
+            style={{ 
+              scrollbarWidth: "none", 
+              msOverflowStyle: "none",
+              scrollSnapType: "x mandatory",
+            }}
           >
             {eventList.map((event, idx) => (
               <div
                 key={`${event.id}-${idx}`}
                 data-event-card=""
-                className="relative shrink-0 w-[280px] sm:w-[320px] md:w-[360px] h-[380px] sm:h-[420px] md:h-[460px] rounded-2xl overflow-hidden shadow-lg border border-[#E7DECD] group cursor-pointer"
+                style={{ scrollSnapAlign: "start" }}
+                className="relative shrink-0 w-[240px] sm:w-[280px] md:w-[310px] lg:w-[330px] h-[340px] sm:h-[380px] md:h-[410px] rounded-2xl overflow-hidden shadow-md hover:shadow-xl border border-[#E7DECD] group cursor-pointer transition-shadow duration-300"
               >
                 {/* Clean Image */}
                 <Image
                   src={event.image}
                   alt={event.name}
                   fill
-                  sizes="(max-width: 640px) 280px, (max-width: 768px) 320px, 360px"
+                  sizes="(max-width: 640px) 240px, (max-width: 768px) 280px, 330px"
                   className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
 
-                {/* Subtle gradient behind title */}
+                {/* Subtle vignette gradient behind text */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30 pointer-events-none" />
 
-                {/* Instagram / Resort Logo Pin in top-left like reference */}
-                <div className="absolute top-4 left-4 flex items-center space-x-2 text-white/90 text-xs font-medium drop-shadow">
-                  <span className="w-5 h-5 rounded-md border border-white/40 flex items-center justify-center text-[10px]">
-                    ✦
+                {/* Top Text: ONLY @swapnasrushti (small icon box removed as requested) */}
+                <div className="absolute top-3.5 left-4 text-white/90 drop-shadow">
+                  <span className="text-[11px] font-sans font-medium tracking-wide">
+                    @swapnasrushti
                   </span>
-                  <span className="tracking-wide text-[11px] font-sans">@swapnasrushti</span>
                 </div>
 
-                {/* Title of the image only */}
-                <div className="absolute inset-0 flex items-center justify-center p-6 text-center">
-                  <h3 className="font-serif font-bold text-2xl sm:text-3xl md:text-4xl text-white tracking-wide drop-shadow-md group-hover:text-[#F7F3E9] transition-colors leading-tight">
+                {/* Centered Title of the image only */}
+                <div className="absolute inset-0 flex items-center justify-center p-5 text-center">
+                  <h3 className="font-serif font-bold text-2xl sm:text-3xl text-white tracking-wide drop-shadow-md group-hover:text-[#F7F3E9] transition-colors leading-tight">
                     {event.name}
                   </h3>
                 </div>
 
                 {/* Tagline at the bottom */}
                 {event.tagline && (
-                  <div className="absolute bottom-5 left-0 right-0 text-center px-4">
-                    <span className="text-[11px] uppercase tracking-[0.2em] font-sans font-semibold text-[#C5A46D] drop-shadow">
+                  <div className="absolute bottom-4 left-0 right-0 text-center px-3">
+                    <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] font-sans font-semibold text-[#C5A46D] drop-shadow">
                       {event.tagline}
                     </span>
                   </div>
@@ -128,51 +149,23 @@ export default function EventsPreview() {
             ))}
           </div>
 
-          {/* Controls below cards: Dots indicators & Navigation Arrows */}
-          <div className="flex items-center justify-between mt-4 px-2">
-            
-            {/* Dots */}
-            <div className="flex items-center space-x-2">
-              {EVENTS.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => {
-                    if (!scrollContainerRef.current) return;
-                    const container = scrollContainerRef.current;
-                    const cardWidth = container.querySelector<HTMLElement>("[data-event-card]")?.offsetWidth || 340;
-                    container.scrollTo({ left: i * (cardWidth + 20), behavior: "smooth" });
-                    setActiveIndex(i);
-                  }}
-                  aria-label={`Go to slide ${i + 1}`}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === activeIndex % EVENTS.length 
-                      ? "w-8 bg-[#173A2B]" 
-                      : "w-2 bg-zinc-300 hover:bg-zinc-400"
-                  }`}
-                />
-              ))}
-            </div>
-
-            {/* Prev / Next Arrows */}
-            <div className="flex items-center space-x-3">
-              <button
-                onClick={handlePrev}
-                aria-label="Previous Slide"
-                className="w-10 h-10 rounded-full border border-zinc-300 bg-white hover:bg-zinc-100 active:scale-95 flex items-center justify-center text-[#173A2B] shadow-sm transition-all cursor-pointer"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={handleNext}
-                aria-label="Next Slide"
-                className="w-10 h-10 rounded-full border border-zinc-300 bg-white hover:bg-zinc-100 active:scale-95 flex items-center justify-center text-[#173A2B] shadow-sm transition-all cursor-pointer"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
-
+          {/* Mobile Arrows positioned neatly below */}
+          <div className="flex sm:hidden items-center justify-end space-x-2 mt-3 px-1">
+            <button
+              onClick={handlePrev}
+              aria-label="Previous Slide"
+              className="w-8 h-8 rounded-full border border-[#DCD3C3] bg-[#FAF7F0] hover:bg-white active:scale-95 flex items-center justify-center text-[#173A2B] shadow-sm transition-all"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={handleNext}
+              aria-label="Next Slide"
+              className="w-8 h-8 rounded-full border border-[#DCD3C3] bg-[#FAF7F0] hover:bg-white active:scale-95 flex items-center justify-center text-[#173A2B] shadow-sm transition-all"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
           </div>
-
         </div>
 
       </div>
