@@ -344,7 +344,7 @@ export default function DiscoverPage() {
 
               <div className="lg:col-span-6 relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10 h-[380px] sm:h-[460px]">
                 <img
-                  src="/images/sticky-adventure.jpg"
+                  src="/images/adventure/adventure-park.jpg"
                   alt="Adventure Park at Swapna Srushti"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />

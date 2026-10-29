@@ -39,7 +39,7 @@ const SECTIONS: SectionData[] = [
     buttonText: "Explore Adventure Park",
     buttonLink: "/discover/adventure-park",
     bgType: "ivory",
-    image: "/images/sticky-adventure.jpg",
+    image: "/images/adventure/adventure-park.jpg",
   },
   {
     id: "picnic",

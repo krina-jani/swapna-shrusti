@@ -70,7 +70,7 @@ export const ACTIVITIES_DATA: ActivityDetail[] = [
       },
     ],
     relatedActivities: [
-      { name: "Adventure Park", slug: "adventure-park", tagline: "Thrills & Outdoor Obstacles", image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80" },
+      { name: "Adventure Park", slug: "adventure-park", tagline: "Thrills & Outdoor Obstacles", image: "/images/adventure/adventure-park.jpg" },
       { name: "Garden Area", slug: "garden-area", tagline: "Botanical Trails & Green Lawns", image: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1200&q=80" },
       { name: "Games", slug: "games", tagline: "Indoor & Outdoor Recreation", image: "https://images.unsplash.com/photo-1511193311914-0346f16efe90?auto=format&fit=crop&w=1200&q=80" },
     ],
@@ -85,10 +85,10 @@ export const ACTIVITIES_DATA: ActivityDetail[] = [
     shortDescription: "Experience thrilling outdoor activities, high rope courses, zip-lines, and agility challenges set within expansive greenery.",
     fullDescription: "Located on the resort property along the Gandhinagar-Mahudi Highway, the Adventure Park at Swapna Srushti offers high-energy outdoor activities tailored for adventure seekers, corporate groups, and family outings. From suspended aerial rope crossings to agility challenges, participants can test their balance and endurance under the watchful supervision of certified instructors.",
     overviewNotes: "Adventure Park activities operate on scheduled day hours and may be bundled with day-picnic passes or booked as individual activity tokens on-site. Availability depends on weather conditions and routine safety maintenance.",
-    image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/adventure/adventure-park.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1200&q=80",
+      "/images/adventure/adventure-park.jpg",
+      "/images/experiences/adventure.jpg",
     ],
     verifiedFeatures: [
       "High rope obstacle courses and commando net crossings",
@@ -177,7 +177,7 @@ export const ACTIVITIES_DATA: ActivityDetail[] = [
     ],
     relatedActivities: [
       { name: "Party Plot", slug: "party-plot", tagline: "Grand Open-Air Grounds", image: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1200&q=80" },
-      { name: "Adventure Park", slug: "adventure-park", tagline: "Outdoor Team Challenges", image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80" },
+      { name: "Adventure Park", slug: "adventure-park", tagline: "Outdoor Team Challenges", image: "/images/adventure/adventure-park.jpg" },
       { name: "Garden Area", slug: "garden-area", tagline: "Botanical Trails & Lawns", image: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1200&q=80" },
     ],
     seoTitle: "Corporate Meeting & Conference Facilities | Swapna Srushti Resort",
@@ -271,7 +271,7 @@ export const ACTIVITIES_DATA: ActivityDetail[] = [
     ],
     relatedActivities: [
       { name: "Swimming Pool", slug: "swimming-pool", tagline: "Crystal Waters Amid Palms", image: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=80" },
-      { name: "Adventure Park", slug: "adventure-park", tagline: "Outdoor Thrills & Nature", image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80" },
+      { name: "Adventure Park", slug: "adventure-park", tagline: "Outdoor Thrills & Nature", image: "/images/adventure/adventure-park.jpg" },
       { name: "Garden Area", slug: "garden-area", tagline: "Botanical Trails & Lawns", image: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1200&q=80" },
     ],
     seoTitle: "Indoor & Outdoor Games Recreation | Swapna Srushti Resort",

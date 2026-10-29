@@ -143,7 +143,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     slug: "adventure-park",
     tagline: "High-Octane Thrills & Obstacles",
     description: "Heart-pounding dirt bike tracks, zip-lines, rope bridges, rock climbing walls, and obstacle challenges set against scenic forest terrains.",
-    image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/adventure/adventure-park.jpg",
   },
   {
     id: "corporate-meeting",
