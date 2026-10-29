@@ -205,7 +205,7 @@ export default function ResortFooter({ showBannerAndForm }: { showBannerAndForm?
                         type="text"
                         required
                         value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value.replace(/[^a-zA-Z\s]/g, "") })}
                         placeholder="Full Name *"
                         className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-[#F4EFE6]/70 border border-[#E3D8C6] text-xs text-[#202522] placeholder:text-zinc-500 focus:outline-none focus:border-[#C5A46D] focus:bg-white transition-all shadow-sm"
                       />

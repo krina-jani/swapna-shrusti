@@ -290,7 +290,7 @@ function BookingContent() {
                   required
                   placeholder="Primary Guest Name"
                   value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
+                  onChange={(e) => setFullName(e.target.value.replace(/[^a-zA-Z\s]/g, ""))}
                   className="w-full px-3.5 py-3 rounded-xl border border-[#E4DCCB] text-xs bg-white text-zinc-900 focus:outline-none focus:border-[#C5A46D]"
                 />
                 <PhoneInputWithCountry
@@ -449,7 +449,7 @@ function BookingContent() {
                     type="text"
                     required
                     value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
+                    onChange={(e) => setFullName(e.target.value.replace(/[^a-zA-Z\s]/g, ""))}
                     placeholder="Full Legal Name"
                     className="w-full mt-1 px-3.5 py-2.5 rounded-lg border border-zinc-300 text-sm focus:outline-none focus:border-[#C5A46D]"
                   />

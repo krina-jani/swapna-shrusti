@@ -275,7 +275,7 @@ export default function LuxuryContactSection() {
                       required
                       placeholder="Your Name"
                       value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value.replace(/[^a-zA-Z\s]/g, "") })}
                       className="w-full pl-10 pr-4 py-3 rounded-xl border border-zinc-200 text-xs sm:text-sm text-zinc-800 placeholder-zinc-400 focus:outline-none focus:border-[#C5A46D] focus:ring-1 focus:ring-[#C5A46D] transition-all bg-[#FCFAF6]"
                     />
                   </div>

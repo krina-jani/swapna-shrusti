@@ -131,7 +131,7 @@ export default function EventEnquiryForm({
               type="text"
               required
               value={formData.fullName}
-              onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+              onChange={(e) => setFormData({ ...formData, fullName: e.target.value.replace(/[^a-zA-Z\s]/g, "") })}
               placeholder="Your Name"
               className="w-full px-3.5 py-2.5 rounded-xl border border-zinc-300 text-xs text-[#202522] focus:outline-none focus:border-[#C5A46D] transition-colors"
             />

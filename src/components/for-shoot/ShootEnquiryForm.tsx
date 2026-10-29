@@ -32,7 +32,8 @@ export default function ShootEnquiryForm({ initialCategory = "Pre-Wedding" }: Sh
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const sanitizedValue = name === "fullName" ? value.replace(/[^a-zA-Z\s]/g, "") : value;
+    setFormData((prev) => ({ ...prev, [name]: sanitizedValue }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
