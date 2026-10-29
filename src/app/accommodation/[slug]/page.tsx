@@ -148,23 +148,51 @@ export default async function RoomDetailPage({ params }: Props) {
                 </p>
               </section>
               {/* SECTION 3: PHOTO GALLERY */}
-              <section className="bg-white p-8 sm:p-10 rounded-2xl border border-zinc-200/90 shadow-sm space-y-6">
+              <section className="bg-white p-8 sm:p-10 rounded-3xl border border-[#C5A46D]/20 shadow-md space-y-6">
                 <div className="flex items-center space-x-3">
                   <span className="w-8 h-[2px] bg-[#C5A46D]" />
                   <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase">
-                    PHOTOGRAPHY
+                    PHOTOGRAPHY &amp; RETREAT AMBIENCE
                   </span>
                 </div>
-                <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#173A2B]">
-                  Room Gallery
-                </h2>
-                <div className="rounded-xl overflow-hidden border border-zinc-200/80 shadow-md">
+                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+                  <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#173A2B]">
+                    Room Gallery
+                  </h2>
+                  <span className="text-xs text-zinc-500 font-sans">Authentic glimpses of {room.name}</span>
+                </div>
+
+                {/* Primary Featured Photo */}
+                <div className="rounded-2xl overflow-hidden border border-zinc-200 shadow-md group relative">
                   <img
                     src={room.image}
                     alt={`${room.name} photograph at Swapna Srushti Resort`}
-                    className="w-full h-[320px] sm:h-[460px] object-cover hover:scale-[1.02] transition-transform duration-700"
+                    className="w-full h-[320px] sm:h-[480px] object-cover group-hover:scale-105 transition-transform duration-700"
                   />
+                  <div className="absolute bottom-4 left-4 bg-[#173A2B]/90 backdrop-blur-md px-4 py-1.5 rounded-full text-xs text-white border border-[#C5A46D]/40 flex items-center space-x-2">
+                    <Sparkles className="w-3.5 h-3.5 text-[#C5A46D]" />
+                    <span className="font-medium tracking-wide">{room.name} Sanctuary</span>
+                  </div>
                 </div>
+
+                {/* Additional Room Gallery Grid */}
+                {room.images && room.images.length > 1 && (
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 pt-2">
+                    {room.images.map((imgSrc, idx) => (
+                      <div
+                        key={idx}
+                        className="rounded-xl overflow-hidden border border-zinc-200/90 shadow-sm h-32 sm:h-44 group relative"
+                      >
+                        <img
+                          src={imgSrc}
+                          alt={`${room.name} gallery image ${idx + 1}`}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors" />
+                      </div>
+                    ))}
+                  </div>
+                )}
               </section>
 
 
