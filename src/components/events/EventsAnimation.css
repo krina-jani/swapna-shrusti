@@ -1,0 +1,226 @@
+/* ========================================================================= */
+/* SWAPNA SRUSHTI RESORT - EVENTS CINEMATIC ANIMATIONS                       */
+/* Clean, performant, GPU-accelerated CSS keyframes & transitions             */
+/* ========================================================================= */
+
+/* ------------------------------------------------------------------------- */
+/* 1. HERO CINEMATIC ENTRANCE                                                */
+/* ------------------------------------------------------------------------- */
+
+/* Background image scale-down from 1.06 to 1.00 */
+.events-hero-bg {
+  transform: scale(1.06);
+  opacity: 0.15;
+  transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.4s ease-out;
+  will-change: transform, opacity;
+}
+
+.hero-animated .events-hero-bg {
+  transform: scale(1);
+  opacity: 0.35;
+}
+
+/* Hero overlay smooth fade-in */
+.events-hero-overlay {
+  opacity: 0.6;
+  transition: opacity 1.2s ease-out;
+}
+
+.hero-animated .events-hero-overlay {
+  opacity: 1;
+}
+
+/* Staggered text & button entrance */
+.events-hero-eyebrow,
+.events-hero-title,
+.events-hero-desc,
+.events-hero-ctas {
+  opacity: 0;
+  transform: translateY(18px);
+  transition-property: opacity, transform;
+  transition-duration: 0.8s;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.hero-animated .events-hero-eyebrow {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s;
+}
+
+.hero-animated .events-hero-title {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.32s;
+}
+
+.hero-animated .events-hero-desc {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.48s;
+}
+
+.hero-animated .events-hero-ctas {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.62s;
+}
+
+/* ------------------------------------------------------------------------- */
+/* 2. SCROLL REVEAL SECTIONS (Cubic-bezier: 0.22, 1, 0.36, 1)                */
+/* ------------------------------------------------------------------------- */
+
+[data-events-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+[data-events-reveal].events-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Directional variants for editorial section */
+[data-events-reveal="left"] {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-events-reveal="left"].events-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+[data-events-reveal="right"] {
+  opacity: 0;
+  transform: translateX(24px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-events-reveal="right"].events-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ------------------------------------------------------------------------- */
+/* 3. EVENT CARDS STAGGER & HOVER                                            */
+/* ------------------------------------------------------------------------- */
+
+[data-events-card] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-events-card].events-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays across the 6 cards */
+[data-events-card="0"].events-revealed { transition-delay: 0.05s; }
+[data-events-card="1"].events-revealed { transition-delay: 0.15s; }
+[data-events-card="2"].events-revealed { transition-delay: 0.25s; }
+[data-events-card="3"].events-revealed { transition-delay: 0.10s; }
+[data-events-card="4"].events-revealed { transition-delay: 0.20s; }
+[data-events-card="5"].events-revealed { transition-delay: 0.30s; }
+
+/* Event card hover refinements */
+.event-card-container {
+  transition: border-color 0.4s ease, box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.event-card-container:hover {
+  box-shadow: 0 16px 36px -10px rgba(23, 58, 43, 0.14), 0 0 0 1px rgba(197, 164, 109, 0.35);
+}
+
+/* Image zoom inside card */
+.event-card-image {
+  transform: scale(1);
+  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.event-card-container:hover .event-card-image {
+  transform: scale(1.055);
+}
+
+/* Title color transition */
+.event-card-title {
+  transition: color 0.35s ease;
+}
+
+.event-card-container:hover .event-card-title {
+  color: #C5A46D !important;
+}
+
+/* Arrow slide transition on hover (4-6px) */
+.event-card-arrow {
+  transform: translateX(0);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.event-card-container:hover .event-card-arrow,
+a:hover > .event-card-arrow {
+  transform: translateX(5px);
+}
+
+/* ------------------------------------------------------------------------- */
+/* 4. PLANNING STEPS SEQUENTIAL REVEAL                                        */
+/* ------------------------------------------------------------------------- */
+
+[data-events-step] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-events-step].events-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-events-step="0"].events-revealed { transition-delay: 0.08s; }
+[data-events-step="1"].events-revealed { transition-delay: 0.18s; }
+[data-events-step="2"].events-revealed { transition-delay: 0.28s; }
+[data-events-step="3"].events-revealed { transition-delay: 0.38s; }
+
+.event-step-badge {
+  transform: scale(1);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s ease;
+}
+
+.event-step-card:hover .event-step-badge {
+  transform: scale(1.1);
+  background-color: #C5A46D;
+  color: #173A2B;
+}
+
+/* ------------------------------------------------------------------------- */
+/* 5. PREFERS-REDUCED-MOTION SUPPORT                                         */
+/* ------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .events-hero-bg,
+  .events-hero-eyebrow,
+  .events-hero-title,
+  .events-hero-desc,
+  .events-hero-ctas,
+  [data-events-reveal],
+  [data-events-card],
+  [data-events-step],
+  .event-card-container,
+  .event-card-image,
+  .event-card-arrow,
+  .event-step-badge {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+

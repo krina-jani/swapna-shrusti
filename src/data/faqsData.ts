@@ -29,15 +29,23 @@ export const DISCOVER_FAQS: FAQItem[] = [
     a: "Swapna Srushti Resort features Gujarat's celebrated water park with high-thrill water slides, a family swimming pool, outdoor adventure obstacle tracks, the Swapnagram heritage village, and manicured green nature trails.",
   },
   {
+    q: "What does the One-Day Outing package include and what are the timings?",
+    a: "The Day Outing package is available at ₹1,500 per person (plus applicable GST) from 9:00 AM to 5:00 PM. It covers breakfast, lunch, high tea with snacks, entry to the Adventure Park covering 30 activities (with three adventure activities on a one-time basis), and indoor & outdoor sports.",
+  },
+  {
+    q: "What are the standard resort stay package rates and timings?",
+    a: "Supplied standard stay rates per couple per night include Superior Rooms at ₹5,500, Premium Rooms at ₹6,000, Kutchi Huts at ₹6,500, and Executive Cottages at ₹7,500 (extra person at ₹2,000, GST extra). Standard check-in is 12:00 PM and check-out is 10:00 AM. Stay guests also receive 50% off on Adventure Park entry.",
+  },
+  {
+    q: "How can I book the Diwali Festive Stay Package?",
+    a: "Because Diwali holiday dates fill up quickly and carry specialized festive pricing and terms, please contact our concierge team directly to verify applicable seasonal dates, inclusions, and availability prior to making plans.",
+  },
+  {
     q: "Are the attractions open for day visitors or only room guests?",
     a: "The resort warmly welcomes both residential stay guests and day picnic visitors. We offer tailored One-Day Picnic packages that include attraction access and fresh vegetarian meals.",
   },
   {
-    q: "Is prior booking required to visit the swimming pool and attractions?",
-    a: "Prior reservation is recommended on weekends, festivals, and public holidays to ensure fast-track check-in and seamless access to pools and adventure facilities.",
-  },
-  {
-    q: "Are safety measures and lifeguards present at the water zones?",
+    q: "Are safety measures and lifeguards present at the water and adventure zones?",
     a: "Yes, all water facilities and slide drop zones are continuously supervised by trained resort safety marshals and lifeguards, with fresh, filtered circulating water.",
   },
 ];
@@ -63,20 +71,40 @@ export const EVENTS_FAQS: FAQItem[] = [
 
 export const RESTAURANT_FAQS: FAQItem[] = [
   {
-    q: "What cuisine is served at the Swapna Srushti Resort restaurant?",
-    a: "Our dining facility serves 100% pure vegetarian cuisine, featuring authentic Gujarati thali specialties, classic North Indian delicacies, Kathiyawadi flavors, Chinese, and Jain food preparations.",
+    q: "What type of food is available at Swapna Srushti Resort?",
+    a: "Swapna Srushti Resort serves 100% pure vegetarian dining. Our dining arrangements focus on regional Gujarati flavors, classic Punjabi/North Indian preparations, and wholesome traditional meals prepared for family visits, resort stays, and celebrations.",
   },
   {
-    q: "Can non-staying guests visit the restaurant for lunch or dinner?",
-    a: "Yes, our restaurant welcomes highway travelers, day visitors, and local families. Advance reservation is encouraged for large groups and buffet banquets.",
+    q: "Are vegetarian meals available?",
+    a: "Yes, all meals and dining options at Swapna Srushti Resort are strictly pure vegetarian, prepared in a dedicated vegetarian environment.",
   },
   {
-    q: "Is Jain food prepared according to strict dietary traditions?",
-    a: "Yes, we prepare authentic Jain food with root-free vegetables, cooked in clean, dedicated vegetarian cookware upon request.",
+    q: "Are Jain food arrangements available?",
+    a: "Guests with Jain or specific dietary preferences are encouraged to contact the resort in advance. While custom pure vegetarian and no-root meal arrangements can be requested for stays, group outings, and events, specific preparation requirements should be confirmed directly with our hospitality team.",
   },
   {
-    q: "Do you cater for private family banquets and birthday gatherings?",
-    a: "Yes, we provide dedicated private banquet halls and poolside dining lawns with customized set menus for birthdays, anniversaries, and family reunions.",
+    q: "What meals are included in the overnight stay packages?",
+    a: "The resort's verified stay packages (such as the Standard Resort Stay Package and Diwali Stay Package) include breakfast, a Punjabi lunch, and dinner for residential guests, as specified in the applicable package terms.",
+  },
+  {
+    q: "What meals are included in the day-outing package?",
+    a: "The Swapna Srushti Resort & Adventure Park Day Outing package (9:00 AM to 5:00 PM) includes breakfast, lunch, and evening high tea with snacks, alongside admission to activities.",
+  },
+  {
+    q: "Can groups enquire about meal arrangements?",
+    a: "Yes, family gatherings, corporate teams, and picnic groups can contact our resort planners to discuss custom meal arrangements, banquet setups, and advance group dining slots.",
+  },
+  {
+    q: "Can I enquire about dining for a wedding or family celebration?",
+    a: "Certainly! We cater for weddings, receptions, birthday parties, and festive milestones with customized pure vegetarian multi-course banquets, open-air lawn dining, and live food counters coordinated directly through our events team.",
+  },
+  {
+    q: "Are restaurant prices and menu items available online?",
+    a: "While package meal inclusions and package tariffs (such as the day outing and stay packages) are published, individual à la carte restaurant pricing and daily seasonal menus vary. Please contact the resort directly for current menu availability.",
+  },
+  {
+    q: "Should I confirm meal availability before visiting?",
+    a: "We strongly recommend contacting our concierge ahead of your visit (+91 99099 22000), particularly on weekends, festive holidays, or for large groups, to confirm restaurant timings, seating availability, and meal options.",
   },
 ];
 

@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/navigation/Navbar";
 import ResortFooter from "@/components/layout/ResortFooter";
 import { ACCOMMODATIONS, RoomItem } from "@/data/resortData";
+import { RESORT_PACKAGES } from "@/data/packagesData";
 import {
   Check,
   ArrowLeft,
@@ -15,6 +16,9 @@ import {
   ChevronRight,
   Home,
   CheckCircle2,
+  Tag,
+  Clock,
+  AlertTriangle,
 } from "lucide-react";
 
 interface Props {
@@ -56,6 +60,16 @@ export default async function RoomDetailPage({ params }: Props) {
   if (!room) {
     notFound();
   }
+
+  // Lookup package pricing for confirmed categories
+  const ratesMap: Record<string, { standard: string; diwali: string }> = {
+    "superior-rooms": { standard: "₹5,500", diwali: "₹6,500" },
+    "premium-rooms": { standard: "₹6,000", diwali: "₹7,000" },
+    "cottages": { standard: "₹6,500", diwali: "₹7,500" },
+    "executive-suites": { standard: "₹7,500", diwali: "₹8,500" },
+  };
+
+  const packageRates = ratesMap[slug];
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F7F3E9] text-[#202522]">
@@ -176,6 +190,102 @@ export default async function RoomDetailPage({ params }: Props) {
                     className="w-full h-[320px] sm:h-[460px] object-cover hover:scale-[1.02] transition-transform duration-700"
                   />
                 </div>
+              </section>
+
+              {/* COMPACT PACKAGE INFORMATION SECTION */}
+              <section className="bg-white p-8 sm:p-10 rounded-2xl border border-zinc-200/90 shadow-sm space-y-6">
+                <div className="flex items-center space-x-3">
+                  <span className="w-8 h-[2px] bg-[#C5A46D]" />
+                  <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase">
+                    AVAILABLE PACKAGES &amp; TARIFFS
+                  </span>
+                </div>
+                <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#173A2B]">
+                  Stay Package Rates
+                </h2>
+
+                {packageRates ? (
+                  <div className="space-y-4">
+                    <div className="p-5 rounded-xl bg-[#F7F3E9] border border-zinc-200 space-y-3 font-sans">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-zinc-300/60 pb-3">
+                        <div>
+                          <span className="font-serif font-bold text-lg text-[#173A2B]">
+                            Standard Resort Stay Package
+                          </span>
+                          <span className="block text-xs text-zinc-600">
+                            1 Night / 2 Days (Check-in 12:00 PM, Check-out 10:00 AM)
+                          </span>
+                        </div>
+                        <div className="text-left sm:text-right">
+                          <span className="font-serif font-bold text-2xl text-[#173A2B]">
+                            {packageRates.standard}
+                          </span>
+                          <span className="block text-[11px] text-zinc-500 font-normal">
+                            per couple / night (GST extra)
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="text-xs text-zinc-700 space-y-1">
+                        <p><strong>Package Inclusions:</strong> Breakfast, Punjabi lunch, Dinner, indoor games, outdoor games, swimming pool, gym, Theme Village, garden area, and 50% discount on Adventure Park entry.</p>
+                        <p className="text-zinc-500">Extra person: ₹2,000 per person + GST.</p>
+                      </div>
+                    </div>
+
+                    {/* Separately Identified Diwali Offer */}
+                    <div className="p-5 rounded-xl bg-amber-50/70 border border-amber-200/80 space-y-3 font-sans">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-amber-200 pb-3">
+                        <div className="flex items-center space-x-2">
+                          <Tag className="w-4 h-4 text-amber-700 shrink-0" />
+                          <div>
+                            <span className="font-serif font-bold text-lg text-[#173A2B]">
+                              Diwali Festive Stay Offer
+                            </span>
+                            <span className="block text-[11px] text-amber-900">
+                              Seasonal Festive Package (1 Night)
+                            </span>
+                          </div>
+                        </div>
+                        <div className="text-left sm:text-right">
+                          <span className="font-serif font-bold text-2xl text-[#173A2B]">
+                            {packageRates.diwali}
+                          </span>
+                          <span className="block text-[11px] text-zinc-600">
+                            per couple / night (GST extra)
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="text-xs text-amber-950 space-y-1">
+                        <p><strong>Inclusions:</strong> Breakfast, Punjabi lunch, Dinner, full games, pool, gym, Theme Village, and 50% off Adventure Park.</p>
+                        <p className="text-amber-800 italic">Note: Festive dates, availability, and applicable holiday terms must be confirmed directly with the resort prior to booking.</p>
+                      </div>
+                    </div>
+
+                    <div className="pt-1">
+                      <Link
+                        href="/packages"
+                        className="inline-flex items-center space-x-1.5 text-xs font-bold uppercase tracking-wider text-[#173A2B] hover:text-[#C5A46D] transition-colors"
+                      >
+                        <span>View All Resort Packages &amp; Offers</span>
+                        <ChevronRight className="w-4 h-4" />
+                      </Link>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="p-5 rounded-xl bg-[#F7F3E9] border border-zinc-200 space-y-3 font-sans text-xs sm:text-sm text-zinc-700">
+                    <p>
+                      Special package pricing and customized group rates for {room.name} are available upon request through our reservations desk.
+                    </p>
+                    <Link
+                      href="/packages"
+                      className="inline-flex items-center space-x-1.5 text-xs font-bold uppercase tracking-wider text-[#173A2B] hover:text-[#C5A46D] transition-colors"
+                    >
+                      <span>Explore Published Stay &amp; Day Packages</span>
+                      <ChevronRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                )}
               </section>
 
               {/* SECTION 6: RETURN NAVIGATION */}

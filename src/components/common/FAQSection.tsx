@@ -59,28 +59,41 @@ export default function FAQSection({
           <div className="lg:col-span-7 divide-y divide-zinc-600/70 border-t border-b border-zinc-600/70">
             {items.map((item, idx) => {
               const isOpen = openIdx === idx;
+              const contentId = `faq-answer-${idx}`;
+              const buttonId = `faq-question-${idx}`;
               return (
                 <div key={idx} className="py-5 sm:py-6 group transition-colors">
                   <button
+                    id={buttonId}
                     onClick={() => toggle(idx)}
-                    className="w-full text-left flex items-center justify-between gap-6 cursor-pointer focus:outline-none"
+                    className="w-full text-left flex items-center justify-between gap-6 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A46D] rounded"
                     aria-expanded={isOpen}
+                    aria-controls={contentId}
                   >
                     <span className="font-sans font-semibold text-base sm:text-lg text-white group-hover:text-[#C5A46D] transition-colors leading-snug">
                       {item.q}
                     </span>
                     <ChevronDown
-                      className={`w-5 h-5 text-zinc-400 group-hover:text-white shrink-0 transition-transform duration-300 ${
+                      className={`w-5 h-5 text-zinc-400 group-hover:text-white shrink-0 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                         isOpen ? "rotate-180 text-[#C5A46D]" : ""
                       }`}
                     />
                   </button>
 
-                  {isOpen && (
-                    <div className="mt-4 text-xs sm:text-sm text-zinc-300 leading-relaxed font-sans pr-6 animate-in fade-in duration-200">
-                      <p>{item.a}</p>
+                  <div
+                    id={contentId}
+                    role="region"
+                    aria-labelledby={buttonId}
+                    className={`grid transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                      isOpen ? "grid-rows-[1fr] opacity-100 mt-4" : "grid-rows-[0fr] opacity-0 mt-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed font-sans pr-6 pb-1">
+                        {item.a}
+                      </p>
                     </div>
-                  )}
+                  </div>
                 </div>
               );
             })}
