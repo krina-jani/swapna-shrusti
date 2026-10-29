@@ -24,7 +24,7 @@ export default function ResortIntroduction() {
           blurStrength={6}
           wordAnimationEnd="bottom+=300 bottom"
           containerClassName="w-full"
-          textClassName="font-title font-extrabold text-[32px] sm:text-[40px] md:text-[46px] lg:text-[52px] leading-[1.35] text-[#2b3540] tracking-tight"
+          textClassName="font-serif font-extrabold text-[32px] sm:text-[40px] md:text-[46px] lg:text-[52px] leading-[1.35] text-[#2b3540] tracking-tight"
         >
           Swapna Srushti Resort is a place where peaceful moments meet unforgettable experiences, where nature surrounds every celebration, and where every visit becomes a beautiful memory. Whether you seek a relaxing getaway, exciting adventures, a family picnic, or a destination for your special occasions, discover a world of comfort, connection, and celebration.
         </ScrollReveal>
@@ -32,15 +32,15 @@ export default function ResortIntroduction() {
         {/* Lower Section: Bold & Thick Text */}
         <div className="mt-20 sm:mt-28 flex flex-col items-center justify-center text-center">
           
-          {/* PLANNING YOUR NEXT GETAWAY in bold, thick, prominent uppercase text */}
-          <h3 className="font-title font-black text-2xl sm:text-3xl md:text-4xl text-[#1e2730] tracking-wider uppercase mb-6">
+          {/* PLANNING YOUR NEXT GETAWAY in serif display font */}
+          <h3 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl text-[#1e2730] tracking-wide uppercase mb-6">
             PLANNING YOUR NEXT GETAWAY?
           </h3>
 
           {/* Solid bold terracotta pill button */}
           <Link
             href="/discover"
-            className="inline-block px-10 py-3.5 rounded-full bg-[#cb9c7a] hover:bg-[#b88967] text-[#1a1a1a] font-title font-black text-sm sm:text-base tracking-wider shadow-md hover:scale-105 active:scale-95 transition-all"
+            className="inline-block px-10 py-3.5 rounded-full bg-[#cb9c7a] hover:bg-[#b88967] text-[#1a1a1a] font-serif font-bold text-base sm:text-lg tracking-wider shadow-md hover:scale-105 active:scale-95 transition-all"
           >
             Explore Our Resort
           </Link>
