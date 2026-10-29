@@ -110,7 +110,7 @@ export default function EventsPreview() {
               <div
                 key={`${event.id}-${idx}`}
                 data-event-card=""
-                className="relative shrink-0 w-[240px] sm:w-[280px] md:w-[310px] lg:w-[330px] h-[340px] sm:h-[380px] md:h-[410px] rounded-2xl overflow-hidden shadow-md hover:shadow-xl border border-[#E7DECD] group cursor-pointer transition-shadow duration-300"
+                className="relative shrink-0 w-[180px] xs:w-[200px] sm:w-[280px] md:w-[310px] lg:w-[330px] h-[260px] xs:h-[280px] sm:h-[380px] md:h-[410px] rounded-2xl overflow-hidden shadow-md hover:shadow-xl border border-[#E7DECD] group cursor-pointer transition-shadow duration-300"
               >
                 {/* Clean Image */}
                 <Image
@@ -132,16 +132,16 @@ export default function EventsPreview() {
                 </div>
 
                 {/* Centered Title of the image only */}
-                <div className="absolute inset-0 flex items-center justify-center p-5 text-center">
-                  <h3 className="font-serif font-bold text-2xl sm:text-3xl text-white tracking-wide drop-shadow-md group-hover:text-[#F7F3E9] transition-colors leading-tight">
+                <div className="absolute inset-0 flex items-center justify-center p-3 xs:p-5 text-center">
+                  <h3 className="font-serif font-bold text-xl xs:text-2xl sm:text-3xl text-white tracking-wide drop-shadow-md group-hover:text-[#F7F3E9] transition-colors leading-tight">
                     {event.name}
                   </h3>
                 </div>
 
                 {/* Tagline at the bottom */}
                 {event.tagline && (
-                  <div className="absolute bottom-4 left-0 right-0 text-center px-3">
-                    <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] font-sans font-semibold text-[#C5A46D] drop-shadow">
+                  <div className="absolute bottom-3 xs:bottom-4 left-0 right-0 text-center px-2 xs:px-3">
+                    <span className="text-[9px] xs:text-[10px] sm:text-[11px] uppercase tracking-[0.15em] xs:tracking-[0.2em] font-sans font-semibold text-[#C5A46D] drop-shadow line-clamp-1">
                       {event.tagline}
                     </span>
                   </div>

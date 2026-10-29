@@ -22,6 +22,7 @@ import {
   FaPinterestP, 
   FaTwitter 
 } from "react-icons/fa";
+import PhoneInputWithCountry from "@/components/ui/PhoneInputWithCountry";
 import { RESORT_INFO } from "@/data/resortData";
 
 export default function ResortFooter({ showBannerAndForm }: { showBannerAndForm?: boolean }) {
@@ -223,17 +224,14 @@ export default function ResortFooter({ showBannerAndForm }: { showBannerAndForm?
                       />
                     </div>
 
-                    {/* Phone Number */}
-                    <div className="relative">
-                      <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 pointer-events-none" />
-                      <input
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder="Phone Number (Optional)"
-                        className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-[#F4EFE6]/70 border border-[#E3D8C6] text-xs text-[#202522] placeholder:text-zinc-500 focus:outline-none focus:border-[#C5A46D] focus:bg-white transition-all shadow-sm"
-                      />
-                    </div>
+                    {/* Phone Number with Country Code Dropdown */}
+                    <PhoneInputWithCountry
+                      value={formData.phone}
+                      onChange={(fullVal) => setFormData({ ...formData, phone: fullVal })}
+                      placeholder="Phone Number (Optional)"
+                      showIcon={true}
+                      variant="sand"
+                    />
 
                     {/* Enquiry Type Dropdown */}
                     <div className="relative">

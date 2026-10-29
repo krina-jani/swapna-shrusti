@@ -5,6 +5,7 @@ import ResortFooter from "@/components/layout/ResortFooter";
 import FAQSection from "@/components/common/FAQSection";
 import GlareHover from "@/components/common/GlareHover";
 import EventEnquiryForm from "@/components/events/EventEnquiryForm";
+import EventsCTATitle from "@/components/events/EventsCTATitle";
 import EventsAnimatedView from "@/components/events/EventsAnimatedView";
 import "@/components/events/EventsAnimation.css";
 import { EVENTS_DATA } from "@/data/eventsData";
@@ -357,9 +358,9 @@ export default function EventsPage() {
                   <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase font-sans">
                     START YOUR DISCUSSION
                   </span>
-                  <h2 className="font-serif font-bold text-3xl sm:text-5xl text-white">
-                    Let&apos;s Plan Your Next Celebration
-                  </h2>
+                  <div>
+                    <EventsCTATitle />
+                  </div>
                   <p className="text-sm sm:text-base text-zinc-300 font-sans leading-relaxed">
                     Tell us about your event, preferred date, and guest requirements. Our team can help you enquire about suitable arrangements, open banquet slots, and accommodation packages.
                   </p>

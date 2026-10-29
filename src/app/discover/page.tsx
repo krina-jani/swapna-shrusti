@@ -4,6 +4,7 @@ import Navbar from "@/components/navigation/Navbar";
 import ResortFooter from "@/components/layout/ResortFooter";
 import FAQSection from "@/components/common/FAQSection";
 import GlareHover from "@/components/common/GlareHover";
+import DiscoverCTA from "@/components/discover/DiscoverCTA";
 import { ACTIVITIES_DATA } from "@/data/activitiesData";
 import { DISCOVER_FAQS } from "@/data/faqsData";
 import {
@@ -894,34 +895,7 @@ export default function DiscoverPage() {
           ctaLink="/contact"
         />
 
-        {/* Closing Enquiry Call To Action */}
-        <section className="py-20 bg-[#173A2B] text-white border-t border-zinc-800 text-center px-4">
-          <div className="max-w-3xl mx-auto space-y-5">
-            <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase">
-              PLAN YOUR GETAWAY
-            </span>
-            <h2 className="font-serif font-bold text-3xl sm:text-5xl text-white">
-              Ready to Experience Swapna Srushti?
-            </h2>
-            <p className="text-sm sm:text-base text-zinc-300 font-sans max-w-xl mx-auto leading-relaxed">
-              Contact Swapna Srushti Resort to confirm your stay package, day-outing arrangements, or private family picnic.
-            </p>
-            <div className="pt-3 flex flex-wrap justify-center items-center gap-4">
-              <Link
-                href="/contact"
-                className="px-8 py-3.5 rounded-full btn-gold text-xs uppercase tracking-wider font-bold shadow-xl hover:scale-105 transition-all"
-              >
-                Enquire For Bookings
-              </Link>
-              <Link
-                href="/accommodation"
-                className="px-8 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs uppercase tracking-wider font-semibold transition-all"
-              >
-                View Accommodations
-              </Link>
-            </div>
-          </div>
-        </section>
+        <DiscoverCTA />
 
       </main>
 

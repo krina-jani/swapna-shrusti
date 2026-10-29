@@ -4,6 +4,7 @@ import React, { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Navbar from "@/components/navigation/Navbar";
 import ResortFooter from "@/components/layout/ResortFooter";
+import PhoneInputWithCountry from "@/components/ui/PhoneInputWithCountry";
 import { ACCOMMODATIONS } from "@/data/resortData";
 import { Calendar, Users, ShieldCheck, CheckCircle2, CreditCard, Lock, BedDouble, ChevronDown, Search, ArrowRight, User, Home } from "lucide-react";
 
@@ -292,13 +293,12 @@ function BookingContent() {
                   onChange={(e) => setFullName(e.target.value)}
                   className="w-full px-3.5 py-3 rounded-xl border border-[#E4DCCB] text-xs bg-white text-zinc-900 focus:outline-none focus:border-[#C5A46D]"
                 />
-                <input
-                  type="tel"
+                <PhoneInputWithCountry
                   required
-                  placeholder="WhatsApp Phone (+91 ...)"
                   value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="w-full px-3.5 py-3 rounded-xl border border-[#E4DCCB] text-xs bg-white text-zinc-900 focus:outline-none focus:border-[#C5A46D]"
+                  onChange={(fullVal) => setPhone(fullVal)}
+                  placeholder="WhatsApp Number"
+                  className="rounded-xl border border-[#E4DCCB] bg-white"
                 />
                 <input
                   type="email"
@@ -458,13 +458,11 @@ function BookingContent() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="text-xs font-semibold text-zinc-700">Phone Number (WhatsApp)</label>
-                    <input
-                      type="tel"
+                    <PhoneInputWithCountry
                       required
                       value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      placeholder="+91 99099 22000"
-                      className="w-full mt-1 px-3.5 py-2.5 rounded-lg border border-zinc-300 text-sm focus:outline-none focus:border-[#C5A46D]"
+                      onChange={(fullVal) => setPhone(fullVal)}
+                      className="mt-1 rounded-lg border border-zinc-300 bg-white"
                     />
                   </div>
                   <div>

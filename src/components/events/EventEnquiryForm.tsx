@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import PhoneInputWithCountry from "@/components/ui/PhoneInputWithCountry";
 import { CheckCircle2, Send, Loader2 } from "lucide-react";
 
 interface EventEnquiryFormProps {
@@ -140,13 +141,11 @@ export default function EventEnquiryForm({
             <label className="block text-zinc-700 font-semibold mb-1">
               Phone Number *
             </label>
-            <input
-              type="tel"
+            <PhoneInputWithCountry
               required
               value={formData.phone}
-              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-              placeholder="+91 98765 43210"
-              className="w-full px-3.5 py-2.5 rounded-xl border border-zinc-300 text-xs text-[#202522] focus:outline-none focus:border-[#C5A46D] transition-colors"
+              onChange={(fullVal) => setFormData({ ...formData, phone: fullVal })}
+              className="rounded-xl border border-zinc-300 bg-white"
             />
           </div>
         </div>

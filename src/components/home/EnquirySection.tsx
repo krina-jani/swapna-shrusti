@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import PhoneInputWithCountry from "@/components/ui/PhoneInputWithCountry";
 import Image from "next/image";
 import { User, Mail, Phone, ArrowRight, CheckCircle2, ChevronDown } from "lucide-react";
 
@@ -138,16 +139,13 @@ export default function EnquirySection() {
                 </div>
 
                 {/* Phone Number */}
-                <div className="relative">
-                  <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
-                  <input
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="Your Phone Number"
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#F4EFE6]/70 border border-[#E3D8C6] text-xs sm:text-sm text-[#202522] placeholder:text-zinc-500 focus:outline-none focus:border-[#C5A46D] focus:bg-white transition-all"
-                  />
-                </div>
+                <PhoneInputWithCountry
+                  value={formData.phone}
+                  onChange={(fullVal) => setFormData({ ...formData, phone: fullVal })}
+                  placeholder="Your Phone Number"
+                  showIcon={true}
+                  variant="sand"
+                />
 
                 {/* Enquiry Type Dropdown */}
                 <div className="relative">

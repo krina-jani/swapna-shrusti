@@ -6,6 +6,7 @@ import Navbar from "@/components/navigation/Navbar";
 import ResortFooter from "@/components/layout/ResortFooter";
 import { ACCOMMODATIONS } from "@/data/resortData";
 import FAQSection from "@/components/common/FAQSection";
+import TextType from "@/components/ui/TextType";
 import { ACCOMMODATION_FAQS } from "@/data/faqsData";
 import {
   Users,
@@ -362,13 +363,28 @@ export default function AccommodationPage() {
         {/* SECTION 8: FINAL CALL TO ACTION (Restrained Forest-Green + Gold)          */}
         {/* ========================================================================= */}
         <section className="py-20 bg-[#173A2B] text-white border-t border-zinc-800 text-center px-4">
-          <div className="max-w-3xl mx-auto space-y-6">
-            <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase">
-              START YOUR RESERVATION
-            </span>
-            <h2 className="font-serif font-bold text-3xl sm:text-5xl text-white">
-              Ready to Plan Your Stay?
-            </h2>
+          <div className="max-w-3xl mx-auto space-y-4">
+            <div className="w-full flex justify-center items-center">
+              <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase block text-center">
+                START YOUR RESERVATION
+              </span>
+            </div>
+            <div className="w-full flex justify-center items-center min-h-[4rem] sm:min-h-[5.5rem]">
+              <TextType
+                as="h2"
+                text="Ready to Plan Your Stay?"
+                className="font-serif font-bold text-3xl sm:text-5xl text-white text-center inline-block"
+                typingSpeed={75}
+                pauseDuration={2000}
+                deletingSpeed={40}
+                loop={true}
+                showCursor={true}
+                cursorStyle="underscore"
+                cursorColor="#C5A46D"
+                cursorGlide={true}
+                startOnVisible={true}
+              />
+            </div>
             <p className="text-sm sm:text-base text-zinc-300 font-sans max-w-xl mx-auto leading-relaxed">
               Explore the accommodation options at Swapna Srushti Resort and contact the resort to learn more about availability, room features, and rates.
             </p>

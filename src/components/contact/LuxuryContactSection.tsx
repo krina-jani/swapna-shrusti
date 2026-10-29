@@ -14,6 +14,7 @@ import {
   Navigation,
   ExternalLink,
 } from "lucide-react";
+import PhoneInputWithCountry from "@/components/ui/PhoneInputWithCountry";
 import { RESORT_INFO } from "@/data/resortData";
 
 export default function LuxuryContactSection() {
@@ -121,7 +122,7 @@ export default function LuxuryContactSection() {
             <div className="relative z-10 m-4 sm:m-6 p-4 sm:p-5 rounded-2xl bg-black/65 backdrop-blur-md border border-white/20 text-white flex items-center justify-between shadow-xl">
               <div className="flex items-center space-x-3.5">
                 <div className="w-10 h-10 rounded-full bg-[#C5A46D] flex items-center justify-center shrink-0 text-[#173A2B] shadow-md">
-                  <MapPin className="w-5 h-5 fill-current" />
+                  <MapPin className="w-5 h-5 text-[#173A2B] stroke-[2.2]" />
                 </div>
                 <div>
                   <h3 className="font-serif font-bold text-base sm:text-lg text-white leading-tight">
@@ -293,17 +294,14 @@ export default function LuxuryContactSection() {
                   </div>
 
                   {/* Phone Input */}
-                  <div className="relative">
-                    <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
-                    <input
-                      type="tel"
-                      required
-                      placeholder="Phone Number"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-zinc-200 text-xs sm:text-sm text-zinc-800 placeholder-zinc-400 focus:outline-none focus:border-[#C5A46D] focus:ring-1 focus:ring-[#C5A46D] transition-all bg-[#FCFAF6]"
-                    />
-                  </div>
+                  <PhoneInputWithCountry
+                    required
+                    value={formData.phone}
+                    onChange={(fullVal) => setFormData({ ...formData, phone: fullVal })}
+                    placeholder="Phone Number"
+                    showIcon={true}
+                    variant="outline"
+                  />
 
                   {/* Subject Dropdown */}
                   <div className="relative">

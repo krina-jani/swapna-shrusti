@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { CheckCircle2, AlertCircle, Send, Loader2 } from "lucide-react";
+import PhoneInputWithCountry from "@/components/ui/PhoneInputWithCountry";
 
 interface ShootEnquiryFormProps {
   initialCategory?: string;
@@ -156,15 +157,13 @@ export default function ShootEnquiryForm({ initialCategory = "Pre-Wedding" }: Sh
               <label htmlFor="mobileNumber" className="block text-xs font-semibold text-zinc-700 mb-1">
                 Mobile Number <span className="text-red-500">*</span>
               </label>
-              <input
+              <PhoneInputWithCountry
+                required
                 id="mobileNumber"
                 name="mobileNumber"
-                type="tel"
-                required
                 value={formData.mobileNumber}
-                onChange={handleChange}
-                placeholder="+91 98765 43210"
-                className="w-full px-3.5 py-2.5 rounded-lg bg-zinc-50 border border-zinc-300 text-zinc-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#C5A46D] transition"
+                onChange={(fullVal) => setFormData((prev) => ({ ...prev, mobileNumber: fullVal }))}
+                className="rounded-lg border border-zinc-300 bg-zinc-50 focus-within:bg-white"
               />
             </div>
 
