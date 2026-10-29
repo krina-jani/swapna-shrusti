@@ -145,8 +145,29 @@ export default async function RoomDetailPage({ params }: Props) {
                   Designed to harmonise with the resort&apos;s natural landscape along the Gandhinagar-Mahudi Highway, this stay provides a peaceful environment where you can unwind. Review the confirmed amenities and features below prior to planning your visit.
                 </p>
               </section>
+              {/* SECTION 3: PHOTO GALLERY */}
+              <section className="bg-white p-8 sm:p-10 rounded-2xl border border-zinc-200/90 shadow-sm space-y-6">
+                <div className="flex items-center space-x-3">
+                  <span className="w-8 h-[2px] bg-[#C5A46D]" />
+                  <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase">
+                    PHOTOGRAPHY
+                  </span>
+                </div>
+                <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#173A2B]">
+                  Room Gallery
+                </h2>
+                <div className="rounded-xl overflow-hidden border border-zinc-200/80 shadow-md">
+                  <img
+                    src={room.image}
+                    alt={`${room.name} photograph at Swapna Srushti Resort`}
+                    className="w-full h-[320px] sm:h-[460px] object-cover hover:scale-[1.02] transition-transform duration-700"
+                  />
+                </div>
+              </section>
 
-              {/* SECTION 3: ROOM AMENITIES */}
+
+
+              {/* SECTION 4: ROOM AMENITIES */}
               <section className="bg-white p-8 sm:p-10 rounded-2xl border border-zinc-200/90 shadow-sm space-y-6">
                 <div className="flex items-center space-x-3">
                   <span className="w-8 h-[2px] bg-[#C5A46D]" />
@@ -171,26 +192,6 @@ export default async function RoomDetailPage({ params }: Props) {
                       </span>
                     </div>
                   ))}
-                </div>
-              </section>
-
-              {/* SECTION 4: PHOTO GALLERY */}
-              <section className="bg-white p-8 sm:p-10 rounded-2xl border border-zinc-200/90 shadow-sm space-y-6">
-                <div className="flex items-center space-x-3">
-                  <span className="w-8 h-[2px] bg-[#C5A46D]" />
-                  <span className="text-xs font-bold tracking-[0.25em] text-[#C5A46D] uppercase">
-                    PHOTOGRAPHY
-                  </span>
-                </div>
-                <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#173A2B]">
-                  Room Gallery
-                </h2>
-                <div className="rounded-xl overflow-hidden border border-zinc-200/80 shadow-md">
-                  <img
-                    src={room.image}
-                    alt={`${room.name} photograph at Swapna Srushti Resort`}
-                    className="w-full h-[320px] sm:h-[460px] object-cover hover:scale-[1.02] transition-transform duration-700"
-                  />
                 </div>
               </section>
 
