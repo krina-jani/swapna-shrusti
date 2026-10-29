@@ -26,6 +26,20 @@ export default function HeroSection() {
 
   return (
     <section className="relative w-full h-[620px] xs:h-[660px] sm:h-[700px] md:h-[840px] lg:h-[900px] overflow-hidden bg-black select-none">
+      {/* ========================================================================= */}
+      {/* SLIMLINE TOP TAGLINE BAR: "AWARD WINNING RESORT Graced by nature"          */}
+      {/* ========================================================================= */}
+      <div className="absolute top-0 left-0 right-0 z-30 pt-20 sm:pt-24 pointer-events-none flex justify-center px-4">
+        <div className="inline-flex items-center space-x-2.5 px-4 py-1.5 rounded-full bg-black/45 backdrop-blur-md border border-white/15 text-white/95 shadow-xl transition-all">
+          <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.25em] text-[#E5B564] uppercase font-sans drop-shadow">
+            AWARD WINNING RESORT
+          </span>
+          <span className="w-1 h-1 rounded-full bg-[#E5B564]/70" />
+          <span className="font-serif italic text-xs sm:text-sm text-zinc-200 capitalize tracking-wide font-normal">
+            Graced by nature
+          </span>
+        </div>
+      </div>
       
       {/* ========================================================================= */}
       {/* 2-SECOND AUTOMATIC UNSPLASH RESORT IMAGES CAROUSEL                         */}
